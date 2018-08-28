@@ -1,4 +1,4 @@
-package math_geometric_probability;
+package other;
 public class AToThePowerOfB {
 	public long power(int a, int b) {
 		if (b == 0) {

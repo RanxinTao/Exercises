@@ -13,7 +13,7 @@ package sort_derivative;
  * 
  * Algorithm: Counting sort
  */
-public class RainbowSort {
+public class RainbowSortIII {
 	public int[] rainbowSort(int[] array, int k) {
 		int[] counts = new int[k];
 		for (int num : array) {

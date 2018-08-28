@@ -4,7 +4,7 @@ import impl.Utils;
 
 public class MergeSort {
 	public int[] mergeSort(int[] array) {
-		if (array == null || array.length == 0) {
+		if (array == null || array.length <= 1) {
 			return array;
 		}
 		mergeSort(array, 0, array.length - 1);
@@ -25,13 +25,11 @@ public class MergeSort {
 		// copy the content to helper arrays
 		int[] leftHalf = new int[mid - left  + 1];
 		int[] rightHalf = new int[right - mid];
-		int index = 0;
-		for (int i = left; i <= mid; i++) {
-			leftHalf[index++] = array[i];
+		for (int i = 0, j = left; j <= mid; i++, j++) {
+			leftHalf[i] = array[j];
 		}
-		index = 0;
-		for (int i = mid + 1; i <= right; i++) {
-			rightHalf[index++] = array[i];
+		for (int i = 0, j = mid + 1; j <= right; i++, j++) {
+			rightHalf[i] = array[j];
 		}
 		// merge into the original array
 		int i = 0, j = 0, k = left;

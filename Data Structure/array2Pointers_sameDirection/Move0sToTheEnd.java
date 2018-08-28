@@ -14,7 +14,7 @@ import impl.Utils;
  */
 public class Move0sToTheEnd {
 	public int[] moveZero(int[] array) {
-		int end = 0;
+		int end = 0; // all numbers on the left side of end are not 0
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != 0) {
 				array[end] = array[i];
