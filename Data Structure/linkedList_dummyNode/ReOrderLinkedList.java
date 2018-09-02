@@ -46,20 +46,16 @@ public class ReOrderLinkedList {
 	
 	private ListNode merge(ListNode one, ListNode two) {
 		ListNode dummy = new ListNode(0);
-		ListNode prev = dummy;
+		ListNode cur = dummy;
 		while (one != null && two != null) {
-			prev.next = one;
+			cur.next = one;
 			one = one.next;
-			prev = prev.next;
-			prev.next = two;
+			cur = cur.next;
+			cur.next = two;
 			two = two.next;
-			prev = prev.next;
+			cur = cur.next;
 		}
-		if (one != null) {
-			prev.next = one;
-		} else {
-			prev.next = two;
-		}
+		cur.next = one == null ? two : one;
 		return dummy.next;
 	}
 }

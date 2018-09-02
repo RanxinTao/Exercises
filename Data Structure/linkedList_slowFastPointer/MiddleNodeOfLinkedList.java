@@ -1,4 +1,4 @@
-package linkedList;
+package linkedList_slowFastPointer;
 
 import impl.ListNode;
 

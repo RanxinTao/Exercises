@@ -1,4 +1,4 @@
-package linkedList;
+package linkedList_dummyNode;
 
 import impl.ListNode;
 
@@ -11,12 +11,12 @@ public class InsertInSortedLinkedList {
 			return newNode;
 		}
 		// insert the new node to the right position.
-		ListNode prev = head;
-		while (prev.next != null && prev.next.value < value) {
-			prev = prev.next;
+		ListNode cur = head;
+		while (cur.next != null && cur.next.value < value) {
+			cur = cur.next;
 		}
-		newNode.next = prev.next;
-		prev.next = newNode;
+		newNode.next = cur.next;
+		cur.next = newNode;
 		return head;
 	}
 }

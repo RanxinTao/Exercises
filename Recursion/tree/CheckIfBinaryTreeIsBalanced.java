@@ -12,16 +12,19 @@ public class CheckIfBinaryTreeIsBalanced {
 		if (root == null) {
 			return 0;
 		}
-		// left child, right child
-		int leftDepth = helper(root.left);
-		int rightDepth = helper(root.right);
-		// current level
-		if (leftDepth == -1 || rightDepth == -1) {
+		// left child
+		int leftHeight = helper(root.left);
+		// if left subtree is already not balanced, we do not need to continue
+		if (leftHeight == -1) {
 			return -1;
-		} else if (Math.abs(leftDepth - rightDepth) > 1) {
+		}
+		// right child
+		int rightHeight = helper(root.right);
+		// current level
+		if (rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
 			return -1;
 		} else {
-			return Math.max(leftDepth, rightDepth) + 1;
+			return Math.max(leftHeight, rightHeight) + 1;
 		}
 	}
 }

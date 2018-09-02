@@ -13,7 +13,7 @@ public class QueueByTwoStacks {
 	  }
 
 	public Integer poll() {
-		move();
+		moveIfEmpty();
 		return out.isEmpty() ? null : out.pollFirst();
 	}
 
@@ -22,7 +22,7 @@ public class QueueByTwoStacks {
 	}
 
 	public Integer peek() {
-		move();
+		moveIfEmpty();
 		return out.isEmpty() ? null : out.peekFirst();
 	}
 
@@ -34,12 +34,11 @@ public class QueueByTwoStacks {
 		return size() == 0;
 	}
 
-	private void move() {
-		if (!out.isEmpty()) {
-			return;
-		}
-		while (!in.isEmpty()) {
-			out.offerFirst(in.pollFirst());
+	private void moveIfEmpty() {
+		if (out.isEmpty()) {
+			while (!in.isEmpty()) {
+				out.offerFirst(in.pollFirst());
+			}
 		}
 	}
 }

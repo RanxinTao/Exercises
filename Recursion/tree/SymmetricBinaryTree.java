@@ -18,7 +18,7 @@ public class SymmetricBinaryTree {
 			return false;
 		} else if (left.key != right.key) {
 			return false;
-		// left child, right child
+		// left child, right child, current level
 		} else {
 			return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
 		}

@@ -15,12 +15,6 @@ public class LastOccurrence {
 				right = mid - 1;
 			}
 		}
-		if (left < array.length && array[left] == target) {
-			return left;
-		} else if (right >= 0 && array[right] == target) {
-			return right;
-		} else {
-			return -1;
-		}
+		return right >= 0 && array[right] == target? right : -1;
 	}
 }

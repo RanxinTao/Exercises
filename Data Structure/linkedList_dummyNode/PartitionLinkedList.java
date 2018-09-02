@@ -7,24 +7,24 @@ public class PartitionLinkedList {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		ListNode dummy_small = new ListNode(0);
-		ListNode dummy_large = new ListNode(0);
-		ListNode prev_small = dummy_small;
-		ListNode prev_large = dummy_large;
+		ListNode dummySmall = new ListNode(0);
+		ListNode dummyLarge = new ListNode(0);
+		ListNode curSmall = dummySmall;
+		ListNode curLarge = dummyLarge;
 		while (head != null) {
 			if (head.value < target) {
-				prev_small.next = head;
-				prev_small = prev_small.next;
+				curSmall.next = head;
+				curSmall = curSmall.next;
 			} else {
-				prev_large.next = head;
-				prev_large = prev_large.next;
+				curLarge.next = head;
+				curLarge = curLarge.next;
 			}
 			head = head.next;
 		}
 		// connect the two partitions
-		prev_small.next = dummy_large.next;
+		curSmall.next = dummyLarge.next;
 		// un-link the last node in large partition
-		prev_large.next = null;
-		return dummy_small.next;
+		curLarge.next = null;
+		return dummySmall.next;
 	}
 }

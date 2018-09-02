@@ -1,4 +1,4 @@
-package linkedList;
+package linkedList_slowFastPointer;
 
 import impl.ListNode;
 
@@ -18,5 +18,4 @@ public class CheckIfLinkedListHasACycle {
 		}
 		return false;
 	}
-	
 }

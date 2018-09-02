@@ -15,13 +15,7 @@ public class FirstOccurrence {
 				right = mid - 1;
 			}
 		}
-		if (left < array.length && array[left] == target) {
-			return left;
-		} else if (right >= 0 && array[right] == target) {
-			return right;
-		} else {
-			return -1;
-		}
+		return left < array.length && array[left] == target ? left : -1;
 	}
 	
 	public static void main(String[] args) {

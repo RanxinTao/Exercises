@@ -5,23 +5,19 @@ import impl.ListNode;
 public class MergeTwoSortedLinkedLists {
 	public ListNode merge(ListNode one, ListNode two) {
 		ListNode dummy = new ListNode(0);
-		ListNode prev = dummy;
+		ListNode cur = dummy;
 		while (one != null && two != null) {
 			if (one.value <= two.value) {
-				prev.next = one;
+				cur.next = one;
 				one = one.next;
 			} else {
-				prev.next = two;
+				cur.next = two;
 				two = two.next;
 			}
-			prev = prev.next;
+			cur = cur.next;
 		}
 		// link the remaining possible nodes
-		if (one != null) {
-			prev.next = one;
-		} else {
-			prev.next = two;
-		}
+		cur.next = one == null ? two : one;
 		return dummy.next;
 	}
 }
