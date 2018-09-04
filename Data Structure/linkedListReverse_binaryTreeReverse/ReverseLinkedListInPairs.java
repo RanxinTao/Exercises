@@ -1,4 +1,4 @@
-package linkedList_binaryTreeReverse;
+package linkedListReverse_binaryTreeReverse;
 
 import impl.ListNode;
 

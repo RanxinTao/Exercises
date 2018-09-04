@@ -1,9 +1,14 @@
-package DFS_base;
+package test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllPermutationsI {
+import DFS_base.AllPermutationsI;
+import impl.ListNode;
+import impl.TreeNode;
+
+@SuppressWarnings("unused")
+public class WhiteBoard {
 	public List<String> permutations(String set) {
 		List<String> res = new ArrayList<>();
 		if (set == null) {
@@ -33,7 +38,7 @@ public class AllPermutationsI {
 	
 	public static void main(String[] args) {
 		AllPermutationsI test = new AllPermutationsI();
-		String set = "";
+		String set = "abc";
 		System.out.println(test.permutations(set));
 	}
 }

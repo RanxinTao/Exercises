@@ -32,4 +32,11 @@ public class CombinationsOfCoins {
 			cur.remove(cur.size() - 1);
 		}
 	}
+	
+	public static void main(String[] args) {
+		int target = 4;
+		int[] coins = new int[] {2, 1};
+		CombinationsOfCoins test = new CombinationsOfCoins();
+		System.out.println(test.combinations(target, coins));
+	}
 }

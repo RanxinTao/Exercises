@@ -1,4 +1,4 @@
-package moveTheSmallerOne;
+package arrays_2Pointers;
 
 import java.util.ArrayList;
 import java.util.List;
