@@ -20,18 +20,12 @@ import java.util.Map;
 public class CommonNumbersOfTwoArraysII {
 	public List<Integer> common(List<Integer> A, List<Integer> B) {
 		List<Integer> res = new ArrayList<>();
-		List<Integer> shorter = A;
-		List<Integer> longer = B;
-		if (A.size() > B.size()) {
-			shorter = B;
-			longer = A;
-		}
-		Map<Integer, Integer> map = buildMap(shorter);
-		for (int num : longer) {
-			Integer count = map.get(num);
-			if (count != null && count != 0) {
+		Map<Integer, Integer> countA = buildMap(A);
+		for (int num : B) {
+			Integer count = countA.get(num);
+			if (count != null && count > 0) {
 				res.add(num);
-				map.put(num, count - 1);
+				countA.put(num, count - 1);
 			}
 		}
 		Collections.sort(res);
@@ -39,16 +33,16 @@ public class CommonNumbersOfTwoArraysII {
 	}
 
 	private Map<Integer, Integer> buildMap(List<Integer> list) {
-		Map<Integer, Integer> map = new HashMap<>();
+		Map<Integer, Integer> res = new HashMap<>();
 		for (int num : list) {
-			Integer count = map.get(num);
+			Integer count = res.get(num);
 			if (count == null) {
-				map.put(num, 1);
+				res.put(num, 1);
 			} else {
-				map.put(num, count + 1);
+				res.put(num, count + 1);
 			}
 		}
-		return map;
+		return res;
 	}
 	
 	public static void main(String[] args) {

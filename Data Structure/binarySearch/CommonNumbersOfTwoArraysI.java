@@ -1,4 +1,4 @@
-package hashMap_hashSet;
+package binarySearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,27 +26,9 @@ public class CommonNumbersOfTwoArraysI {
 			a = b;
 			b = tmp;
 		}
-		Set<Integer> set = new HashSet<>(a);
-		for (int num : b) {
-			if (set.contains(num)) {
-				res.add(num);
-			}
-		}
-		Collections.sort(res);
-		return res;
-	}
-	
-	/*public List<Integer> common(List<Integer> a, List<Integer> b) {
-		List<Integer> res = new ArrayList<>();
-		List<Integer> shorter = a;
-		List<Integer> longer = b;
-		if (a.size() > b.size()) {
-			shorter = b;
-			longer = a;
-		}
-		Collections.sort(shorter);
-		for (int num : longer) {
-			if (binarySearch(shorter, num)) {
+		Collections.sort(b);
+		for (int num : a) {
+			if (binarySearch(b, num)) {
 				res.add(num);
 			}
 		}
@@ -68,5 +50,5 @@ public class CommonNumbersOfTwoArraysI {
 			}
 		}
 		return false;
-	}*/
+	}
 }
