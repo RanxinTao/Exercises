@@ -16,19 +16,19 @@ public class AllSubsetsII {
 		return res;
 	}
 
-	private void helper(char[] set, int index, List<String> res, StringBuilder curSb) {
+	private void helper(char[] set, int index, List<String> res, StringBuilder cur) {
 		if (index == set.length) {
-			res.add(curSb.toString());
+			res.add(cur.toString());
 			return;
 		} else {
-			curSb.append(set[index]);
-			helper(set, index + 1, res, curSb);
-			curSb.deleteCharAt(curSb.length() - 1);
+			cur.append(set[index]);
+			helper(set, index + 1, res, cur);
+			cur.deleteCharAt(cur.length() - 1);
 			// skip all the consecutive and duplicate elements.
 			while (index + 1 < set.length && set[index] == set[index + 1]) {
 				index++;
 			}
-			helper(set, index + 1, res, curSb);	
+			helper(set, index + 1, res, cur);	
 		}
 	}
 }

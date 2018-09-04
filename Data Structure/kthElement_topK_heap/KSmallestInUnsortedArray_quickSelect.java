@@ -16,26 +16,8 @@ import impl.Utils;
  * Examples:
  * A = {3, 4, 1, 2, 5}, K = 3, the 3 smallest numbers are {1, 2, 3}
  */
-public class KSmallestInUnsortedArray {
+public class KSmallestInUnsortedArray_quickSelect {
 	public int[] kSmallest(int[] array, int k) {
-		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-		for (int i = 0; i < array.length; i++) {
-			if (i < k) {
-				maxHeap.offer(array[i]);
-			} else if (array[i] < maxHeap.peek()) {
-				maxHeap.poll();
-				maxHeap.offer(array[i]);
-			}
-		}
-		int[] res = new int[k];
-		for (int i = k - 1; i >= 0; i--) {
-			res[i] = maxHeap.poll();
-		}
-		return res;
-	}
-	
-	
-	/*public int[] kSmallest(int[] array, int k) {
 		if (array.length == 0 || k == 0) {
 			return new int[0];
 		}
@@ -78,10 +60,10 @@ public class KSmallestInUnsortedArray {
 		int tmp = array[i];
 		array[i] = array[j];
 		array[j] = tmp;
-	}*/
+	}
 	
 	public static void main(String[] args) {
-		KSmallestInUnsortedArray test = new KSmallestInUnsortedArray();
+		KSmallestInUnsortedArray_quickSelect test = new KSmallestInUnsortedArray_quickSelect();
 		int[] array = {3,4,1,2,5};
 		int k = 3;
 		Utils.printArray(test.kSmallest(array, k));

@@ -10,6 +10,7 @@ import impl.TreeNode;
 public class BinaryTreeInorderTraversal {
 	public List<Integer> inOrder(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
+		// corner case
 		if (root == null) {
 			return res;
 		}
@@ -17,16 +18,23 @@ public class BinaryTreeInorderTraversal {
 		stack.offerFirst(root);
 		TreeNode prev = null;
 		while (!stack.isEmpty()) {
+			// we do not pop the current node because it will be visited after left subtree
 			TreeNode cur = stack.peekFirst();
-			// 1. if we are going down, either left or right direction.
+			// 1. if we are going down, either from prev.left or prev.right
 			if (prev == null || prev.left == cur || prev.right == cur) {
 				if (cur.left != null) {
 					stack.offerFirst(cur.left);	
+				} else {
+					res.add(cur.key);
+					stack.pollFirst();
+					if (cur.right != null) {
+						stack.offerFirst(cur.right);
+					}
 				}
 			// 2. if we are going up
 			} else {
-				stack.pollFirst();
 				res.add(cur.key);
+				stack.pollFirst();
 				if (cur.right != null) {
 					stack.offerFirst(cur.right);
 				}

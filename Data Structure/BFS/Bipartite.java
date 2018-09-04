@@ -10,31 +10,30 @@ import impl.GraphNode;
 
 public class Bipartite {
 	public boolean isBipartite(List<GraphNode> graph) {
-		Map<GraphNode, Integer> visited = new HashMap<>();
+		Map<GraphNode, Integer> nodeToGroup = new HashMap<>();
 		for (GraphNode node : graph) {
-			if (!BFS(node, visited)) {
+			if (!nodeToGroup.containsKey(node) && !BFS(node, nodeToGroup)) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	private boolean BFS(GraphNode node, Map<GraphNode, Integer> visited) {
-		if (visited.containsKey(node)) {
-			return true;
-		}
+	private boolean BFS(GraphNode node, Map<GraphNode, Integer> nodeToGroup) {
 		Queue<GraphNode> queue = new LinkedList<>();
 		queue.offer(node);
-		visited.put(node, 1);
+		// start BFS from the node, since the node has not been visited, we can assign it to either group 1 or 2
+		nodeToGroup.put(node, 1);
 		while (!queue.isEmpty()) {
 			GraphNode cur = queue.poll();
-			int curGroup = visited.get(cur);
+			int curGroup = nodeToGroup.get(cur);
 			int neiGroup = curGroup == 1 ? 2 : 1;
 			for (GraphNode nei : cur.neighbors) {
-				if (!visited.containsKey(nei)) {
-					visited.put(nei, neiGroup);
+				// if the neighbor has not been visited, just put it in the queue and choose the correct group
+				if (!nodeToGroup.containsKey(nei)) {
+					nodeToGroup.put(nei, neiGroup);
 					queue.offer(nei);
-				} else if (visited.get(nei) != neiGroup) {
+				} else if (nodeToGroup.get(nei) != neiGroup) {
 					return false;
 				}
 			}

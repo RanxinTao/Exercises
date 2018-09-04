@@ -18,13 +18,14 @@ public class GetKeysInBinarySearchTreeInGivenRange {
 	private void inorder(TreeNode root, int min, int max, List<Integer> res) {
 		if (root == null) {
 			return;
-		} else if (max < root.key) {
+		}
+		if (min < root.key) {
 			inorder(root.left, min, max, res);
-		} else if (min > root.key) {
-			inorder(root.right, min, max, res);
-		} else {
-			inorder(root.left, min, max, res);
+		}
+		if (min <= root.key && root.key <= max) {
 			res.add(root.key);
+		}
+		if (root.key < max) {
 			inorder(root.right, min, max, res);
 		}
 	}

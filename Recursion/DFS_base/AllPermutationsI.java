@@ -33,7 +33,7 @@ public class AllPermutationsI {
 	
 	public static void main(String[] args) {
 		AllPermutationsI test = new AllPermutationsI();
-		String set = "abc";
+		String set = "";
 		System.out.println(test.permutations(set));
 	}
 }
