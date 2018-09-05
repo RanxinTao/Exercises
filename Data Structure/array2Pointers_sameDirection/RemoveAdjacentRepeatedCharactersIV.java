@@ -11,7 +11,7 @@ public class RemoveAdjacentRepeatedCharactersIV {
 			return input;
 		}
 		char[] array = input.toCharArray();
-		int top = 0;
+		int top = 0; // indicates the top of the stack
 		for (int i = 1; i < array.length; i++) {
 			if (top == -1 || array[top] != array[i]) {
 				top++;

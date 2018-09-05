@@ -9,14 +9,14 @@ public class DetermineIfOneStringIsAnothersSubstring {
 			return 0;
 		}
 		for (int i = 0; i <= large.length() - small.length(); i++) {
-			boolean found = true;
+			boolean match = true;
 			for (int j = 0; j < small.length(); j++) {
 				if (large.charAt(i + j) != small.charAt(j)) {
-					found = false;
+					match = false; 
 					break;
 				}
 			}
-			if (found) {
+			if (match) {
 				return i;
 			}
 		}

@@ -2,9 +2,7 @@ package binarySearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Find all numbers that appear in both of the two unsorted arrays, return the common numbers in increasing order.
