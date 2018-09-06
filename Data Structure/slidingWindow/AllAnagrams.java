@@ -18,15 +18,15 @@ public class AllAnagrams {
 		if (l.length() == 0) {
 			return res;
 		}
-		Map<Character, Integer> countMap = buildCountMap(s);
-		int num_to_match = countMap.size();
+		Map<Character, Integer> charToCount = buildCountMap(s);
+		int num_to_match = charToCount.size();
 		// move the sliding window by one step from left to right
 		for (int i = 0; i < l.length(); i++) {
 			// handle the new added character (rightmost) at the current sliding window
 			char ch = l.charAt(i);
-			Integer count = countMap.get(ch);
+			Integer count = charToCount.get(ch);
 			if (count != null) {
-				countMap.put(ch, count - 1);
+				charToCount.put(ch, count - 1);
 				if (count == 1) {
 					num_to_match--;
 				}
@@ -34,9 +34,9 @@ public class AllAnagrams {
 			// handle the leftmost character at the previous sliding window
 			if (i >= s.length()) {
 				ch = l.charAt(i - s.length());
-				count = countMap.get(ch);
+				count = charToCount.get(ch);
 				if (count != null) {
-					countMap.put(ch, count + 1);
+					charToCount.put(ch, count + 1);
 					if (count == 0) {
 						num_to_match++;
 					}

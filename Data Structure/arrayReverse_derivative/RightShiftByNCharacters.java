@@ -13,10 +13,10 @@ public class RightShiftByNCharacters {
 			return input;
 		}
 		char[] array = input.toCharArray();
-		n %= array.length;
-		reverse(array, 0, array.length - n - 1);
-		reverse(array, array.length - n, array.length - 1);
 		reverse(array, 0, array.length - 1);
+		n %= array.length;
+		reverse(array, 0, n - 1);
+		reverse(array, n, array.length - 1);
 		return new String(array);
 	}
 	
@@ -32,8 +32,8 @@ public class RightShiftByNCharacters {
 	
 	public static void main(String[] args) {
 		RightShiftByNCharacters test = new RightShiftByNCharacters();
-		String input = "abcde";
-		int n = 2;
+		String input = "abcdefg";
+		int n = 3;
 		System.out.println(test.rightShift(input, n));
 	}
 	

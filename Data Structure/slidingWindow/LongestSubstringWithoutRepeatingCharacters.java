@@ -12,17 +12,18 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		if (input.length() == 0) {
 			return 0;
 		}
-		Map<Character, Integer> map = new HashMap<>();
+		Map<Character, Integer> lastOccurs = new HashMap<>();
 		int maxLen = 0;
 		int left = 0;
 		for (int right = 0; right < input.length(); right++) {
 			char cur = input.charAt(right);
-			Integer lastOccurrence = map.get(cur);
-			if (lastOccurrence != null && left <= lastOccurrence) {
+			Integer lastOccur = lastOccurs.get(cur);
+			if (lastOccur != null && left <= lastOccur) {
 				maxLen = Math.max(maxLen, right - left);
-				left = lastOccurrence + 1;
+				left = lastOccur + 1;
 			}
-			map.put(cur, right);
+			// add or update the last occurrence of the current character
+			lastOccurs.put(cur, right);
 		}
 		maxLen = Math.max(maxLen, input.length() - left);
 		return maxLen;
