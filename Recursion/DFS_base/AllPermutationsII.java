@@ -20,11 +20,11 @@ public class AllPermutationsII {
 		if (set == null) {
 			return res;
 		}
-		helper(set.toCharArray(), 0, res);
+		permutations(set.toCharArray(), 0, res);
 		return res;
 	}
 
-	private void helper(char[] array, int index, List<String> res) {
+	private void permutations(char[] array, int index, List<String> res) {
 		if (index == array.length) {
 			res.add(new String(array));
 			return;
@@ -33,7 +33,7 @@ public class AllPermutationsII {
 		for (int i = index; i < array.length; i++) {
 			if (used.add(array[i])) {
 				swap(array, index, i);
-				helper(array, index + 1, res);
+				permutations(array, index + 1, res);
 				swap(array, index, i);
 			}
 		}

@@ -11,21 +11,26 @@ public class RemoveCertainCharacters {
 		if (input.isEmpty() || t.isEmpty()) {
 			return input;
 		}
-		char[] array = input.toCharArray();
 		// build HashSet
-		Set<Character> set = new HashSet<>();
-		for (int i = 0; i < t.length(); i++) {
-			set.add(t.charAt(i));
-		}
+		Set<Character> charSet = buildSet(t);		
 		// iterate through array and remove certain characters
-		int end = 0;
+		char[] charArr = input.toCharArray();
+		int end = 0; // the left to end (exclusive) are to be kept 
 		for (int i = 0; i < input.length(); i++) {
-			if (!set.contains(array[i])) {
-				array[end] = array[i];
+			if (!charSet.contains(charArr[i])) {
+				charArr[end] = charArr[i];
 				end++;
 			}
 		}
-		return new String(array, 0, end);
+		return new String(charArr, 0, end);
+	}
+	
+	private Set<Character> buildSet(String t) {
+		Set<Character> charSet = new HashSet<>();
+		for (int i = 0; i < t.length(); i++) {
+			charSet.add(t.charAt(i));
+		}
+		return charSet;
 	}
 	
 	public static void main(String[] args) {

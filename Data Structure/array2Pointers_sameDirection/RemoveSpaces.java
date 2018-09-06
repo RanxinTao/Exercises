@@ -8,19 +8,19 @@ public class RemoveSpaces {
 		if (input.length() == 0) {
 			return input;
 		}
-		char[] array = input.toCharArray();
-		int len = 0;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] == ' ' && (i == 0 || array[i - 1] == ' ')) {
+		char[] charArr = input.toCharArray();
+		int end = 0; // the left to end (exclusive) is to be kept
+		for (int i = 0; i < charArr.length; i++) {
+			if (charArr[i] == ' ' && (i == 0 || charArr[i - 1] == ' ')) {
 				continue;
 			}
-			array[len] = array[i];
-			len++;
+			charArr[end] = charArr[i];
+			end++;
 		}
-		if (len > 0 && array[len - 1] == ' ') {
-			len--;
+		if (end > 0 && charArr[end - 1] == ' ') {
+			end--;
 		}
-		return new String(array, 0, len);
+		return new String(charArr, 0, end);
 	}
 	
 	public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class AllPermutationsI {
 	    return res;
 	}
 	
-	public void permutations(char[] array, int index, List<String> res) {
+	private void permutations(char[] array, int index, List<String> res) {
 		if (index == array.length) {
 			res.add(new String(array));
 			return;
