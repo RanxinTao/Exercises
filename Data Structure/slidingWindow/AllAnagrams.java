@@ -18,48 +18,48 @@ public class AllAnagrams {
 		if (l.length() == 0) {
 			return res;
 		}
-		Map<Character, Integer> charToCount = buildCountMap(s);
-		int num_to_match = charToCount.size();
+		Map<Character, Integer> freqMap = getFreqMap(s);
+		int toMatch = freqMap.size();
+		int left = 0;
 		// move the sliding window by one step from left to right
-		for (int i = 0; i < l.length(); i++) {
+		for (int right = 0; right < l.length(); right++) {
 			// handle the new added character (rightmost) at the current sliding window
-			char ch = l.charAt(i);
-			Integer count = charToCount.get(ch);
-			if (count != null) {
-				charToCount.put(ch, count - 1);
-				if (count == 1) {
-					num_to_match--;
-				}
-			}
+			toMatch = updateStatus(l, right, -1, freqMap, toMatch);
 			// handle the leftmost character at the previous sliding window
-			if (i >= s.length()) {
-				ch = l.charAt(i - s.length());
-				count = charToCount.get(ch);
-				if (count != null) {
-					charToCount.put(ch, count + 1);
-					if (count == 0) {
-						num_to_match++;
-					}
-				}
+			if (right >= s.length()) {
+				toMatch = updateStatus(l, left, 1, freqMap, toMatch);
+				left++;
 			}
-			if (num_to_match == 0) {
-				res.add(i - s.length() + 1);
+			if (toMatch == 0) {
+				res.add(left);
 			}
 		}
 		return res;
 	}
 
-	private Map<Character, Integer> buildCountMap(String s) {
+	private Map<Character, Integer> getFreqMap(String s) {
 		Map<Character, Integer> res = new HashMap<>();
-		for (char ch : s.toCharArray()) {
-			Integer count = res.get(ch);
-			if (count == null) {
-				res.put(ch, 1);
-			} else {
-				res.put(ch, count + 1);
-			}
+		for (int i = 0; i < s.length(); i++) {
+			char cur = s.charAt(i);
+			res.put(cur, res.getOrDefault(cur, 0) + 1);
 		}
 		return res;
+	}
+	
+	private int updateStatus(String l, int index, int change, Map<Character, Integer> freqMap, int toMatch) {
+		char cur = l.charAt(index);
+		Integer count = freqMap.get(cur);
+		if (count != null) {
+			if (count == 0) {
+				toMatch++;
+			}
+			count += change;
+			freqMap.put(cur, count);
+			if (count == 0) {
+				toMatch--;
+			}
+		}
+		return toMatch;
 	}
 	
 	public static void main(String[] args) {
