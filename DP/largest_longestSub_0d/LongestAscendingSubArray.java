@@ -1,4 +1,4 @@
-package largest_longestSub_2d;
+package largest_longestSub_0d;
 
 /**
  * Assumptions: array is not null
@@ -9,8 +9,21 @@ package largest_longestSub_2d;
  *     dp[i] = 1			 (array[i] <= array[i - 1])
  * 		     = dp[i - 1] + 1 (array[i] > array[i - 1])
  */
-public class LongestAscendingSubArray {
+public class LongestAscendingSubArray {	
 	public int longest(int[] array) {
+		if (array.length == 0) {
+			return 0;
+		}
+		int global_max = 1;
+		int local_max = 1;
+		for (int i = 1; i < array.length; i++) {
+			local_max = array[i - 1] < array[i] ? local_max + 1 : 1;
+			global_max = Math.max(local_max, global_max);
+		}
+		return global_max;
+	}
+	
+	/*public int longest(int[] array) {
 		if (array.length == 0) {
 			return 0;
 		}
@@ -25,19 +38,6 @@ public class LongestAscendingSubArray {
 			}			
 		}
 		return Math.max(local_max, global_max);
-	}
-	
-	/*public int longest(int[] array) {
-		if (array.length == 0) {
-			return 0;
-		}
-		int global_max = 1;
-		int local_max = 1;
-		for (int i = 1; i < array.length; i++) {
-			local_max = array[i - 1] < array[i] ? local_max + 1 : 1;
-			global_max = Math.max(local_max, global_max);
-		}
-		return global_max;
 	}*/
 	
 	public static void main(String[] args) {

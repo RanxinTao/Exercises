@@ -1,4 +1,4 @@
-package cuttingProblems_leftLargePartRightSmallPart;
+package cuttingProblems_largeLeftHalfSmallRightHalf;
 
 import java.util.HashSet;
 import java.util.Set;
