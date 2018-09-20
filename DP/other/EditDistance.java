@@ -11,22 +11,22 @@ package other;
  */
 public class EditDistance {
 	public int editDistance(String one, String two) {
-		// dp[i][j] represents substring(0, i) in one and substring(0, j) in two
-		int[][] dp = new int[one.length() + 1][two.length() + 1];
-		for (int i = 0; i < dp.length; i++) {
-			for (int j = 0; j < dp[0].length; j++) {
+		// minDist[i][j] represents the minimum edit distance to transform substring(0, i) of one to substring(0, j) of two
+		int[][] minDist = new int[one.length() + 1][two.length() + 1];
+		for (int i = 0; i < minDist.length; i++) {
+			for (int j = 0; j < minDist[0].length; j++) {
 				if (i == 0) {
-					dp[i][j] = j;
+					minDist[i][j] = j;
 				} else if (j == 0) {
-					dp[i][j] = i;
+					minDist[i][j] = i;
 				} else if (one.charAt(i - 1) == two.charAt(j - 1)) {
-					dp[i][j] = dp[i - 1][j - 1];
+					minDist[i][j] = minDist[i - 1][j - 1];
 				} else {
-					dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])) + 1;
+					minDist[i][j] = Math.min(minDist[i - 1][j - 1], Math.min(minDist[i - 1][j], minDist[i][j - 1])) + 1;
 				}
 			}
 		}
-		return dp[one.length()][two.length()];
+		return minDist[one.length()][two.length()];
 	}
 	
 	public static void main(String[] args) {

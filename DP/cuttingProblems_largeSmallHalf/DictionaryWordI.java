@@ -20,19 +20,42 @@ public class DictionaryWordI {
 		for (String word : dict) {
 			dictSet.add(word);
 		}
-		// dp[n] represents if input.substring(0, i) can be composed by concatenating words from dict.
-		boolean[] dp = new boolean[input.length() + 1];
-		dp[0] = true;
-		for (int i = 1; i < dp.length; i++) {
-			for (int j = 0; j < i; j++) {
-				if (dp[j] && dictSet.contains(input.substring(j, i))) {
-					dp[i] = true;
+		// canBreak[end] represents if input.substring(0, end) can be composed by concatenating words from dict.
+		boolean[] canBreak = new boolean[input.length() + 1];
+		canBreak[0] = true; // handle corner case: endIndex = 0 (empty string)
+		for (int end = 1; end <= input.length(); end++) { // endIndex of substring starts from 1 to input length
+			for (int i = 0; i < end; i++) { // calculate canBreak[end] using canBreak[0], ..., canBreak[end - 1]
+				if (canBreak[i] && dictSet.contains(input.substring(i, end))) {
+					canBreak[end] = true;
 					break;
 				}
 			}
 		}
-		return dp[dp.length - 1];
+		return canBreak[input.length()];
 	}
+	
+	/*public boolean canBreak(String input, String[] dict) {
+		Set<String> dictSet = new HashSet<>();
+		for (String word : dict) {
+			dictSet.add(word);
+		}
+		// canBreak[n] represents if substring starts from index 0 to i (inclusive) can be composed by concatenating words from dict.
+		boolean[] canBreak = new boolean[input.length()];
+		for (int i = 0; i < canBreak.length; i++) {
+			// if the word is in the dict, done
+			if (dictSet.contains(input.substring(0, i + 1))) {
+				canBreak[i] = true;
+				continue;
+			}
+			for (int j = 0; j < i; j++) {
+				if (canBreak[j] && dictSet.contains(input.substring(j + 1, i + 1))) {
+					canBreak[i] = true;
+					break;
+				}
+			}
+		}
+		return canBreak[canBreak.length - 1];
+	}*/
 	
 	public static void main(String[] args) {
 		DictionaryWordI test = new DictionaryWordI();
