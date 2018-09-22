@@ -20,13 +20,13 @@ public class DictionaryWordI {
 		for (String word : dict) {
 			dictSet.add(word);
 		}
-		// canBreak[end] represents if input.substring(0, end) can be composed by concatenating words from dict.
+		// canBreak[i] represents if input.substring(0, i) can be composed by concatenating words from dict.
 		boolean[] canBreak = new boolean[input.length() + 1];
 		canBreak[0] = true; // handle corner case: endIndex = 0 (empty string)
-		for (int end = 1; end <= input.length(); end++) { // endIndex of substring starts from 1 to input length
-			for (int i = 0; i < end; i++) { // calculate canBreak[end] using canBreak[0], ..., canBreak[end - 1]
-				if (canBreak[i] && dictSet.contains(input.substring(i, end))) {
-					canBreak[end] = true;
+		for (int i = 1; i <= input.length(); i++) { // i is the endIndex of substring, starting from 1 to input length
+			for (int j = 0; j < i; j++) { // calculate canBreak[end] using canBreak[0], ..., canBreak[end - 1]
+				if (canBreak[j] && dictSet.contains(input.substring(j, i))) {
+					canBreak[i] = true;
 					break;
 				}
 			}

@@ -15,18 +15,21 @@ public class ReverseLinkedListInPairs {
 			return head;
 		}
 		ListNode dummy = new ListNode(0);
-		ListNode pre = dummy;
+		ListNode cur = dummy;
 		while (head != null && head.next != null) {
 			ListNode first = head;
 			ListNode second = head.next;
-			first.next = null;
+			// move head pointer to the head of the next pair
 			head = second.next;
-			pre.next = second;
-			pre = pre.next;
-			pre.next = first;
-			pre = pre.next;
+			// add the second node
+			cur.next = second;
+			cur = cur.next;
+			// add the first node
+			cur.next = first;
+			cur = cur.next;
 		}
-		pre.next = head;
+		// link the remaining possible nodes
+		cur.next = head;
 		return dummy.next;
 	}
 }

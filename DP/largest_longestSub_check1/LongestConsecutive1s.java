@@ -1,4 +1,4 @@
-package largestAreaOf1s;
+package largest_longestSub_check1;
 
 /**
  * Given an array containing only 0s and 1s, find the length of the longest subarray of consecutive 1s.
@@ -8,6 +8,16 @@ package largestAreaOf1s;
  */
 public class LongestConsecutive1s {
 	public int longest(int[] array) {
+		int localMax = 0;
+		int globalMax = 0;
+		for (int i = 0; i < array.length; i++) {
+			localMax = array[i] == 1 ? localMax + 1 : 0;
+			globalMax = Math.max(localMax, globalMax);
+		}
+		return globalMax;
+	}
+	
+	/*public int longest(int[] array) {
 		int local_max = 0;
 		int global_max = 0;
 		for (int i = 0; i < array.length; i++) {
@@ -19,7 +29,7 @@ public class LongestConsecutive1s {
 			}
 		}
 		return Math.max(global_max, local_max);
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		LongestConsecutive1s test = new LongestConsecutive1s();

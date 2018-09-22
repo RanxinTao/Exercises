@@ -1,4 +1,4 @@
-package cuttingProblems_largeSmallHalf;
+package hash;
 
 /**
  * Given a string, a partitioning of the string is a palindrome partitioning if every substring of the partition 
@@ -10,7 +10,7 @@ package cuttingProblems_largeSmallHalf;
  * ¡°a | babbbab | bab | aba¡± is a palindrome partitioning of ¡°ababbbabbababa¡±.
  * The minimum number of cuts needed is 3.
  */
-public class MinimumCutsForPalindromes_Hash {
+public class MinimumCutsForPalindromes {
 	public int minCuts(String input) {
 		if (input.length() == 0) {
 			return 0;
@@ -56,7 +56,7 @@ public class MinimumCutsForPalindromes_Hash {
 	}
 	
 	public static void main(String[] args) {
-		MinimumCutsForPalindromes_Hash test = new MinimumCutsForPalindromes_Hash();
+		MinimumCutsForPalindromes test = new MinimumCutsForPalindromes();
 		System.out.println(test.minCuts("bb"));
 	}
 }

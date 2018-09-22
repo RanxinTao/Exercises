@@ -1,4 +1,4 @@
-package other;
+package check2d;
 
 /**
  * Given two strings of alphanumeric characters, determine the minimum number of Replace, Delete, and Insert 

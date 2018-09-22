@@ -14,13 +14,13 @@ public class LongestAscendingSubArray {
 		if (array.length == 0) {
 			return 0;
 		}
-		int global_max = 1;
-		int local_max = 1;
+		int globalMax = 1;
+		int localMax = 1;
 		for (int i = 1; i < array.length; i++) {
-			local_max = array[i - 1] < array[i] ? local_max + 1 : 1;
-			global_max = Math.max(local_max, global_max);
+			localMax = array[i - 1] < array[i] ? localMax + 1 : 1;
+			globalMax = Math.max(localMax, globalMax);
 		}
-		return global_max;
+		return globalMax;
 	}
 	
 	/*public int longest(int[] array) {

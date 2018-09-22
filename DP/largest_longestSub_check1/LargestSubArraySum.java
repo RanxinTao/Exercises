@@ -12,13 +12,13 @@ package largest_longestSub_check1;
  */
 public class LargestSubArraySum {
 	public int largestSum(int[] array) {
-		int local_max = array[0];
-		int global_max = array[0];		
+		int localMax = array[0];
+		int globalMax = array[0];		
 		for (int i = 1; i < array.length; i++) {
-			local_max = Math.max(array[i], array[i] + local_max);
-			global_max = Math.max(local_max, global_max);
+			localMax = Math.max(array[i], array[i] + localMax);
+			globalMax = Math.max(localMax, globalMax);
 		}
-		return global_max;
+		return globalMax;
 	}
 	
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package largestAreaOf1s;
+package largest_longestSub_check1;
 
 /**
  * Given a matrix that contains only 1s and 0s, find the largest cross which contains only 1s, 
@@ -42,12 +42,12 @@ public class LongestCrossOf1s {
 			}
 		}
 		// merge matrix
-		int res = 0;
+		int maxLen = 0;
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				res = Math.max(res, Math.min(Math.min(lr[i][j], rl[i][j]), Math.min(tb[i][j], bt[i][j])));
+				maxLen = Math.max(maxLen, Math.min(Math.min(lr[i][j], rl[i][j]), Math.min(tb[i][j], bt[i][j])));
 			}
 		}
-		return res;
+		return maxLen;
 	}
 }

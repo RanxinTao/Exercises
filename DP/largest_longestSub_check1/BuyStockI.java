@@ -11,14 +11,14 @@ package largest_longestSub_check1;
  */
 public class BuyStockI {
 	public int maxProfit(int[] array) {
-		int local_max = 0;
-		int global_max = 0;
+		int localMax = 0;
+		int globalMax = 0;
 		for (int i = 0; i < array.length - 1; i++) {
 			int diff = array[i + 1] - array[i];
-			local_max = Math.max(local_max + diff, 0);
-			global_max = Math.max(local_max, global_max);
+			localMax = Math.max(localMax + diff, 0);
+			globalMax = Math.max(localMax, globalMax);
 		}
-		return global_max;
+		return globalMax;
 	}
 	
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package largest_longestSub_check2d;
+package largest_longestSub_check1;
 
 /**
  * Given a matrix that contains integers, find the submatrix with the largest sum. Return the sum of the submatrix.
@@ -13,28 +13,28 @@ package largest_longestSub_check2d;
  */
 public class LargestSubMatrixSum {
 	public int largest(int[][] matrix) {
-		int[][] prefix_sum = prefix_sum(matrix);
-		int max = Integer.MIN_VALUE;
+		int[][] prefixSums = prefixSum(matrix);
+		int maxSum = Integer.MIN_VALUE;
 		for (int top = 0; top < matrix.length; top++) {
 			for (int bottom = top; bottom < matrix.length; bottom++) {
-				int[] flattened = new int[matrix[0].length];
-				for (int i = 0; i < flattened.length; i++) {
-					flattened[i] = top == 0 ? prefix_sum[bottom][i] : prefix_sum[bottom][i] - prefix_sum[top - 1][i];
+				int[] cur = new int[matrix[0].length];
+				for (int i = 0; i < cur.length; i++) {
+					cur[i] = top == 0 ? prefixSums[bottom][i] : prefixSums[bottom][i] - prefixSums[top - 1][i];
 				}
-				max = Math.max(max, largestSubArraySum(flattened));
+				maxSum = Math.max(maxSum, largestSubArraySum(cur));
 			}
 		}
-		return max;
+		return maxSum;
 	}
 
-	private int[][] prefix_sum(int[][] matrix) {
-		int[][] prefix_sum = new int[matrix.length][matrix[0].length];
+	private int[][] prefixSum(int[][] matrix) {
+		int[][] prefixSums = new int[matrix.length][matrix[0].length];
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
-				prefix_sum[i][j] = i == 0 ? matrix[i][j] : prefix_sum[i - 1][j] + matrix[i][j];
+				prefixSums[i][j] = i == 0 ? matrix[i][j] : prefixSums[i - 1][j] + matrix[i][j];
 			}
 		}
-		return prefix_sum;
+		return prefixSums;
 	}
 
 	private int largestSubArraySum(int[] array) {

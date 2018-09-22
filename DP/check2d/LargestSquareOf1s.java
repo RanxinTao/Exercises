@@ -1,4 +1,4 @@
-package largestAreaOf1s;
+package check2d;
 
 /**
  * Determine the largest square of 1s in a binary matrix (a binary matrix only contains 0 and 1), 
@@ -15,21 +15,20 @@ package largestAreaOf1s;
 public class LargestSquareOf1s {
 	public int largest(int[][] matrix) {
 		int n = matrix.length;
-		// dp[i][j] means the largest square of 1s with right bottom corner as matrix[i][j]
-		int[][] dp = new int[n][n];
-		int max = 0;
+		// largest[i][j] means the largest square of 1s with right bottom corner as matrix[i][j]
+		int[][] largest = new int[n][n];
+		int maxLen = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if (i == 0 || j == 0) {
-					dp[i][j] = matrix[i][j];
-					max = Math.max(max, dp[i][j]);
+					largest[i][j] = matrix[i][j];
 				} else if (matrix[i][j] == 1) {
-					dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
-					max = Math.max(max, dp[i][j]);
+					largest[i][j] = Math.min(largest[i - 1][j - 1], Math.min(largest[i][j - 1], largest[i - 1][j])) + 1;
 				}
+				maxLen = Math.max(maxLen, largest[i][j]); //update result
 			}
 		}
-		return max;
+		return maxLen;
 	}
 	
 	public static void main(String[] args) {
