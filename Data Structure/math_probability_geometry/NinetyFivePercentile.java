@@ -1,4 +1,4 @@
-package math_geometric_probability;
+package math_probability_geometry;
 
 import java.util.ArrayList;
 import java.util.Arrays;

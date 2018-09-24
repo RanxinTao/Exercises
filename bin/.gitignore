@@ -1,6 +1,11 @@
-/linkedListReverse_binaryTreeReverse/
-/largest_longestSub_2d/
-/largest_longestSub_0d/
-/cuttingProblems_leftLargeHalfRightSmallHalf/
-/cuttingProblems_largeLeftHalfSmallRightHalf/
-/other/
+/check1d/
+/check2d/
+/cuttingProblems_largeSmallHalf/
+/hash/
+/largest_longestSub_check1/
+/largest_longestSub_check1d/
+/largest_longestSub_check2d/
+/arrays_2Pointers/
+/DFS_iterative/
+/math_probability_geometry/
+/DFS/

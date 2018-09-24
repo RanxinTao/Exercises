@@ -1,4 +1,4 @@
-package math_geometric_probability;
+package math_probability_geometry;
 
 /**
  * Given an integer number n, find its integer square root.

@@ -1,4 +1,4 @@
-package DFS_iterative;
+package arrays_2Pointers;
 
 /**
  * Assumptions:
