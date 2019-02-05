@@ -5,12 +5,8 @@ import impl.Utils;
 public class SearchInSortedMatrixI {
 	public int[] search(int[][] matrix, int target) {
 		// Assumptions: matrix is not null, and has size of N * M, where N >= 0 and M >= 0
-		int[] res = new int[] { -1, -1 };
 		int rows = matrix.length;
 		int cols = matrix[0].length;
-		if (rows == 0 || cols == 0) {
-			return res;
-		}
 		int left = 0;
 		int right = rows * cols - 1;
 		while (left <= right) {
@@ -19,15 +15,13 @@ public class SearchInSortedMatrixI {
 			int col = mid % cols;
 			if (matrix[row][col] < target) {
 				left = mid + 1;
-			} else if (matrix[row][col] == target) {
-				res[0] = row;
-				res[1] = col;
-				return res;
-			} else {
+			} else if (matrix[row][col] > target) {
 				right = mid - 1;
+			} else {
+				return new int[] {row, col};
 			}
 		}
-		return res;
+		return new int[] {-1, -1};
 	}
 	
 	public static void main(String[] args) {

@@ -18,10 +18,10 @@ public class SearchInUnknownSizedSortedArray {
 			int mid = left + (right - left) / 2;
 			if (dict.get(mid) == null || dict.get(mid) > target) {
 				right = mid - 1;
-			} else if (dict.get(mid) == target) {
-				return mid;
+			} else if (dict.get(mid) < target) {
+				left = mid + 1;			
 			} else {
-				left = mid + 1;
+				return mid;
 			}
 		}
 		return -1;

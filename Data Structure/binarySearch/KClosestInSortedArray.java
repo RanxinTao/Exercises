@@ -11,11 +11,11 @@ public class KClosestInSortedArray {
 			int mid = left + (right - left) / 2;
 			if (array[mid] < target) {
 				left = mid + 1;
-			} else if (array[mid] == target) {
+			} else if (array[mid] > target) {
+				right = mid - 1;
+			} else {
 				left = mid;
 				break;
-			} else {
-				right = mid - 1;
 			}
 		}
 		// if target is not found in the array
