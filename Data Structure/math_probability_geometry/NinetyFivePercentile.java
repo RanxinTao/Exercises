@@ -1,7 +1,6 @@
 package math_probability_geometry;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,17 +16,17 @@ import java.util.List;
 public class NinetyFivePercentile {
 	public int percentile95(List<Integer> lengths) {
 		int[] count = new int[4097];
-		for (int len : lengths) {
-			count[len]++;
+		for (int length : lengths) {
+			count[length]++;
 		}
-		int sum_of_count = 0;
-		int len = 4096;
+		int sumOfCount = 0;
+		int length = 4096;
 		// 95% of the urls have lengths <= returned length -> 5% of the urls have lengths > returned length
-		while (0.05 * lengths.size() > sum_of_count) {
-			sum_of_count += count[len];
-			len--;
+		while (0.05 * lengths.size() >= sumOfCount) {
+			sumOfCount += count[length];
+			length--;
 		}
-		return len;
+		return length + 1;
 	}
 	
 	public static void main(String[] args) {

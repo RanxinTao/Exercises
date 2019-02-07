@@ -3,6 +3,7 @@ package impl;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("unused")
 public class TreeNode {
 	public int key;
 	public TreeNode left;

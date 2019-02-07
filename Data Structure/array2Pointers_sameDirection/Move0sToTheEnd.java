@@ -10,7 +10,9 @@ import impl.Utils;
  * array is not null
  * Examples:
  * {1} -> {1}
- * {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0}
+ * {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0} or {1, 1, 3, 0, 0} or {3, 1, 1, 0, 0}
+ * 
+ * Time: O(n), Space: O(1)
  */
 public class Move0sToTheEnd {
 	public int[] moveZero(int[] array) {
@@ -30,7 +32,7 @@ public class Move0sToTheEnd {
 	
 	public static void main(String[] args) {
 		Move0sToTheEnd test = new Move0sToTheEnd();
-		int[] array = {1};
+		int[] array = {1, 0, 3, 0, 1};
 		Utils.printArray(test.moveZero(array));
 	}
 }

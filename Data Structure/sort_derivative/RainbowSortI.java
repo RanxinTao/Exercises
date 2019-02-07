@@ -11,13 +11,14 @@ import static impl.Utils.*;
  * {1, 0} is sorted to {0, 1}
  * {1, 0, 1, -1, 0} is sorted to {-1, 0, 0, 1, 1}
  * Assumptions: The input array is not null.
+ * 
+ * Time: O(n), Space: O(1)
  */
 public class RainbowSortI {
 	public int[] rainbowSort(int[] array) {
 		if (array == null || array.length <= 1) {
 			return array;
-		}
-		
+		}	
 		int neg = 0; // the left side of neg are -1 (exclusive of neg)
 		int zero = 0; // current index, the part between neg and zero are 0 (exclusive of zero)
 		int one = array.length - 1; // the right side of one are 1 (exclusive of one)
