@@ -7,6 +7,20 @@ import java.util.List;
 
 import impl.TreeNode;
 
+/**
+ * Implement an iterative, pre-order traversal of a given binary tree, return the list of keys of each node in the tree
+ * as it is pre-order traversed.
+ * 
+ * Examples:
+ *      5
+ *     / \
+ *    3   8
+ *   / \   \
+ *  1  4   11
+ * Pre-order traversal is [5, 3, 1, 4, 8, 11]
+ * 
+ * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ */
 public class BinaryTreePreorderTraversal {
 	public List<Integer> preOrder(TreeNode root) {
 		List<Integer> res = new ArrayList<>();

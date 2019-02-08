@@ -36,7 +36,7 @@ public class SortWith3Stacks {
 		}
 		sort(s2, s1, s3, leftLen);
 		sort(s1, s2, s3, rightLen);
-		// merge
+		// now s2 and s1 are sorted, merge them into s3
 		int i = 0;
 		int j = 0;
 		while (i < leftLen && j < rightLen) {

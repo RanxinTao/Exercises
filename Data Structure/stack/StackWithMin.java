@@ -3,6 +3,10 @@ package stack;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * Enhance the stack implementation to support min() operation, min() should return the current minimum value in the
+ * stack. If the stack is empty, min() should return -1.
+ */
 public class StackWithMin {
 	private Deque<Integer> stack;
 	private Deque<Integer> minStack;
