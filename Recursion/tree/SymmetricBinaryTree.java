@@ -2,6 +2,19 @@ package tree;
 
 import impl.TreeNode;
 
+/**
+ * Check if a given binary tree is symmetric
+ * 
+ * Examples:
+ *      5              5
+ *     / \            / \  
+ *    3   3          3   3
+ *   / \ / \        / \ / \
+ *  1  4 4  1      1  4 1  4
+ * is symmetric   is not symmetric
+ * 
+ * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ */
 public class SymmetricBinaryTree {
 	public boolean isSymmetric(TreeNode root) {
 		if (root == null) {

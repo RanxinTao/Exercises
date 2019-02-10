@@ -13,6 +13,8 @@ import impl.Utils;
  * 2. K >= 0 and <= A.length
  * Examples:
  * A = {3, 4, 1, 2, 5}, K = 3, the 3 smallest numbers are {1, 2, 3}
+ * 
+ * Time (quick select): average O(n), worst O(n^2), Space: average O(logn), worst O(n)
  */
 public class KSmallestInUnsortedArray {
 	public int[] kSmallest(int[] array, int k) {
@@ -30,12 +32,12 @@ public class KSmallestInUnsortedArray {
 	
 	private void quickSelect(int[] array, int left, int right, int target) {
 		int pIndex = partition(array, left, right);
-		if (pIndex == target) {
-			return;
+		if (target > pIndex) {
+			quickSelect(array, pIndex + 1, right, target);
 		} else if (target < pIndex) {
 			quickSelect(array, left, pIndex - 1, target);
 		} else {
-			quickSelect(array, pIndex + 1, right, target);
+			return;
 		}
 	}
 	

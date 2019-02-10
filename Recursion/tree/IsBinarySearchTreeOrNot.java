@@ -3,11 +3,11 @@ package tree;
 import impl.TreeNode;
 
 /**
- * Determine if a given binary tree is binary search tree.
+ * Determine if a given binary tree is binary search tree. There should not be duplicate keys in binary search tree
+ * (If there are duplicate keys, we should return false)
  * 
  * Assumptions:
- * 1. There are no duplicate keys in binary search tree.
- * 2. You can assume the keys stored in the binary search tree can not be Integer.MIN_VALUE or Integer.MAX_VALUE.
+ * You can assume the keys stored in the binary search tree can not be Integer.MIN_VALUE or Integer.MAX_VALUE.
  * 
  * Time: O(n), Space: O(n), O(logn) if the tree is balanced.
  */
