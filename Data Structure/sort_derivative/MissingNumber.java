@@ -13,13 +13,15 @@ import impl.Utils;
  * A = {}, the missing number is 1
  * 
  * Algorithm: Bucket sort
+ * Time: O(n)
+ * Space: O(1)
  */
 public class MissingNumber {
 	public int missing(int[] array) {
-		// try to swap the numbers to its corresponding position. for the number x, the corresponding position is x - 1.
+		// try to swap the numbers to its corresponding position. For the number x, the corresponding position is x - 1.
 		for (int i = 0; i < array.length; i++) {
 			// while array[i] is not i + 1, swap array[i] to its correct position if possible.
-			while (array[i] != i + 1 && array[i] != array.length + 1) {
+			while (array[i] != i + 1 && array[i] - 1 != array.length) {
 				swap(array, i, array[i] - 1);
 			}
 		}

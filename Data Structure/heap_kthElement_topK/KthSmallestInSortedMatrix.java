@@ -4,8 +4,8 @@ import java.util.PriorityQueue;
 import java.util.Comparator;
 
 /**
- * Given a matrix of size N x M. For each row the elements are sorted in ascending order, and for each column the elements are 
- * also sorted in ascending order. Find the Kth smallest number in it.
+ * Given a matrix of size N x M. For each row the elements are sorted in ascending order, and for each column the 
+ * elements are also sorted in ascending order. Find the Kth smallest number in it.
  * 
  * Assumptions: 
  * 1. the matrix is not null, N > 0 and M > 0

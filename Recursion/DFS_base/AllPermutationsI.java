@@ -3,6 +3,16 @@ package DFS_base;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Given a string with no duplicate characters, return a list with all permutations of the characters.
+ * 
+ * Examples:
+ * 1. Set = "abc", all permutations are ["abc", "acb", "bac", "bca", "cab", "cba"]
+ * 2. Set = "", all permutations are [""]
+ * 3. Set = null, all permutations are []
+ * 
+ * Time: O(n!)
+ */
 public class AllPermutationsI {
 	public List<String> permutations(String set) {
 		List<String> res = new ArrayList<>();

@@ -1,8 +1,14 @@
 package array2Pointers_sameDirection;
 
 /**
- * duplicate element only retain one
+ * Remove adjacent, repeated characters in a given string, leaving only one character for each group of such characters.
+ * (duplicate element only retain one) Try to do it in place.
+ * 
+ * Examples:
  * "aaaabbbc" is transferred to "abc"
+ * 
+ * Time: O(n)
+ * Space: O(1), but O(n) in java
  */
 public class RemoveAdjacentRepeatedCharactersI {
 	public String deDup(String input) {

@@ -1,9 +1,16 @@
 package array2Pointers_sameDirection;
 
 /**
- * duplicate element not retain any, repeatedly deduplication
- * "abbbaaccz" ¡ú "aaaccz" ¡ú "ccz" ¡ú "z"
- * "aabccdc" ¡ú "bccdc" ¡ú "bdc"
+ * Repeatedly remove all adjacent, repeated characters in a given string from left to right. No adjacent characters
+ * should be identified in the final string.
+ * (duplicate element not retain any, repeatedly deduplication)
+ * 
+ * Examples:
+ * 1. "abbbaaccz" -> "aaaccz" -> "ccz" -> "z"
+ * 2. "aabccdc" -> "bccdc" -> "bdc"
+ * 
+ * Time: O(n)
+ * Space: O(1), but O(n) in java
  */
 public class RemoveAdjacentRepeatedCharactersIV {
 	public String deDup(String input) {

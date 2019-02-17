@@ -12,6 +12,9 @@ import java.util.List;
  * 
  * Examples:
  * A = {1, 1, 2, 2, 3}, B = {1, 1, 2, 5, 6}, common numbers are [1, 1, 2]
+ * 
+ * Time: O(m + n)
+ * Space: O(1)
  */
 public class CommonNumbersOfTwoSortedArrays {
 	public List<Integer> common(List<Integer> A, List<Integer> B) {

@@ -1,11 +1,17 @@
 package arrayReverse_derivative;
 
 /**
+ * Right shift a given string by n characters.
+ *
  * Assumptions:
- * 1. input is not null
+ * 1. The given string is not null.
  * 2. n >= 0
- * Time complexity: O(n)
- * Space complexity: O(1)
+ * 
+ * Examples:
+ * "abc", 4 -> "cab"
+ * 
+ * Time: O(n)
+ * Space: O(1), but O(n) in Java
  */
 public class RightShiftByNCharacters {
 	public String rightShift(String input, int n) {
@@ -13,8 +19,8 @@ public class RightShiftByNCharacters {
 			return input;
 		}
 		char[] array = input.toCharArray();
-		reverse(array, 0, array.length - 1);
 		n %= array.length;
+		reverse(array, 0, array.length - 1);	
 		reverse(array, 0, n - 1);
 		reverse(array, n, array.length - 1);
 		return new String(array);

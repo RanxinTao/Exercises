@@ -4,19 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Assumptions:
+ * Given a number of different denominations of coins (e.g., 1 cent, 5 cents, 10 cents, 25 cents), get all the possible
+ * ways to pay a target number of cents.
+ * 
+ * Assumptions: 
  * 1. coins is not null and is not empty, all the numbers in coins are positive and are sorted by descending order
  * 2. target >= 0
  * 3. have infinite number of coins for each of the denominations
+ * Examples:
+ * coins = {2, 1}, target = 4, the return should be:
+ * 1. [0, 4] (0 * 2 cents + 4 * 1 cents)
+ * 2. [1, 2] (1 * 2 cents + 2 * 1 cents)
+ * 3. [2, 0] (2 * 2 cents + 0 * 1 cents)
+ * 
+ * Time: O(m^n) where m is the target (usually the minimum denomination is 1 cent) and n is the length of coins array.
  */
 public class CombinationsOfCoins {
 	public List<List<Integer>> combinations(int target, int[] coins) {
 		List<List<Integer>> res = new ArrayList<>();
-		DFS(target, coins, 0, new ArrayList<>(), res);
+		combinations(target, coins, 0, new ArrayList<>(), res);
 		return res;
 	}
 
-	private void DFS(int target, int[] coins, int index, List<Integer> cur, List<List<Integer>> res) {
+	private void combinations(int target, int[] coins, int index, List<Integer> cur, List<List<Integer>> res) {
 		if (index == coins.length - 1) {
 			if (target % coins[coins.length - 1] == 0) {
 				cur.add(target / coins[coins.length - 1]);
@@ -28,7 +38,7 @@ public class CombinationsOfCoins {
 		int max = target / coins[index];
 		for (int i = 0; i <= max; i++) {
 			cur.add(i);
-			DFS(target - i * coins[index], coins, index + 1, cur, res);
+			combinations(target - i * coins[index], coins, index + 1, cur, res);
 			cur.remove(cur.size() - 1);
 		}
 	}

@@ -1,11 +1,17 @@
 package arrayReverse_derivative;
 
 /**
- * Assumptions: 
+ * Reverse the words in a sentence.
+ *
+ * Assumptions:
  * 1. Words are separated by single space.
  * 2. There are no heading or tailing white spaces.
+ * 
  * Examples:
- * "I love Google" ¡ú "Google love I"
+ * "I love Google" -> "Google love I"
+ * 
+ * Time: O(n)
+ * Space: O(1), but O(n) in Java
  */
 public class ReverseWordsInASentenceI {
 	public String reverseWords(String input) {

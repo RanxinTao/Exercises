@@ -1,17 +1,19 @@
 package arrayLengthen_stringBuilder;
 /**
+ * Given an original string input, and two strings S and T, replace all occurrences of S in input with T.
+ * 
  * Assumptions: 
- * 1. input, s and t are not null.
- * 2. s is not empty
+ * 1. input, S and T are not null
+ * 2. S is not empty string
  * Examples:
- * input = "appledogapple", S = "apple", T = "cat", input becomes "catdogcat"
- * input = "dodododo", S = "dod", T = "a", input becomes "aoao"
+ * 1. input = "appledogapple", S = "apple", T = "cat", input becomes "catdogcat"
+ * 2. input = "dodododo", S = "dod", T = "a", input becomes "aoao"
+ * 
+ * Time: O(st) from indexOf()
+ * Space: O(1), but O(s + occurrence * t) in Java
  */
 public class StringReplace {
 	public String replace(String input, String s, String t) {
-		if (input.length() == 0) {
-			return input;
-		}
 		StringBuilder sb = new StringBuilder();
 		int fromIndex = 0;
 		int matchIndex = input.indexOf(s);
