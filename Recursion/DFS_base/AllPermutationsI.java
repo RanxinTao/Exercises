@@ -12,6 +12,7 @@ import java.util.List;
  * 3. Set = null, all permutations are []
  * 
  * Time: O(n!)
+ * Space: O(n)
  */
 public class AllPermutationsI {
 	public List<String> permutations(String set) {

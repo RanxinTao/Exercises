@@ -1,8 +1,8 @@
 package arrayLengthen_stringBuilder;
 
 /**
- * Given a string in compressed form, decompress it to the original string. The adjacent repeated characters 
- * in the original string are compressed to have the character followed by the number of repeated occurrences.
+ * Given a string in compressed form, decompress it to the original string. The adjacent repeated characters in the 
+ * original string are compressed to have the character followed by the number of repeated occurrences.
  * 
  * Assumptions: 
  * 1. The string is not null
@@ -10,6 +10,9 @@ package arrayLengthen_stringBuilder;
  * 3. There are no adjacent repeated characters with length > 9
  * Examples:
  * input = "a1c0b2c4" -> "abbcccc"
+ * 
+ * Time: O(n), where n is the length of the original string
+ * Space: O(1), but O(n) in Java
  */
 public class DecompressStringII {
 	public String decompress(String input) {

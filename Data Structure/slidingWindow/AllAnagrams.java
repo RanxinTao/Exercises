@@ -6,31 +6,31 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Assumptions:
+ * Find all occurrence of anagrams of a given string s in a given string I.
+ * Return the list of starting indices.
+ * 
+ * Assumptions: 
  * 1. s is not null or empty
  * 2. l is not null
  * Examples:
  * l = "abcbac", s = "ab", return [0, 3]
+ * 
+ * Time: O(s + l)
+ * Space: O(s)
  */
 public class AllAnagrams {
 	public List<Integer> allAnagrams(String s, String l) {
 		List<Integer> res = new ArrayList<>();
-		if (l.length() == 0) {
-			return res;
-		}
-		Map<Character, Integer> freqMap = getFreqMap(s);
-		int toMatch = freqMap.size();
-		int left = 0;
-		// move the sliding window by one step from left to right
-		for (int right = 0; right < l.length(); right++) {
-			// handle the new added character (rightmost) at the current sliding window
-			toMatch = updateStatus(l, right, -1, freqMap, toMatch);
-			// handle the leftmost character at the previous sliding window
-			if (right >= s.length()) {
-				toMatch = updateStatus(l, left, 1, freqMap, toMatch);
+		Map<Character, Integer> chsToMatch = getFreqMap(s);
+		int totalToMatch = chsToMatch.size();
+		int left = 0;	
+		for (int right = 0; right < l.length(); right++) { // move the sliding window by one step from left to right
+			totalToMatch = updateStatus(l, right, -1, chsToMatch, totalToMatch); // handle the new added character (rightmost) at the current sliding window
+			if (right >= s.length()) { // handle the leftmost character at the previous sliding window
+				totalToMatch = updateStatus(l, left, 1, chsToMatch, totalToMatch);
 				left++;
 			}
-			if (toMatch == 0) {
+			if (totalToMatch == 0) {
 				res.add(left);
 			}
 		}
@@ -46,20 +46,20 @@ public class AllAnagrams {
 		return res;
 	}
 	
-	private int updateStatus(String l, int index, int change, Map<Character, Integer> freqMap, int toMatch) {
+	private int updateStatus(String l, int index, int change, Map<Character, Integer> chsToMatch, int totalToMatch) {
 		char cur = l.charAt(index);
-		Integer count = freqMap.get(cur);
+		Integer count = chsToMatch.get(cur);
 		if (count != null) {
 			if (count == 0) {
-				toMatch++;
+				totalToMatch++;
 			}
 			count += change;
-			freqMap.put(cur, count);
 			if (count == 0) {
-				toMatch--;
+				totalToMatch--;
 			}
+			chsToMatch.put(cur, count);		
 		}
-		return toMatch;
+		return totalToMatch;
 	}
 	
 	public static void main(String[] args) {

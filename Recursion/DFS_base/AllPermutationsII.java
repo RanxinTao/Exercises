@@ -13,6 +13,9 @@ import java.util.Set;
  * 2. Set = "aba", all permutations are ["aab", "aba", "baa"]
  * 3. Set = "", all permutations are [""]
  * 4. Set = null, all permutations are []
+ * 
+ * Time: O(n!)
+ * Space: O(nlogn)
  */
 public class AllPermutationsII {
 	public List<String> permutations(String set) {
