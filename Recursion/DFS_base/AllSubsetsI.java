@@ -14,6 +14,7 @@ import java.util.List;
  * 3. Set = null, all the subsets are []
  * 
  * Time: O(2^n)
+ * Space: O(n)
  */
 public class AllSubsetsI {
 	public List<String> subSets(String set) {

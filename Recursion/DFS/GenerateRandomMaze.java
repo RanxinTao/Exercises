@@ -1,7 +1,7 @@
 package DFS;
 
 /**
- * Randomly generate a maze of size N * N (where N = 2K + 1) whose corridor and wall¡¯s width are both 1 cell. 
+ * Randomly generate a maze of size N * N (where N = 2K + 1) whose corridor and wall's width are both 1 cell. 
  * For each pair of cells on the corridor, there must exist one and only one path between them. (Randomly means that 
  * the solution is generated randomly, and whenever the program is executed, the solution can be different).
  * The wall is denoted by 1 in the matrix and corridor is denoted by 0.
@@ -19,6 +19,9 @@ package DFS;
  * 0  1  0  0  0
  * 0  1  1  1  0
  * 0  0  0  0  0
+ * 
+ * Time: O(4^(n^2))
+ * Space: O(n^2)
  */
 public class GenerateRandomMaze {
 	public int[][] maze(int n) {
@@ -29,11 +32,11 @@ public class GenerateRandomMaze {
 			}
 		}
 		maze[0][0] = 0;
-		DFS(maze, 0, 0);
+		generateCorridors(maze, 0, 0);
 		return maze;
 	}
 
-	private void DFS(int[][] maze, int x, int y) {
+	private void generateCorridors(int[][] maze, int x, int y) {
 		Direction[] directions = Direction.values();
 		shuffle(directions);
 		for (Direction direction : directions) {
@@ -44,7 +47,7 @@ public class GenerateRandomMaze {
 				// only if the cell is a wall (meaning we have not visited before), we break the two walls to make it corridors.
 				maze[direction.moveX(x, 1)][direction.moveY(y, 1)] = 0;
 				maze[nextX][nextY] = 0;
-				DFS(maze, nextX, nextY);
+				generateCorridors(maze, nextX, nextY);
 			}
 		}
 	}

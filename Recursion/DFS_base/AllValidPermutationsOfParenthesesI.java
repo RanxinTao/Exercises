@@ -14,6 +14,7 @@ import java.util.List;
  * 3. N = 0, all valid permutations are [""]
  * 
  * Time: O(2^n)
+ * Space: O(n)
  */
 public class AllValidPermutationsOfParenthesesI {
 	public List<String> validParentheses(int n) {

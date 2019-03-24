@@ -4,40 +4,46 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-
 /**
+ * Given all valid permutations of l pairs of (), m pairs of <> and n pairs of {}
+ * 
  * Assumptions: l, m, n >= 0
+ * Examples:
+ * 1. l = 1, m = 1, n = 0, all the valid permutations are ["()<>", "(<>)", "<()>", "<>()"]
+ * 
+ * Time: O(2^(l + m + n))
+ * Space: O(l + m + n)
  */
 public class AllValidPermutationsOfParenthesesII {
 	public List<String> validParentheses(int l, int m, int n) {
-		char[] PS = {'(', ')', '[', ']', '{', '}'};
+		char[] ps = {'(', ')', '<', '>', '{', '}'};
 		List<String> res = new ArrayList<>();
-		helper(new int[] {l,l,m,m,n,n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res, PS);
+		helper(new int[] {l, l, m, m, n, n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res, ps);
 		return res;
 	}
 
-	private void helper(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res, char[] PS) {
+	private void helper(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res, char[] ps) {
 		if (index == cur.length) {
 			res.add(new String(cur));
 			return;
 		}
-		for (int i = 0; i < remain.length; i++) {
-			if (i % 2 == 0) {
+		for (int i = 0; i < remain.length; i++) { // iterate all parentheses
+			if (i % 2 == 0) { // if it is a left parenthesis
 				if (remain[i] > 0) {
-					cur[index] = PS[i];
-					stack.offerFirst(PS[i]);
+					cur[index] = ps[i];
+					stack.offerFirst(ps[i]);
 					remain[i]--;
-					helper(remain, stack, cur, index + 1, res, PS);
+					helper(remain, stack, cur, index + 1, res, ps);
 					stack.pollFirst();
 					remain[i]++;
 				}
-			} else {
-				if (!stack.isEmpty() && stack.peekFirst() == PS[i - 1]) {
-					cur[index] = PS[i];
+			} else { // if it is a right parenthesis
+				if (!stack.isEmpty() && stack.peekFirst() == ps[i - 1]) {
+					cur[index] = ps[i];
 					stack.pollFirst();
 					remain[i]--;
-					helper(remain, stack, cur, index + 1, res, PS);
-					stack.offerFirst(PS[i - 1]);
+					helper(remain, stack, cur, index + 1, res, ps);
+					stack.offerFirst(ps[i - 1]);
 					remain[i]++;
 				}
 			}
