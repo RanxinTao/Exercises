@@ -1,13 +1,19 @@
 package largest_longestSub_check1;
 
 /**
+ * Given an unsorted array, find the length of the longest subarray in which the numbers are in ascending order.
+ * 
  * Assumptions: array is not null
  * Examples:
- * {7, 2, 3, 1, 5, 8, 9, 6}, longest ascending subarray is {1, 5, 8, 9}, length is 4.
- * {1, 2, 3, 3, 4, 4, 5}, longest ascending subarray is {1, 2, 3}, length is 3.
+ * 1. {7, 2, 3, 1, 5, 8, 9, 6}, longest ascending subarray is {1, 5, 8, 9}, length is 4.
+ * 2. {1, 2, 3, 3, 4, 4, 5}, longest ascending subarray is {1, 2, 3}, length is 3.
+ * 
  * Induction rule:
  *     dp[i] = 1			 (array[i] <= array[i - 1])
  * 		     = dp[i - 1] + 1 (array[i] > array[i - 1])
+ * 
+ * Time: O(n)
+ * Space: O(1)
  */
 public class LongestAscendingSubArray {	
 	public int longest(int[] array) {

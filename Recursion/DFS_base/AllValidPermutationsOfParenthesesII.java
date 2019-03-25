@@ -16,13 +16,14 @@ import java.util.List;
  */
 public class AllValidPermutationsOfParenthesesII {
 	public List<String> validParentheses(int l, int m, int n) {
-		char[] ps = {'(', ')', '<', '>', '{', '}'};
+		char[] parens = {'(', ')', '<', '>', '{', '}'};
 		List<String> res = new ArrayList<>();
-		helper(new int[] {l, l, m, m, n, n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res, ps);
+		addParenAtIdx(new int[] {l, l, m, m, n, n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res, parens);
 		return res;
 	}
 
-	private void helper(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res, char[] ps) {
+	private void addParenAtIdx(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res, 
+			char[] parens) {
 		if (index == cur.length) {
 			res.add(new String(cur));
 			return;
@@ -30,20 +31,20 @@ public class AllValidPermutationsOfParenthesesII {
 		for (int i = 0; i < remain.length; i++) { // iterate all parentheses
 			if (i % 2 == 0) { // if it is a left parenthesis
 				if (remain[i] > 0) {
-					cur[index] = ps[i];
-					stack.offerFirst(ps[i]);
+					cur[index] = parens[i];
+					stack.offerFirst(parens[i]);
 					remain[i]--;
-					helper(remain, stack, cur, index + 1, res, ps);
+					addParenAtIdx(remain, stack, cur, index + 1, res, parens);
 					stack.pollFirst();
 					remain[i]++;
 				}
 			} else { // if it is a right parenthesis
-				if (!stack.isEmpty() && stack.peekFirst() == ps[i - 1]) {
-					cur[index] = ps[i];
+				if (!stack.isEmpty() && stack.peekFirst() == parens[i - 1]) {
+					cur[index] = parens[i];
 					stack.pollFirst();
 					remain[i]--;
-					helper(remain, stack, cur, index + 1, res, ps);
-					stack.offerFirst(ps[i - 1]);
+					addParenAtIdx(remain, stack, cur, index + 1, res, parens);
+					stack.offerFirst(parens[i - 1]);
 					remain[i]++;
 				}
 			}
