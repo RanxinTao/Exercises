@@ -6,13 +6,15 @@ package check2d;
  * 
  * Assumptions: both strings are not null
  * Examples:
- * string one: ¡°sigh¡±, string two : ¡°asith¡±
- * the edit distance between one and two is 2 (one insert ¡°a¡± at front then replace ¡°g¡± with ¡°t¡±).
+ * 1. string one: "sigh", string two: "asith", the edit distance between one and two is 2 (one insert "a" at front then 
+ * replace "g" with "t").
+ * 
+ * Time: O(mn), where m is the length of string one and n is the length of string two
+ * Space: O(mn)
  */
 public class EditDistance {
 	public int editDistance(String one, String two) {
-		// minDist[i][j] represents the minimum edit distance to transform substring(0, i) of one to substring(0, j) of two
-		int[][] minDist = new int[one.length() + 1][two.length() + 1];
+		int[][] minDist = new int[one.length() + 1][two.length() + 1]; // minDist[i][j] represents the minimum edit distance to transform substring(0, i) of one to substring(0, j) of two
 		for (int i = 0; i < minDist.length; i++) {
 			for (int j = 0; j < minDist[0].length; j++) {
 				if (i == 0) {

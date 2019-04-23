@@ -10,13 +10,15 @@ package check2d;
  *  {1, 1, 1, 1},
  *  {0, 1, 1, 1},
  *  {1, 0, 1, 1}}
- * the largest square of 1s has length of 2    
+ * the largest square of 1s has length of 2
+ * 
+ * Time: O(n^2)
+ * Space: O(n^2)
  */
 public class LargestSquareOf1s {
 	public int largest(int[][] matrix) {
-		int n = matrix.length;
-		// largest[i][j] means the largest square of 1s with right bottom corner as matrix[i][j]
-		int[][] largest = new int[n][n];
+		int n = matrix.length;		
+		int[][] largest = new int[n][n]; // largest[i][j] means the largest square of 1s with right bottom corner as matrix[i][j]
 		int maxLen = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
