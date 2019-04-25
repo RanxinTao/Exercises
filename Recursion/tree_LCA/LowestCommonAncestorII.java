@@ -6,7 +6,7 @@ import impl.TreeNodeP;
  * Given two nodes in a binary tree (with parent pointer available), find their lowest common ancestor.
  * 
  * Assumptions:
- * 1. There IS parent pointer for the nodes in the binary tree
+ * 1. There is parent pointer for the nodes in the binary tree
  * 2. The given two nodes are NOT guaranteed to be in the binary tree
  * Examples:
  *       5
@@ -14,8 +14,12 @@ import impl.TreeNodeP;
  *     9  12
  *    / \  \
  *   2   3  14
- * The lowest common ancestor of 2 and 14 is 5. The lowest common ancestor of 2 and 9 is 9. 
- * The lowest common ancestor of 2 and 8 is null (8 is not in the tree)
+ * 1. The lowest common ancestor of 2 and 14 is 5. 
+ * 2. The lowest common ancestor of 2 and 9 is 9. 
+ * 3. The lowest common ancestor of 2 and 8 is null (8 is not in the tree)
+ * 
+ * Time: worst O(n), O(logn) is the binary tree is balanced.
+ * Space: O(1)
  */
 public class LowestCommonAncestorII {
 	public TreeNodeP lowestCommonAncestor(TreeNodeP one, TreeNodeP two) {
@@ -24,11 +28,7 @@ public class LowestCommonAncestorII {
 		}
 		int len1 = length(one);
 		int len2 = length(two);
-		if (len1 <= len2) {
-			return mergeNode(one, two, len2 - len1);
-		} else {
-			return mergeNode(two, one, len1 - len2);
-		}
+		return len1 <= len2 ? mergeNode(one, two, len2 - len1) : mergeNode(two, one, len1 - len2);
 	}
 
 	private TreeNodeP mergeNode(TreeNodeP shorter, TreeNodeP longer, int diff) {
@@ -46,8 +46,8 @@ public class LowestCommonAncestorII {
 	private int length(TreeNodeP node) {
 		int length = 0;
 		while (node != null) {
-			length++;
 			node = node.parent;
+			length++;	
 		}
 		return length;
 	}

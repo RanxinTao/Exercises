@@ -14,7 +14,11 @@ import impl.TreeNode;
  *     9  12
  *    / \  \
  *   2   3  14
- * The lowest common ancestor of 2 and 14 is 5. The lowest common ancestor of 2 and 9 is 9
+ * 1. The lowest common ancestor of 2 and 14 is 5. 
+ * 2. The lowest common ancestor of 2 and 9 is 9
+ * 
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class LowestCommonAncestorI {
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode one, TreeNode two) {

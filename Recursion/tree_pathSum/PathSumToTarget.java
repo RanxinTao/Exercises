@@ -15,34 +15,36 @@ import impl.TreeNode;
  *     2   11
  *        /  \
  *       6   14
- *           /
- *          3
- * If target = 17, There exists a path 11 + 6, the sum of the path is target.
- * If target = 20, There exists a path 11 + 6 + 3, the sum of the path is target.
- * If target = 10, There does not exist any paths sum of which is target.
- * If target = 11, There exists a path only containing the node 11.
+ *      /    
+ *     3     
+ * 1. If target = 17, There exists a path 11 + 6, the sum of the path is target.
+ * 2. If target = 20, There exists a path 11 + 6 + 3, the sum of the path is target.
+ * 3. If target = 10, There does not exist any paths sum of which is target.
+ * 4. If target = 11, There exists a path only containing the node 11.
+ * 
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class PathSumToTarget {
 	public boolean exist(TreeNode root, int target) {
 		Set<Integer> prefixSums = new HashSet<>();
 		prefixSums.add(0);
-		return helper(root, target, 0, prefixSums);
+		return existPathSumToTarget(root, target, 0, prefixSums);
 	}
 
-	private boolean helper(TreeNode root, int target, int pathSum, Set<Integer> prefixSums) {
+	private boolean existPathSumToTarget(TreeNode root, int target, int curPathSum, Set<Integer> prefixSums) {
 		if (root == null) {
 			return false;
 		}
-		pathSum += root.key;
-		if (prefixSums.contains(pathSum - target)) {
+		curPathSum += root.key;
+		if (prefixSums.contains(curPathSum - target)) {
 			return true;
 		}
-		// there may be duplicate prefix values
-		boolean needRemove = prefixSums.add(pathSum);
-		boolean leftRes = helper(root.left, target, pathSum, prefixSums);
-		boolean rightRes = helper(root.right, target, pathSum, prefixSums);
+		boolean needRemove = prefixSums.add(curPathSum); // there may be duplicate prefix values, add() will return false if already contains the element
+		boolean leftRes = existPathSumToTarget(root.left, target, curPathSum, prefixSums);
+		boolean rightRes = existPathSumToTarget(root.right, target, curPathSum, prefixSums);
 		if (needRemove) {
-			prefixSums.remove(pathSum);
+			prefixSums.remove(curPathSum);
 		}
 		return leftRes || rightRes;
 	}
