@@ -18,7 +18,7 @@ import impl.TreeNodeP;
  * 2. The lowest common ancestor of 2 and 9 is 9. 
  * 3. The lowest common ancestor of 2 and 8 is null (8 is not in the tree)
  * 
- * Time: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: worst O(n), O(logn) if the binary tree is balanced.
  * Space: O(1)
  */
 public class LowestCommonAncestorII {

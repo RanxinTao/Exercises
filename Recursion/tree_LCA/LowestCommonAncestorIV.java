@@ -19,23 +19,26 @@ import impl.TreeNode;
  *     9  12
  *    / \  \
  *   2   3  14
- * The lowest common ancestor of 2, 3, 14 is 5. The lowest common ancestor of 2, 3, 9 is 9
+ * 1. The lowest common ancestor of 2, 3, 14 is 5. 
+ * 2. The lowest common ancestor of 2, 3, 9 is 9
+ * 
+ * Time: O(n)
+ * Space: worst O(n), O(logn) if the binary tree is balanced.
  */
 public class LowestCommonAncestorIV {
 	public TreeNode lowestCommonAncestor(TreeNode root, List<TreeNode> nodes) {
-		Set<TreeNode> set = new HashSet<>(nodes);
-		return lowestCommonAncestor(root, set);
+		return lowestCommonAncestor(root, new HashSet<>(nodes));
 	}
 
-	private TreeNode lowestCommonAncestor(TreeNode root, Set<TreeNode> set) {
+	private TreeNode lowestCommonAncestor(TreeNode root, Set<TreeNode> nodes) {
 		if (root == null) {
 			return null;
 		}
-		if (set.contains(root)) {
+		if (nodes.contains(root)) {
 			return root;
 		}
-		TreeNode leftSolu = lowestCommonAncestor(root.left, set);
-		TreeNode rightSolu = lowestCommonAncestor(root.right, set);
+		TreeNode leftSolu = lowestCommonAncestor(root.left, nodes);
+		TreeNode rightSolu = lowestCommonAncestor(root.right, nodes);
 		if (leftSolu != null && rightSolu != null) {
 			return root;
 		}

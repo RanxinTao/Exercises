@@ -20,26 +20,28 @@ import impl.TreeNode;
  *     3   8
  *    / \   \
  *   1   4  11  
+ *   
+ * Time: O(n)
+ * Space: O(n)
  */
 public class ReconstructBinaryTreeWithPreorderAndInorder {
 	public TreeNode reconstruct(int[] in, int[] pre) {
-		Map<Integer, Integer> inIndexes = new HashMap<>();
+		Map<Integer, Integer> inMap = new HashMap<>();
 		for (int i = 0; i < in.length; i++) {
-			inIndexes.put(in[i], i);
+			inMap.put(in[i], i);
 		}
-		return helper(pre, 0, pre.length - 1, inIndexes, 0, in.length - 1);
+		return reconstruct(pre, 0, pre.length - 1, inMap, 0);
 	}
 
-	private TreeNode helper(int[] pre, int preLeft, int preRight, Map<Integer, Integer> inIndexes, int inLeft, int inRight) {
-		if (inLeft > inRight) {
+	private TreeNode reconstruct(int[] pre, int preLeft, int preRight, Map<Integer, Integer> inMap, int inLeft) {
+		if (preLeft > preRight) {
 			return null;
 		}
 		TreeNode root = new TreeNode(pre[preLeft]);
-		preLeft++;
-		int inIndex = inIndexes.get(root.key);
-		int leftLen = inIndex - inLeft;
-		root.left = helper(pre, preLeft, preLeft + leftLen - 1, inIndexes, inLeft, inIndex - 1);
-		root.right = helper(pre, preLeft + leftLen, preRight, inIndexes, inIndex + 1, inRight);
+		int inRootIndex = inMap.get(root.key);
+		int leftLen = inRootIndex - inLeft;
+		root.left = reconstruct(pre, preLeft + 1, preLeft + leftLen, inMap, inLeft);
+		root.right = reconstruct(pre, preLeft + leftLen + 1, preRight, inMap, inRootIndex + 1);
 		return root;
 	}
 }	
