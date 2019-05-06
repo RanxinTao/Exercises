@@ -19,10 +19,10 @@ import impl.TreeNode;
  */
 public class ReconstructBSTWithPreorderTraversal {
 	public TreeNode reconstruct(int[] pre) {
-		return helper(pre, 0, pre.length - 1);
+		return reconstruct(pre, 0, pre.length - 1);
 	}
 
-	private TreeNode helper(int[] pre, int left, int right) {
+	private TreeNode reconstruct(int[] pre, int left, int right) {
 		if (left > right) {
 			return null;
 		}
@@ -32,8 +32,8 @@ public class ReconstructBSTWithPreorderTraversal {
 		while (pi < pre.length && pre[pi] < root.key) {
 			pi++;
 		}
-		root.left = helper(pre, left, pi - 1);
-		root.right = helper(pre, pi, right);
+		root.left = reconstruct(pre, left, pi - 1);
+		root.right = reconstruct(pre, pi, right);
 		return root;
 	}
 }

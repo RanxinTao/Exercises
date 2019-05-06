@@ -21,22 +21,25 @@ import impl.TreeNode;
  *      / \
  *     3   8
  *    / \   \
- *   1   4  11  
+ *   1   4  11
+ *   
+ * Time: O(n^2)
+ * Space: worst O(n), O(logn) if the binary tree is balanced.
  */
 public class ReconstructBinaryTreeWithLevelorderAndInorder {
 	public TreeNode reconstruct(int[] in, int[] level) {
-		Map<Integer, Integer> inIndexes = new HashMap<>();
+		Map<Integer, Integer> inMap = new HashMap<>();
 		for (int i = 0; i < in.length; i++) {
-			inIndexes.put(in[i], i);
+			inMap.put(in[i], i);
 		}
 		List<Integer> levelList = new ArrayList<>();
-		for (int num : level) {
+		for (int num : level) { // There is no shortcut for converting from int[] to List<Integer> as Arrays.asList does not deal with boxing and will just create a List<int[]>
 			levelList.add(num);
 		}
-		return helper(inIndexes, levelList);
+		return reconstruct(inMap, levelList);
 	}
 
-	private TreeNode helper(Map<Integer, Integer> inIndexes, List<Integer> level) {
+	private TreeNode reconstruct(Map<Integer, Integer> inMap, List<Integer> level) {
 		if (level.isEmpty()) {
 			return null;
 		}
@@ -45,14 +48,14 @@ public class ReconstructBinaryTreeWithLevelorderAndInorder {
 		List<Integer> rightLevel = new ArrayList<>();
 		for (int i = 1; i < level.size(); i++) {
 			int num = level.get(i);
-			if (inIndexes.get(num) < inIndexes.get(root.key)) {
+			if (inMap.get(num) < inMap.get(root.key)) {
 				leftLevel.add(num);
 			} else {
 				rightLevel.add(num);
 			}
 		}
-		root.left = helper(inIndexes, leftLevel);
-		root.right = helper(inIndexes, rightLevel);
+		root.left = reconstruct(inMap, leftLevel);
+		root.right = reconstruct(inMap, rightLevel);
 		return root;
 	}
 }

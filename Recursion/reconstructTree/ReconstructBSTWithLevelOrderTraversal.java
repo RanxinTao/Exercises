@@ -26,10 +26,10 @@ public class ReconstructBSTWithLevelOrderTraversal {
 		for (int num : level) {
 			levelList.add(num);
 		}
-		return helper(levelList);
+		return reconstruct(levelList);
 	}
 
-	private TreeNode helper(List<Integer> level) {
+	private TreeNode reconstruct(List<Integer> level) {
 		if (level.isEmpty()) {
 			return null;
 		}
@@ -44,8 +44,8 @@ public class ReconstructBSTWithLevelOrderTraversal {
 				rightLevel.add(num);
 			}
 		}
-		root.left = helper(leftLevel);
-		root.right = helper(rightLevel);
+		root.left = reconstruct(leftLevel);
+		root.right = reconstruct(rightLevel);
 		return root;
 	}
 }
