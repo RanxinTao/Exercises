@@ -8,6 +8,7 @@ import impl.TreeNode;
 
 /**
  * Get the list of keys in a given binary tree layer by layer in zig-zag order.
+ * 
  * Examples:
  *       5
  *      / \
@@ -15,6 +16,9 @@ import impl.TreeNode;
  *    / \   \
  *   1   4  11
  * the result is [5, 3, 8, 11, 4, 1] 
+ * 
+ * Time: O(n)
+ * Space: O(n)
  */
 public class LevelOrderZigZagTraversal {
 	public List<Integer> zigZag(TreeNode root) {
@@ -24,34 +28,30 @@ public class LevelOrderZigZagTraversal {
 		}
 		Deque<TreeNode> stack = new LinkedList<>();
 		stack.offer(root);
-		int level = 0;
+		int layer = 0; // decide the order of traversal
 		while (!stack.isEmpty()) {
 			Deque<TreeNode> newStack = new LinkedList<>();
-			if (level % 2 == 0) {
-				while (!stack.isEmpty()) {
-					TreeNode tmp = stack.pollFirst();
-					res.add(tmp.key);
-					if (tmp.right != null) {
-						newStack.offerFirst(tmp.right);
+			while (!stack.isEmpty()) {
+				TreeNode curNode = stack.pollFirst();
+				res.add(curNode.key);
+				if (layer % 2 == 0) {
+					if (curNode.right != null) {
+						newStack.offerFirst(curNode.right);
 					}
-					if (tmp.left != null) {
-						newStack.offerFirst(tmp.left);
+					if (curNode.left != null) {
+						newStack.offerFirst(curNode.left);
 					}
-				}
-			} else {
-				while (!stack.isEmpty()) {
-					TreeNode tmp = stack.pollFirst();
-					res.add(tmp.key);
-					if (tmp.left != null) {
-						newStack.offerFirst(tmp.left);
+				} else {
+					if (curNode.left != null) {
+						newStack.offerFirst(curNode.left);
 					}	
-					if (tmp.right != null) {
-						newStack.offerFirst(tmp.right);
+					if (curNode.right != null) {
+						newStack.offerFirst(curNode.right);
 					}
 				}
 			}
 			stack = newStack;
-			level++;
+			layer++;
 		}
 		return res;
 	}

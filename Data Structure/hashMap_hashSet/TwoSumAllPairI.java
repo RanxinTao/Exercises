@@ -1,4 +1,4 @@
-package array2Pointers_oppositeDirection;
+package hashMap_hashSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;

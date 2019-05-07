@@ -7,12 +7,13 @@ import impl.Utils;
  * The relative order of the elements in the original array need to be maintained.
  * 
  * Assumptions: 
- * array is not null
+ * The given array is not null
  * Examples:
  * {1} -> {1}
- * {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0} or {1, 1, 3, 0, 0} or {3, 1, 1, 0, 0}
+ * {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0}
  * 
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class Move0sToTheEnd {
 	public int[] moveZero(int[] array) {
@@ -23,8 +24,7 @@ public class Move0sToTheEnd {
 				end++;
 			}
 		}
-		// fill in the right part with 0
-		for (int i = end; i < array.length; i++) {
+		for (int i = end; i < array.length; i++) { // fill in the right part with 0
 			array[i] = 0;
 		}
 		return array;

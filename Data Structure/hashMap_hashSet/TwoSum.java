@@ -13,6 +13,9 @@ import java.util.Set;
  * A = {1, 2, 3, 4}, target = 5, return true (1 + 4 = 5)
  * A = {2, 4, 2, 1}, target = 4, return true (2 + 2 = 4)
  * A = {2, 4, 1}, target = 4, return false
+ * 
+ * Time: O(n)
+ * Space: O(n)
  */
 public class TwoSum {
 	public boolean existSum(int[] array, int target) {

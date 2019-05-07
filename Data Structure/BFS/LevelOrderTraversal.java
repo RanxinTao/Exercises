@@ -18,7 +18,9 @@ import impl.TreeNode;
  *   / \ / \ 
  *  1  4   11
  * the result is [[5], [3, 8], [1, 4, 11]]
- * Time: O(n), Space: O(n)
+ * 
+ * Time: O(n)
+ * Space: O(n)
  */
 public class LevelOrderTraversal {
 	public List<List<Integer>> layerByLayer(TreeNode root) {
