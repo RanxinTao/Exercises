@@ -15,6 +15,7 @@ import java.util.Map;
  * A = {1, 3, 2, 4}, target = 5, return [[0, 3], [1, 2]]
  * A = {1, 2, 2, 4}, target = 6, return [[1, 3], [2, 3]]
  * 
+ * Algorithm: can't use sort, since sorting will reorder the array
  * Time: O(n)
  * Space: O(n)
  */

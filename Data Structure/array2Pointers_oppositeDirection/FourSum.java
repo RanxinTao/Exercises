@@ -9,8 +9,11 @@ import java.util.Arrays;
  * The given array is not null and has length of at least 4
  * 
  * Examples:
- * A = {1, 2, 2, 3, 4}, target = 9, return true(1 + 2 + 2 + 4 = 8)
- * A = {1, 2, 2, 3, 4}, target = 12, return false
+ * 1. A = {1, 2, 2, 3, 4}, target = 9, return true (1 + 2 + 2 + 4 = 8)
+ * 2. A = {1, 2, 2, 3, 4}, target = 12, return false
+ * 
+ * Time: O(n^3)
+ * Space: O(logn)
  */
 public class FourSum {
 	public boolean exist(int[] array, int target) {
@@ -19,13 +22,13 @@ public class FourSum {
 			for (int j = i + 1; j < array.length - 2; j++) {
 				int left = j + 1;
 				int right = array.length - 1;
-				int curTarget = target - array[i] - array[j];
+				int newTarget = target - array[i] - array[j];
 				while (left < right) {
 					int sum = array[left] + array[right];
-					if (sum == curTarget) {
-						return true;
-					} else if (sum < curTarget) {
+					if (sum < newTarget) {
 						left++;
+					} else if (sum == newTarget) {
+						return true;
 					} else {
 						right--;
 					}

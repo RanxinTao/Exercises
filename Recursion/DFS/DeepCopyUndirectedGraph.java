@@ -9,30 +9,32 @@ import impl.GraphNode;
 
 /**
  * Make a deep copy of an undirected graph, there could be cycles in the original graph.
+ * 
  * Assumptions:
  * The given graph is not null
+ * 
+ * Time: O(V + E)
+ * Space: O(V)
  */
 public class DeepCopyUndirectedGraph {
 	public List<GraphNode> copy(List<GraphNode> graph) {
-		Map<GraphNode, GraphNode> originToCopy = new HashMap<>();
 		List<GraphNode> res = new ArrayList<>();
-		for (GraphNode cur : graph) {
-			res.add(DFS(cur, originToCopy));
+		Map<GraphNode, GraphNode> originToCopy = new HashMap<>();	
+		for (GraphNode curNode : graph) {
+			res.add(getNodeCopy(curNode, originToCopy));
 		}
 		return res;
 	}
-
-	// return the copy of the current GraphNode if exists in map, otherwise create first then return it
-	private GraphNode DFS(GraphNode cur, Map<GraphNode, GraphNode> originToCopy) {
+	
+	private GraphNode getNodeCopy(GraphNode cur, Map<GraphNode, GraphNode> originToCopy) { // DFS to get the copy of the input original graph node
 		GraphNode curCopy = originToCopy.get(cur);
 		if (curCopy != null) {
-			return curCopy;
+			return curCopy; // return the copy of the input original graph node if its copy already exists in the map
 		}
-		curCopy = new GraphNode(cur.key);
-		// in case there are self-cycles, this statement must be performed before the for loop
-		originToCopy.put(cur, curCopy);
+		curCopy = new GraphNode(cur.key); // if not exists in the map, we need to create one and return it
+		originToCopy.put(cur, curCopy); // in case there are self-cycles, this statement must be performed before the for loop
 		for (GraphNode nei : cur.neighbors) {
-			GraphNode neiCopy = DFS(nei, originToCopy);
+			GraphNode neiCopy = getNodeCopy(nei, originToCopy);
 			curCopy.neighbors.add(neiCopy);
 		}
 		return curCopy;
