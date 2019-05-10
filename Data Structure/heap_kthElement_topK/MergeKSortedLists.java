@@ -8,14 +8,17 @@ import impl.ListNode;
 
 /**
  * Merge K sorted lists into one big sorted list in ascending order.
+ * 
  * Assumptions:
- * ListOfLists is not null, and none of the lists is null.
+ * The input ListOfLists is not null, and none of the lists is null.
+ * 
  * Algorithm: move the smaller one
+ * Time: O(knlogk), where n is the average length of lists
+ * Space: O(k)
  */
 public class MergeKSortedLists {
 	public ListNode merge(List<ListNode> listOfLists) {
 		PriorityQueue<ListNode> minHeap = new PriorityQueue<>(new Comparator<ListNode>() {
-			@Override
 			public int compare(ListNode head1, ListNode head2) {
 				return ((Integer) head1.value).compareTo(head2.value);
 			}

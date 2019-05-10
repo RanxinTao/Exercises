@@ -13,6 +13,9 @@ import impl.GraphNode;
  * Assumptions:
  * The given graph is not null
  * 
+ * Algorithm: DFS (easier to write than BFS for this problem, because constructing edges need the current node and its
+ * neighbor nodes both present in a same loop, you can't simply add neighbors to the queue and let next loop handle it,
+ * in contrast to a simple graph iteration)
  * Time: O(V + E)
  * Space: O(V)
  */

@@ -17,7 +17,8 @@ import impl.TreeNode;
  *  1  4   11      1   4  11 
  * is completed    is not completed
  * 
- * Time: O(n), Space: O(n)
+ * Time: O(n)
+ * Space: O(n)
  */
 public class CheckIfBinaryTreeIsCompleted {
 	public boolean isCompleted(TreeNode root) {
