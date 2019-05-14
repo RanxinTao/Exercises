@@ -14,7 +14,7 @@ import java.util.Set;
  * 1. Word: "robob" return false
  * 2. Word: "robcatbob" return true since it can be composed by "rob", "cat", "bob"
  * 
- * Time: O(n^2)
+ * Time: O(n^2) where n is the length of the word
  * Space: O(n)
  */
 public class DictionaryWordI {
