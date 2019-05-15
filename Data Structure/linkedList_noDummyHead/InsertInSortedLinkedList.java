@@ -11,7 +11,8 @@ import impl.ListNode;
  * L = 1 -> 3 -> 5 -> null, insert 3, return 1 -> 3 -> 3 -> 5 -> null
  * L = 2 -> 3 -> null, insert 1, return 1 -> 2 -> 3 -> null
  * 
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class InsertInSortedLinkedList {
 	public ListNode insert(ListNode head, int value) {

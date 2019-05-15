@@ -19,7 +19,8 @@ import impl.TreeNode;
  *  1  4   11
  * In-order traversal is [1, 3, 4, 5, 8, 11]
  * 
- * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class BinaryTreeInorderTraversal {
 	public List<Integer> inOrder(TreeNode root) {

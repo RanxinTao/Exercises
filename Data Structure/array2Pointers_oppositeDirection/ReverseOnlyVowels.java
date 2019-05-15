@@ -9,6 +9,7 @@ import java.util.Set;
  * 
  * Assumptions:
  * The given string is not null, and only contains lower case letters.
+ * 
  * Examples:
  * "abbegi" --> "ibbega"
  */

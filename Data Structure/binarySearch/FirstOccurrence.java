@@ -1,18 +1,19 @@
 package binarySearch;
 
 /**
- * Given a target integer T and an integer array A sorted in ascending order,
- * find the index of the first occurrence of T in A or return -1 if there is no
- * such index.
+ * Given a target integer T and an integer array A sorted in ascending order, find the index of the first occurrence of 
+ * T in A or return -1 if there is no such index.
  * 
  * Assumptions:
  * There can be duplicate elements in the array
- * Examples:
- * A = {1, 2, 3}, T = 2, return 1
- * A = {1, 2, 3}, T = 4, return -1
- * A = {1, 2, 2, 2, 3}, T = 2, return 1
  * 
- * Time: O(logn), Space: O(1)
+ * Examples:
+ * 1. A = {1, 2, 3}, T = 2, return 1
+ * 2. A = {1, 2, 3}, T = 4, return -1
+ * 3. A = {1, 2, 2, 2, 3}, T = 2, return 1
+ * 
+ * Time: O(logn)
+ * Space: O(1)
  */
 public class FirstOccurrence {
 	public int firstOccur(int[] array, int target) {

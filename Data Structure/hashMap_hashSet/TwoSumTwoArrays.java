@@ -9,6 +9,7 @@ import java.util.Set;
  * 
  * Assumptions: 
  * The two given arrays are not null and have length of at least 1
+ * 
  * Examples:
  * A = {3, 1, 5}, B = {2, 8}, target = 7, return true(pick 5 from A and pick 2 from B)
  * A = {1, 3, 5}, B = {2, 8}, target = 6, return false

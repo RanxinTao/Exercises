@@ -5,6 +5,7 @@ package arrayLengthen_stringBuilder;
  * Assumptions: 
  * 1. input, S and T are not null
  * 2. S is not empty string
+ * 
  * Examples:
  * 1. input = "appledogapple", S = "apple", T = "cat", input becomes "catdogcat"
  * 2. input = "dodododo", S = "dod", T = "a", input becomes "aoao"

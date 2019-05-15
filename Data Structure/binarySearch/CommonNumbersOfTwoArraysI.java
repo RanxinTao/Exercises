@@ -12,8 +12,8 @@ import java.util.List;
  * 2. There are no duplicate numbers in each of the two arrays respectively.
  * 
  * Examples:
- * A = {1, 2, 3}, B = {3, 1, 4}, return [1, 3]
- * A = {}, B = {3, 1, 4}, return []
+ * 1. A = {1, 2, 3}, B = {3, 1, 4}, return [1, 3]
+ * 2. A = {}, B = {3, 1, 4}, return []
  */
 public class CommonNumbersOfTwoArraysI {
 	public List<Integer> common(List<Integer> a, List<Integer> b) {

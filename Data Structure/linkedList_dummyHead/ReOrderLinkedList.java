@@ -12,7 +12,8 @@ import impl.ListNode;
  * L = 1 -> 2 -> 3 -> 4 -> null, is reordered to 1 -> 4 -> 2 -> 3 -> null
  * L = 1 -> 2 -> 3 -> null, is reordered to 1 -> 3 -> 2 -> null
  * 
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class ReOrderLinkedList {
 	public ListNode reorder(ListNode head) {

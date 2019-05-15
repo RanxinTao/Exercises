@@ -10,6 +10,7 @@ import java.util.Set;
  * 
  * Assumptions: 
  * The three given arrays are not null and have length of at least 1
+ * 
  * Examples:
  * A = {1, 3, 5}, B = {8, 2}, C = {3}, target = 14, return true (pick 3 from A, pick 8 from B and pick 3 from C)
  */

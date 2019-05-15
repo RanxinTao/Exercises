@@ -19,7 +19,8 @@ import impl.TreeNode;
  *  1  4   11
  * Post-order traversal is [1, 4, 3, 11, 8, 5]
  * 
- * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class BinaryTreePostorderTraversal {
 	public List<Integer> postOrder(TreeNode root) {

@@ -13,7 +13,8 @@ import impl.ListNode;
  * L = 1 -> 2 -> 3 -> 4 -> null, return 2
  * 
  * Algorithm: fast-slow pointer
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class MiddleNodeOfLinkedList {
 	public ListNode middleNode(ListNode head) {

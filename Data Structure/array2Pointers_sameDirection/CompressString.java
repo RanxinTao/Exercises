@@ -8,6 +8,7 @@ package array2Pointers_sameDirection;
  * The string is not null
  * The characters used in the original string are guaranteed to be ¡®a¡¯ - ¡®z¡¯
  * There are no adjacent repeated characters with length > 9
+ * 
  * Examples:
  * ¡°abbcccdeee¡± ¡ú ¡°ab2c3de3¡±
  */

@@ -10,7 +10,8 @@ import impl.ListNode;
  * L1 = null, L2 = 1 -> 2 -> null, merge L1 and L2 to 1 -> 2 -> null
  * L1 = null, L2 = null, merge L1 and L2 to null
  * 
- * Time: O(l1 + l2), Space: O(1)
+ * Time: O(l1 + l2)
+ * Space: O(1)
  */
 public class MergeTwoSortedLinkedLists {
 	public ListNode merge(ListNode one, ListNode two) {

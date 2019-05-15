@@ -7,7 +7,8 @@ import impl.ListNode;
  * Return true if it does, otherwise return false.
  * 
  * Algorithm: fast-slow pointer
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class CheckIfLinkedListHasACycle {
 	public boolean hasCycle(ListNode head) {

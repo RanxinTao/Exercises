@@ -15,6 +15,7 @@ import impl.Utils;
  * 1. the composition is not null and is not guaranteed to be sorted
  * 2. K >= 1 and K could be larger than the number of distinct words in the composition, in this case, just return all
  * the distinct words
+ * 
  * Examples:
  * 1. Composition = ["a", "a", "b", "b", "b", "b", "c", "c", "c", "d"], top 2 frequent words are ["b", "c"]
  * 2. Composition = ["a", "a", "b", "b", "b", "b", "c", "c", "c", "d"], top 4 frequent words are ["b", "c", "a", "d"]

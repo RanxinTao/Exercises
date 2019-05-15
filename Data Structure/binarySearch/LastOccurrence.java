@@ -7,12 +7,14 @@ package binarySearch;
  * 
  * Assumptions:
  * There can be duplicate elements in the array.
+ * 
  * Examples:
  * A = {1, 2, 3}, T = 2, return 1
  * A = {1, 2, 3}, T = 4, return -1
  * A = {1, 2, 2, 2, 3}, T = 2, return 3
  * 
- * Time: O(logn), Space: O(1)
+ * Time: O(logn)
+ * Space: O(1)
  */
 public class LastOccurrence {
 	public int lastOccur(int[] array, int target) {

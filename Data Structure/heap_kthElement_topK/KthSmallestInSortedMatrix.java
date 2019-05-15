@@ -10,6 +10,7 @@ import java.util.Comparator;
  * Assumptions: 
  * 1. the matrix is not null, N > 0 and M > 0
  * 2. K > 0 and K <= N * M
+ * 
  * Examples:
  * { {1, 3,  5,  7},
  *   {2, 4,  8,  9},

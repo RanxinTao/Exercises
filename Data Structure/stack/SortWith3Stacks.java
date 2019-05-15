@@ -6,16 +6,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given one stack with integers, sort it with two additional stacks (total 3 stacks).
- * After sorting the original stack should contain the sorted integers and from
- * top to bottom the integers are sorted in ascending order.
+ * Given one stack with integers, sort it with two additional stacks (total 3 stacks). After sorting the original stack
+ * should contain the sorted integers and from top to bottom the integers are sorted in ascending order.
+ * Requirements: No additional memory, time complexity = O(nlogn)
  * 
  * Assumptions:
  * The given stack is not null
- * Requirements:
- * No additional memory, time complexity = O(nlogn)
  * 
- * Time: O(nlogn), Space: O(1)
+ * Time: O(nlogn)
+ * Space: O(1)
  */
 public class SortWith3Stacks {
 	public void sort(Deque<Integer> stack) {

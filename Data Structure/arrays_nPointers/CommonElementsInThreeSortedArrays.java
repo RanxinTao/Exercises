@@ -1,4 +1,4 @@
-package moveTheSmallerOne;
+package arrays_nPointers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,9 @@ import java.util.List;
  * 
  * Examples:
  * A = {1, 2, 2, 3}, B = {2, 2, 3, 5}, C = {2, 2, 4}, the common elements are [2, 2]
+ * 
+ * Time: O(a + b + c) where a, b, c is the length of array a, array b, array c respectively
+ * Space: O(1)
  */
 public class CommonElementsInThreeSortedArrays {
 	public List<Integer> common(int[] a, int[] b, int[] c) {
@@ -25,11 +28,11 @@ public class CommonElementsInThreeSortedArrays {
 				ai++;
 				bi++;
 				ci++;
-			} else if (a[ai] <= b[bi] && a[ai] <= c[ci]) {
+			} else if (a[ai] <= b[bi] && a[ai] <= c[ci]) { // case 1: a is the smallest
 				ai++;
-			} else if (b[bi] <= a[ai] && b[bi] <= c[ci]) {
+			} else if (b[bi] <= a[ai] && b[bi] <= c[ci]) { // case 2: b is the smallest
 				bi++;
-			} else {
+			} else { // case 3: c is the smallest
 				ci++;
 			}
 		}

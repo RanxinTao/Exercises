@@ -7,10 +7,10 @@ import impl.ListNode;
  * The quick sort algorithm should be used to solve this problem.
  * 
  * Examples:
- * null, is sorted to null
- * 1 -> null, is sorted to 1 -> null
- * 1 -> 2 -> 3 -> null, is sorted to 1 -> 2 -> 3 -> null
- * 4 -> 2 -> 6 -> -3 -> 5 -> null, is sorted to -3 -> 2 -> 4 -> 5 -> 6
+ * 1. null, is sorted to null
+ * 2. 1 -> null, is sorted to 1 -> null
+ * 3. 1 -> 2 -> 3 -> null, is sorted to 1 -> 2 -> 3 -> null
+ * 4. 4 -> 2 -> 6 -> -3 -> 5 -> null, is sorted to -3 -> 2 -> 4 -> 5 -> 6
  */
 public class QuickSortLinkedList {
 	public ListNode quickSort(ListNode head) {

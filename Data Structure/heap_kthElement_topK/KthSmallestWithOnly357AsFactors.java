@@ -9,6 +9,7 @@ import java.util.Set;
  * 
  * Assumptions:
  * K >= 1
+ * 
  * Examples:
  * the smallest is 3 * 5 * 7 = 105, the 2nd smallest is 3 ^ 2 * 5 * 7 = 315, the 3rd smallest is 3 * 5 ^ 2 * 7 = 525,
  * the 5th smallest is 3 ^ 3 * 5 * 7 = 945

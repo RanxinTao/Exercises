@@ -11,13 +11,15 @@ import impl.Utils;
  * 
  * Assumptions:
  * The given matrix is not null, and has size of N * M, where N > 0 and M >= 0.
+ * 
  * Examples:
  * matrix = {{1, 2, 3}, {4, 5, 7}, {8, 9, 10}}
  * target = 7, return {1, 2}
  * target = 6, return {-1, -1} to represent the target number does not exist
  * in the matrix.
  * 
- * Time: O(log(N*M)), Space: O(1)
+ * Time: O(log(N*M))
+ * Space: O(1)
  */
 public class SearchInSortedMatrixI {
 	public int[] search(int[][] matrix, int target) {

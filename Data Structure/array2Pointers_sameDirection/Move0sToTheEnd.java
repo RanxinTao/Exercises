@@ -8,9 +8,10 @@ import impl.Utils;
  * 
  * Assumptions: 
  * The given array is not null
+ * 
  * Examples:
- * {1} -> {1}
- * {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0}
+ * 1. {1} -> {1}
+ * 2. {1, 0, 3, 0, 1} -> {1, 3, 1, 0, 0}
  * 
  * Time: O(n)
  * Space: O(1)

@@ -9,6 +9,7 @@ import java.util.List;
  * 
  * Assumptions:
  * The given array is not null
+ * 
  * Examples:
  * A = {1, 2, 1, 2, 1}, return [1, 2]
  * A = {1, 2, 1, 2, 3, 3, 1}, return [1]

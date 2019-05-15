@@ -7,6 +7,7 @@ package hashMap_hashSet;
  * 
  * Assumptions: 
  * The two given Strings are not null.
+ * 
  * Examples:
  * "abca" and "xyzx" are isomorphic since the mapping is 'a' <-> 'x', 'b' <-> 'y', 'c' <-> 'z'.
  * "abba" and "cccc" are not isomorphic.

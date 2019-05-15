@@ -10,9 +10,10 @@ import java.util.Arrays;
  *
  * Assumptions:
  * The given array is not null
+ * 
  * Examples:
- * {1, 2, 2, 3, 3, 3} --> {1, 2, 2, 3, 3}
- * {2, 1, 2, 2, 2, 3} --> {2, 1, 2, 2, 3} 
+ * 1. {1, 2, 2, 3, 3, 3} --> {1, 2, 2, 3, 3}
+ * 2. {2, 1, 2, 2, 2, 3} --> {2, 1, 2, 2, 3} 
  */
 public class ArrayDeduplicationV {
 	public int[] dedup(int[] array) {

@@ -5,9 +5,10 @@ package math_probability_geometry;
  * 
  * Assumptions:
  * n is guaranteed to be >= 0.
+ * 
  * Examples:
- * Input: 18, Return: 4
- * Input: 4, Return: 2
+ * 1. Input: 18, Return: 4
+ * 2. Input: 4, Return: 2
  */
 public class SquareRootI {
 	public int sqrt(int x) {

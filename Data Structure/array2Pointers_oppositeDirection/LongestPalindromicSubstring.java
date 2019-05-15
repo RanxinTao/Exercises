@@ -6,9 +6,10 @@ package array2Pointers_oppositeDirection;
  * Assumptions:
  * 1. There exists one unique longest palindromic substring.
  * 2. The input S is not null
+ * 
  * Examples:
- * Input: "abbc", Output: "bb"
- * Input: "abcbcbd", Output: "bcbcb"
+ * 1. Input: "abbc", Output: "bb"
+ * 2. Input: "abcbcbd", Output: "bcbcb"
  */
 public class LongestPalindromicSubstring {
 	public String longestPalindrome(String s) {

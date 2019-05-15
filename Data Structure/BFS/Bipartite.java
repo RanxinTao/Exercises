@@ -22,7 +22,8 @@ import impl.GraphNode;
  *    3 -- 4
  * is not bipartite.
  * 
- * Time: O(n), Space: O(n)
+ * Time: O(n)
+ * Space: O(n)
  */
 public class Bipartite {
 	public boolean isBipartite(List<GraphNode> graph) {

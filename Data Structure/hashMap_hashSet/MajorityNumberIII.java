@@ -11,6 +11,7 @@ import java.util.Map;
  * Assumptions:
  * 1. The given array is not null or empty
  * 2. K >= 2
+ * 
  * Examples:
  * A = {1, 2, 1, 2, 1}, K = 3, return [1, 2]
  * A = {1, 2, 1, 2, 3, 3, 1}, K = 4, return [1, 2, 3]

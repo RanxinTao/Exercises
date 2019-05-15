@@ -9,8 +9,9 @@ import java.util.List;
  * 
  * Assumptions:
  * The given array is not null and has length of at least 2
+ * 
  * Examples:
- * A = {1, 4, 7, 13}, target = 7, closest pair is 1 + 7 = 8, return [1, 7].
+ * 1. A = {1, 4, 7, 13}, target = 7, closest pair is 1 + 7 = 8, return [1, 7].
  */
 public class TwoSumClosest {
 	public List<Integer> closest(int[] array, int target) {

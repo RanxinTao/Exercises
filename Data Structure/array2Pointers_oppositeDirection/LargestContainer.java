@@ -7,8 +7,9 @@ package array2Pointers_oppositeDirection;
  * 
  * Assumptions:
  * The given array is not null and has size of at least 2
+ * 
  * Examples:
- * { 2, 1, 3, 1, 2, 1 }, the largest container is formed by the two boards of height 2, the volume of the container is 2 * 4 = 8.
+ * 1. { 2, 1, 3, 1, 2, 1 }, the largest container is formed by the two boards of height 2, the volume of the container is 2 * 4 = 8.
  */
 public class LargestContainer {
 	public int largest(int[] array) {

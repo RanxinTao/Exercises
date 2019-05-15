@@ -1,4 +1,4 @@
-package arrays_2Pointers;
+package arrays_nPointers;
 
 /**
  * Determine if a small string is a substring of another large string.
@@ -8,6 +8,7 @@ package arrays_2Pointers;
  * Assumptions:
  * 1. Both large and small are not null
  * 2. If small is empty string, return 0
+ * 
  * Examples:
  * 1. "ab" is a substring of "bcabc", return 2
  * 2. "bcd" is not a substring of "bcabc", return -1

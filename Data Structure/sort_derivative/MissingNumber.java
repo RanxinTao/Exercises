@@ -7,6 +7,7 @@ import impl.Utils;
  * 
  * Assumptions:
  * The given array is not null, and N >= 1
+ * 
  * Examples:
  * A = {2, 1, 4}, the missing number is 3
  * A = {1, 2, 3}, the missing number is 4

@@ -8,6 +8,7 @@ package arrayReverse_derivative;
  * 
  * Assumptions: 
  * 1. input, S and T are not null
+ * 
  * Examples:
  * 1. {1, 2, 3, 4, 5, 6} -> {1, 4, 2, 5, 3, 6}
  * 2. {1, 2, 3, 4, 5, 6, 7, 8} -> {1, 5, 2, 6, 3, 7, 4, 8}

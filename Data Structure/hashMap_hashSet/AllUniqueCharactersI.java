@@ -6,6 +6,7 @@ package hashMap_hashSet;
  * Assumptions: 
  * 1. The only set of possible characters used in the string are 'a' - 'z', the 26 lower case letters.
  * 2. The given string is not null.
+ * 
  * Examples:
  * The characters used in "abcd" are unique, the characters used in "aba" are not unique
  */

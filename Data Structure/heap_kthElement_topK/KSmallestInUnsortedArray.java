@@ -10,10 +10,12 @@ import impl.Utils;
  * Assumptions:
  * 1. A is not null
  * 2. K >= 0 and <= A.length
+ * 
  * Examples:
  * A = {3, 4, 1, 2, 5}, K = 3, the 3 smallest numbers are {1, 2, 3}
  * 
- * Time: O(k + (n-k)logk) ?, Space: O(k) using Java priority queue, O(1) using array implementation
+ * Time: O(k + (n-k)logk) ?
+ * Space: O(k) using Java priority queue, O(1) using array implementation
  */
 public class KSmallestInUnsortedArray {
 	public int[] kSmallest(int[] array, int k) {

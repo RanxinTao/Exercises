@@ -13,7 +13,7 @@ import java.util.List;
  * 2. The order of the values in the pair does not matter.
  * 
  * Examples:
- * A = {2, 1, 3, 2, 4, 3, 4, 2}, target = 6, return [[2, 4], [3, 3]]
+ * 1. A = {2, 1, 3, 2, 4, 3, 4, 2}, target = 6, return [[2, 4], [3, 3]]
  * 
  * Time: O(nlogn)
  * Space: O(logn)

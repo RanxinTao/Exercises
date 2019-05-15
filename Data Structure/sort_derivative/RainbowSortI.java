@@ -7,12 +7,13 @@ import static impl.Utils.*;
  * balls are grouped on the right side. (Red is denoted by -1, Green is denoted by 0, and Blue is denoted by 1).
  * 
  * Examples:
- * {0} is sorted to {0}
- * {1, 0} is sorted to {0, 1}
- * {1, 0, 1, -1, 0} is sorted to {-1, 0, 0, 1, 1}
- * Assumptions: The input array is not null.
+ * 1. {0} is sorted to {0}
+ * 2. {1, 0} is sorted to {0, 1}
+ * 3. {1, 0, 1, -1, 0} is sorted to {-1, 0, 0, 1, 1}
+ * 4. Assumptions: The input array is not null.
  * 
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class RainbowSortI {
 	public int[] rainbowSort(int[] array) {

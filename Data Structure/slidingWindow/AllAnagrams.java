@@ -12,6 +12,7 @@ import java.util.Map;
  * Assumptions: 
  * 1. s is not null or empty
  * 2. l is not null
+ * 
  * Examples:
  * l = "abcbac", s = "ab", return [0, 3]
  * 

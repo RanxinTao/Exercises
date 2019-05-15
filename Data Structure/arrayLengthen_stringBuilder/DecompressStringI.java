@@ -9,6 +9,7 @@ package arrayLengthen_stringBuilder;
  * 1. The string is not null
  * 2. The characters used in the original string are guaranteed to be ¡®a¡¯ - ¡®z¡¯
  * 3. There are no adjacent repeated characters with length > 9
+ * 
  * Examples:
  * ¡°acb2c4¡± ¡ú ¡°acbbcccc¡±
  */

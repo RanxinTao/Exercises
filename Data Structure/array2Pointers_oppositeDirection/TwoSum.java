@@ -9,9 +9,9 @@ import java.util.Arrays;
  * The given array is not null and has length of at least 2
  * 
  * Examples:
- * A = {1, 2, 3, 4}, target = 5, return true (1 + 4 = 5)
- * A = {2, 4, 2, 1}, target = 4, return true (2 + 2 = 4)
- * A = {2, 4, 1}, target = 4, return false
+ * 1. A = {1, 2, 3, 4}, target = 5, return true (1 + 4 = 5)
+ * 2. A = {2, 4, 2, 1}, target = 4, return true (2 + 2 = 4)
+ * 3. A = {2, 4, 1}, target = 4, return false
  * 
  * Time: O(nlogn)
  * Space: O(logn)

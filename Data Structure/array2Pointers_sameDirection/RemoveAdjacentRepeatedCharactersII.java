@@ -6,6 +6,7 @@ package array2Pointers_sameDirection;
  *
  * Assumptions:
  * Try to do it in place.
+ * 
  * Examples:
  * ¡°aaaabbbc¡± is transferred to ¡°aabbc¡±
  */

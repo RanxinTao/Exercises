@@ -3,8 +3,8 @@ package tree;
 import impl.TreeNode;
 
 /**
- * Given a binary tree where all the right nodes are leaf nodes, flip it upside down and turn it into a tree 
- * with left leaf nodes as the root.
+ * Given a binary tree where all the right nodes are leaf nodes, flip it upside down and turn it into a tree with left 
+ * leaf nodes as the root.
  * 
  * Examples:
  *     1
@@ -18,20 +18,23 @@ import impl.TreeNode;
  *   2   4
  *  / \   
  * 1   5
+ * 
+ * Time: O(n)
+ * Space: O(1)
  */
 public class ReverseBinaryTreeUpsideDown {
 	public TreeNode reverse(TreeNode root) {
-		TreeNode prev = null;
+		TreeNode prevRoot = null;
 		TreeNode prevRight = null;
 		while (root != null) {
-			TreeNode next = root.left;
-			TreeNode right = root.right;
-			root.left = prev;
-			root.right = prevRight;
-			prev = root;
+			TreeNode nextRoot = root.left; // save the next level root
+			TreeNode right = root.right; // save the next level right (also is the current level right)
+			root.left = prevRoot; // change the current level left
+			root.right = prevRight; // change the current level right
+			prevRoot = root;
 			prevRight = right;
-			root = next;
+			root = nextRoot;
 		}
-		return prev;
+		return prevRoot;
 	}
 }

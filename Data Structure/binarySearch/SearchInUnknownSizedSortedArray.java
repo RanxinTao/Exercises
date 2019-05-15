@@ -9,11 +9,13 @@ package binarySearch;
  * Assumptions:
  * 1. dict A is not null.
  * 2. dict.get(i) will return null if index i is out of bounds.
+ * 
  * Examples:
  * A = {1, 2, 5, 9, ......}, T = 5, return 2
  * A = {1, 2, 5, 9, 12, ......}, T = 7, return -1
  * 
- * Time: O(logn), Space: O(1)
+ * Time: O(logn)
+ * Space: O(1)
  */
 public class SearchInUnknownSizedSortedArray {
 	public int search(Dictionary dict, int target) {

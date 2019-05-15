@@ -9,11 +9,13 @@ package binarySearch;
  * Assumptions:
  * 1. A is not null
  * 2. K is guaranteed to be <= A.length
+ * 
  * Examples:
  * A = {1, 2, 3}, T = 2, K = 3, return {2, 1, 3} or {2, 3, 1}
  * A = {1, 4, 6, 8}, T = 3, K = 3, return {4, 1, 6}
  * 
- * Time: O(min(logn, K)), Space: O(1)
+ * Time: O(min(logn, K))
+ * Space: O(1)
  */
 public class KClosestInSortedArray {
 	public int[] kClosest(int[] array, int target, int k) {

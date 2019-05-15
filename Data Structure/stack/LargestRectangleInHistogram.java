@@ -9,6 +9,7 @@ import java.util.LinkedList;
  * 
  * Assumptions:
  * The given array is not null or empty
+ * 
  * Examples:
  * { 2, 1, 3, 3, 4 }, the largest rectangle area is 3 * 3 = 9 (starting from index 2 and ending at index 4)
  */

@@ -10,6 +10,7 @@ import java.util.List;
  * Assumptions:
  * 1. The maximum length of valid url is 4096
  * 2. The list is not null and is not empty and does not contain null
+ * 
  * Examples:
  * [1, 2, 3, ..., 95, 96, 97, 98, 99, 100], 95 percentile of all lengths is 95.
  * 

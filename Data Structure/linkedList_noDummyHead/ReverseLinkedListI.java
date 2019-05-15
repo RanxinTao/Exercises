@@ -10,7 +10,8 @@ import impl.ListNode;
  * L = 1 -> null, return 1 -> null
  * L = 1 -> 2 -> 3 -> null, return 3 -> 2 -> 1 -> null
  * 
- * Time: O(n), Space: O(1)
+ * Time: O(n)
+ * Space: O(1)
  */
 public class ReverseLinkedListI {
 	public ListNode reverse(ListNode head) {

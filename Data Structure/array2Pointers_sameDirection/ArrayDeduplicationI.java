@@ -8,8 +8,9 @@ package array2Pointers_sameDirection;
  * 
  * Assumptions:
  * The given array is not null
+ * 
  * Examples:
- * {1, 2, 2, 3, 3, 3} -> {1, 2, 3}
+ * 1. {1, 2, 2, 3, 3, 3} -> {1, 2, 3}
  * 
  * Time: O(n)
  * Space: O(1)

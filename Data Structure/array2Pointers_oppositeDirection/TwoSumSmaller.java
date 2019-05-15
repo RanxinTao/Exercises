@@ -7,8 +7,9 @@ import java.util.Arrays;
  * 
  * Assumptions:
  * The given array is not null and has length of at least 2
+ * 
  * Examples:
- * A = {1, 2, 2, 4, 7}, target = 7, number of pairs is 6({1,2}, {1, 2}, {1, 4}, {2, 2}, {2, 4}, {2, 4})
+ * 1. A = {1, 2, 2, 4, 7}, target = 7, number of pairs is 6({1,2}, {1, 2}, {1, 4}, {2, 2}, {2, 4}, {2, 4})
  */
 public class TwoSumSmaller {
 	public int smallerPairs(int[] array, int target) {

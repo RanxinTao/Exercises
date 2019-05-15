@@ -11,8 +11,9 @@ import java.util.PriorityQueue;
  * Assumptions:
  * 1. A1 and A2 are both not null.
  * 2. There are no duplicate elements in A2.
+ * 
  * Examples:
- * A1 = {2, 1, 2, 5, 7, 1, 9, 3}, A2 = {2, 1, 3}, A1 is sorted to {2, 2, 1, 1, 3, 5, 7, 9}
+ * 1. A1 = {2, 1, 2, 5, 7, 1, 9, 3}, A2 = {2, 1, 3}, A1 is sorted to {2, 2, 1, 1, 3, 5, 7, 9}
  */
 public class SortInSpecifiedOrder {
 	public int[] sortSpecial(int[] A1, int[] A2) {

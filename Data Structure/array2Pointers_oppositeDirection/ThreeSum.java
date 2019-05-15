@@ -13,7 +13,7 @@ import java.util.List;
  * 2. No duplicate triples should be returned, order of the values in the tuple does not matter
  * 
  * Examples:
- * A = {1, 2, 2, 3, 2, 4}, target = 8, return [[1, 3, 4], [2, 2, 4]]
+ * 1. A = {1, 2, 2, 3, 2, 4}, target = 8, return [[1, 3, 4], [2, 2, 4]]
  * 
  * Time: O(n^2)
  * Space: O(logn)

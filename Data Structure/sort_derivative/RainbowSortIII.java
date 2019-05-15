@@ -6,6 +6,7 @@ package sort_derivative;
  * Assumptions:
  * 1. The input array is not null.
  * 2. k is guaranteed to be >= 1 and k << logn.
+ * 
  * Examples:
  * k = 1, {1} is sorted to {1}
  * k = 3, {1, 3, 2, 1, 2} is sorted to {1, 1, 2, 2, 3}

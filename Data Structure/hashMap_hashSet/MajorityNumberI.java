@@ -6,6 +6,7 @@ package hashMap_hashSet;
  * Assumptions:
  * 1. The given array is not null or empty
  * 2. It is guaranteed there exists such a majority number
+ * 
  * Examples:
  * A = {1, 2, 1, 2, 1}, return 1
  */

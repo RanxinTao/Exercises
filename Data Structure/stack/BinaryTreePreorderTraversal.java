@@ -19,7 +19,8 @@ import impl.TreeNode;
  *  1  4   11
  * Pre-order traversal is [5, 3, 1, 4, 8, 11]
  * 
- * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class BinaryTreePreorderTraversal {
 	public List<Integer> preOrder(TreeNode root) {

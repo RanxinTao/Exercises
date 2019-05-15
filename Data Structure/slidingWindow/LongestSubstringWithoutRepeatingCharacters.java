@@ -8,6 +8,7 @@ import java.util.Map;
  * 
  * Assumptions: 
  * input is not null
+ * 
  * Examples:
  * the longest substring without repeating letters for "bcdfbd" is "bcdf", we should return 4
  * 

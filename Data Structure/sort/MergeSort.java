@@ -12,7 +12,8 @@ import impl.Utils;
  * {3, 2, 1} is sorted to {1, 2, 3}
  * {4, 2, -3, 6, 1} is sorted to {-3, 1, 2, 4, 6}
  * 
- * Time: O(nlogn), Space: O(n)
+ * Time: O(nlogn)
+ * Space: O(n)
  */
 public class MergeSort {
 	public int[] mergeSort(int[] array) {
