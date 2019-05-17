@@ -7,8 +7,8 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
- * Given a dictionary containing many words, find the largest product of two words¡¯ lengths, 
- * such that the two words do not share any common characters.
+ * Given a dictionary containing many words, find the largest product of two words' lengths, such that the two words do 
+ * not share any common characters.
  * 
  * Assumptions:
  * 1. The words only contains characters of 'a' to 'z'
@@ -16,18 +16,19 @@ import java.util.Set;
  * 3. If there is no such pair of words, just return 0
  * 
  * Examples:
- * dictionary = [¡°abcde¡±, ¡°abcd¡±, ¡°ade¡±, ¡°xy¡±], the largest product is 5 * 2 = 10 (by choosing ¡°abcde¡± and ¡°xy¡±)
+ * dictionary = ["abcde", "abcd", "ade", "xy"], the largest product is 5 * 2 = 10 (by choosing "abcde" and "xy")
+ * 
+ * Time: O((n^2)logn)
+ * Space: O(n^2)
  */
 public class LargestProductOfLength {
 	public int largestProduct(String[] dict) {
 		Arrays.sort(dict, new Comparator<String>() {
-			@Override
 			public int compare(String s1, String s2) {
 				return ((Integer) s2.length()).compareTo(s1.length());
 			}
 		});
 		PriorityQueue<Entry> maxHeap = new PriorityQueue<>(new Comparator<Entry>() {
-			@Override
 			public int compare(Entry e1, Entry e2) {
 				return ((Integer) e2.product).compareTo(e1.product);
 			}
@@ -36,17 +37,17 @@ public class LargestProductOfLength {
 		maxHeap.offer(new Entry(1, 0, dict));
 		visited[1][0] = true;
 		while (!maxHeap.isEmpty()) {
-			Entry e = maxHeap.poll();
-			if (!hasDup(dict[e.i], dict[e.j])) {
-				return e.product;
+			Entry entry = maxHeap.poll();
+			if (!hasDup(dict[entry.i], dict[entry.j])) {
+				return entry.product;
 			} else {
-				if (e.i + 1 < dict.length && !visited[e.i + 1][e.j]) {
-					maxHeap.offer(new Entry(e.i + 1, e.j, dict));
-					visited[e.i + 1][e.j] = true;
+				if (entry.i + 1 < dict.length && !visited[entry.i + 1][entry.j]) {
+					maxHeap.offer(new Entry(entry.i + 1, entry.j, dict));
+					visited[entry.i + 1][entry.j] = true;
 				}
-				if (e.j + 1 < e.i && !visited[e.i][e.j + 1]) {
-					maxHeap.offer(new Entry(e.i, e.j + 1, dict));
-					visited[e.i][e.j + 1] = true;
+				if (entry.j + 1 < entry.i && !visited[entry.i][entry.j + 1]) {
+					maxHeap.offer(new Entry(entry.i, entry.j + 1, dict));
+					visited[entry.i][entry.j + 1] = true;
 				}
 			}
 		}
@@ -55,11 +56,11 @@ public class LargestProductOfLength {
 
 	private boolean hasDup(String shorter, String longer) {
 		Set<Character> charSet = new HashSet<>();
-		for (char ch : shorter.toCharArray()) {
-			charSet.add(ch);
+		for (int i = 0; i < shorter.length(); i++) {
+			charSet.add(shorter.charAt(i));
 		}
-		for (char ch : longer.toCharArray()) {
-			if (charSet.contains(ch)) {
+		for (int i = 0; i < longer.length(); i++) {
+			if (charSet.contains(longer.charAt(i))) {
 				return true;
 			}
 		}
@@ -76,5 +77,11 @@ public class LargestProductOfLength {
 			this.j = j;
 			product = dict[i].length() * dict[j].length();
 		}
+	}
+	
+	public static void main(String[] args) {
+		String[] dict = {"abcde", "abcd", "ade", "xy"};
+		LargestProductOfLength test = new LargestProductOfLength();
+		System.out.println(test.largestProduct(dict));
 	}
 }

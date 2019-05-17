@@ -8,8 +8,8 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
- * Given three arrays sorted in ascending order. Pull one number from each array to form a coordinate <x,y,z> in a 3D space. 
- * Find the coordinates of the points that is k-th closest to <0,0,0>.
+ * Given three arrays sorted in ascending order. Pull one number from each array to form a coordinate <x,y,z> in a 3D 
+ * space. Find the coordinates of the points that is k-th closest to <0,0,0>.
  * 
  * Assumptions:
  * 1. The three given arrays are not null or empty
@@ -17,12 +17,15 @@ import java.util.Set;
  * 
  * Examples:
  * A = {1, 3, 5}, B = {2, 4}, C = {3, 6}
- * The closest is <1, 2, 3>, distance is sqrt(1 + 4 + 9), the 2nd closest is <3, 2, 3>, distance is sqrt(9 + 4 + 9)
+ * 1. The closest is <1, 2, 3>, distance is sqrt(1 + 4 + 9)
+ * 2. The 2nd closest is <3, 2, 3>, distance is sqrt(9 + 4 + 9)
+ * 
+ * Time: O()
+ * Space: O()
  */
 public class KthClosestPointTo000 {
 	public List<Integer> closest(int[] a, int[] b, int[] c, int k) {
 		PriorityQueue<List<Integer>> minHeap = new PriorityQueue<>(new Comparator<List<Integer>>() {
-			@Override
 			public int compare(List<Integer> p1, List<Integer> p2) {
 				int d1 = distanceSq(a[p1.get(0)], b[p1.get(1)], c[p1.get(2)]);
 				int d2 = distanceSq(a[p2.get(0)], b[p2.get(1)], c[p2.get(2)]);
