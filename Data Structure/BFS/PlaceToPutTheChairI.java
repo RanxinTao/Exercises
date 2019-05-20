@@ -9,7 +9,7 @@ import java.util.Queue;
 /**
  * Given a gym with k pieces of equipment and some obstacles. We bought a chair and wanted to put this chair into 
  * the gym such that the sum of the shortest path cost from the chair to the k pieces of equipment is minimal. 
- * The gym is represented by a char matrix, ¡®E¡¯ denotes a cell with equipment, ¡®O¡¯ denotes a cell with an obstacle, 
+ * The gym is represented by a char matrix, 'E' denotes a cell with equipment, 'O' denotes a cell with an obstacle, 
  * 'C' denotes a cell without any equipment or obstacle. You can only move to neighboring cells (left, right, up, down) 
  * if the neighboring cell is not an obstacle. The cost of moving from one cell to its neighbor is 1. 
  * You can not put the chair on a cell with equipment or obstacle.
@@ -18,7 +18,7 @@ import java.util.Queue;
  * 1. There is at least one equipment in the gym
  * 2. The given gym is represented by a char matrix of size M * N, where M >= 1 and N >= 1, it is guaranteed to be not null
  * 3. It is guaranteed that each 'C' cell is reachable from all 'E' cells.
- * 4. If there does not exist such place to put the chair, just return null (Java) empty vector (C++)
+ * 4. If there does not exist such place to put the chair, just return {-1, -1}
  * 
  * Examples:
  * { { 'E', 'O', 'C' },
@@ -31,18 +31,16 @@ public class PlaceToPutTheChairI {
 		int[][] costs = new int[gym.length][gym[0].length];
 		for (int i = 0; i < gym.length; i++) {
 			for (int j = 0; j < gym[0].length; j++) {
-				if (gym[i][j] == 'E') {
-					// BFS from gym[i][j] which is E
-					addCost(costs, gym, i, j);
+				if (gym[i][j] == 'E') {		
+					addCost(costs, gym, i, j); // BFS from every E (equipment)
 				}
 			}
-		}
-		// find the cell with smallest sum of path cost to all the 'E' cells
-		List<Integer> res = null;
+		}	
+		List<Integer> res = Arrays.asList(-1, -1); // find the cell with smallest sum of path cost to all the 'E' cells
 		for (int i = 0; i < gym.length; i++) {
 			for (int j = 0; j < gym[0].length; j++) {
 				if (gym[i][j] == 'C') {
-					if (res == null) {
+					if (res.get(0) == -1) {
 						res = Arrays.asList(i, j);
 					} else if (costs[i][j] < costs[res.get(0)][res.get(1)]) {
 						res.set(0, i);

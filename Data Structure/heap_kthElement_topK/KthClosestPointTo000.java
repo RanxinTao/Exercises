@@ -20,8 +20,8 @@ import java.util.Set;
  * 1. The closest is <1, 2, 3>, distance is sqrt(1 + 4 + 9)
  * 2. The 2nd closest is <3, 2, 3>, distance is sqrt(9 + 4 + 9)
  * 
- * Time: O()
- * Space: O()
+ * Time: O(klogk)
+ * Space: O(k)
  */
 public class KthClosestPointTo000 {
 	public List<Integer> closest(int[] a, int[] b, int[] c, int k) {
@@ -37,7 +37,7 @@ public class KthClosestPointTo000 {
 			}
 		});
 		Set<List<Integer>> visited = new HashSet<>();
-		List<Integer> cur = Arrays.asList(0, 0, 0);
+		List<Integer> cur = Arrays.asList(0, 0, 0); // indices of A, B, C
 		minHeap.offer(cur);
 		visited.add(cur);
 		while (k > 1) {
@@ -57,8 +57,7 @@ public class KthClosestPointTo000 {
 			k--;
 		}
 		cur = minHeap.peek();
-		// replace the index with actual values in a, b, c
-		cur.set(0, a[cur.get(0)]);
+		cur.set(0, a[cur.get(0)]); // replace the index with actual values in a, b, c
 		cur.set(1, b[cur.get(1)]);
 		cur.set(2, c[cur.get(2)]);
 		return cur;
