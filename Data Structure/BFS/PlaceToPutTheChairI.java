@@ -25,6 +25,9 @@ import java.util.Queue;
  *   { 'C', 'E', 'C' },
  *   { 'C', 'C', 'C' } }
  * we should put the chair at (1, 0), so that the sum of cost from the chair to the two equipment is 1 + 1 = 2, which is minimal.
+ * 
+ * Time: O(emn), where e is the number of 'E' cells
+ * Space: O(mn)
  */
 public class PlaceToPutTheChairI {
 	public List<Integer> putChair(char[][] gym) {
