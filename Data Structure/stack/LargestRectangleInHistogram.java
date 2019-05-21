@@ -12,18 +12,20 @@ import java.util.LinkedList;
  * 
  * Examples:
  * { 2, 1, 3, 3, 4 }, the largest rectangle area is 3 * 3 = 9 (starting from index 2 and ending at index 4)
+ * 
+ * Time: O(n)
+ * Space: O(n)
  */
 public class LargestRectangleInHistogram {
 	public int largest(int[] array) {
 		int res = 0;
-		Deque<Integer> stack = new LinkedList<>();
+		Deque<Integer> stack = new LinkedList<>(); // stack of histogram indices
 		for (int i = 0; i <= array.length; i++) {
-			// explicitly add a bar of height 0, to pop out all the elements in the stack at last
-			int curHeight = i == array.length ? 0 : array[i];
+			int curHeight = i == array.length ? 0 : array[i]; // explicitly add a bar of height 0 at last, to pop out all the elements in the stack
 			while (!stack.isEmpty() && array[stack.peekFirst()] >= curHeight) {
-				int height = array[stack.pollFirst()];
-				int left = stack.isEmpty() ? 0 : stack.peekFirst() + 1;
-				res = Math.max(res, height * (i - left));
+				int height = array[stack.pollFirst()]; // if the previous bar is higher than the current bar, we pop it out
+				int left = stack.isEmpty() ? 0 : stack.peekFirst() + 1; // determine the left boundary
+				res = Math.max(res, height * (i - left)); // the right boundary is i
 			}
 			stack.offerFirst(i);
 		}

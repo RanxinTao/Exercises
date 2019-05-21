@@ -39,13 +39,13 @@ public class PlaceToPutTheChairI {
 				}
 			}
 		}	
-		List<Integer> res = Arrays.asList(-1, -1); // find the cell with smallest sum of path cost to all the 'E' cells
+		List<Integer> res = Arrays.asList(-1, -1); 
 		for (int i = 0; i < gym.length; i++) {
 			for (int j = 0; j < gym[0].length; j++) {
 				if (gym[i][j] == 'C') {
 					if (res.get(0) == -1) {
 						res = Arrays.asList(i, j);
-					} else if (costs[i][j] < costs[res.get(0)][res.get(1)]) {
+					} else if (costs[i][j] < costs[res.get(0)][res.get(1)]) { // find the cell with smallest sum of path cost to all the 'E' cells
 						res.set(0, i);
 						res.set(1, j);
 					}
