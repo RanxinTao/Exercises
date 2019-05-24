@@ -11,8 +11,8 @@ package array2Pointers_oppositeDirection;
  * { 2, 1, 3, 2, 4 }, the amount of water can be trapped is 1 + 1 = 2 (at index 1, 1 unit of water can be trapped and
  * index 3, 1 unit of water can be trapped)
  * 
- * Time: O()
- * Space: O()
+ * Time: O(n)
+ * Space: O(1)
  */
 public class MaxWaterTrappedI {
 	public int maxTrapped(int[] array) {
