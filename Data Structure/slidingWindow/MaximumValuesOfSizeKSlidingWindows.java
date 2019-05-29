@@ -13,8 +13,11 @@ import java.util.List;
  * 2. K >= 1, K <= A.length
  * 
  * Examples:
- * A = {1, 2, 3, 2, 4, 2, 1}, K = 3, the windows are {{1,2,3}, {2,3,2}, {3,2,4}, {2,4,2}, {4,2,1}},
+ * A = {1, 2, 3, 2, 4, 2, 1}, K = 3, the windows are {{1, 2, 3}, {2, 3, 2}, {3, 2, 4}, {2, 4, 2}, {4, 2, 1}},
  * and the maximum values of each K-sized sliding window are [3, 3, 4, 4, 4]
+ * 
+ * Time: O()
+ * Space: O()
  */
 public class MaximumValuesOfSizeKSlidingWindows {
 	public List<Integer> maxWindows(int[] array, int k) {
