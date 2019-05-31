@@ -16,28 +16,25 @@ import java.util.List;
  * A = {1, 2, 3, 2, 4, 2, 1}, K = 3, the windows are {{1, 2, 3}, {2, 3, 2}, {3, 2, 4}, {2, 4, 2}, {4, 2, 1}},
  * and the maximum values of each K-sized sliding window are [3, 3, 4, 4, 4]
  * 
- * Time: O()
- * Space: O()
+ * Time: O(n)
+ * Space: O(k)
  */
+// store the index (instead of the actual value) in a deque, and make sure their actual values are monotonously 
+// increasing from the first to the last, so the last one is the maximum value
 public class MaximumValuesOfSizeKSlidingWindows {
 	public List<Integer> maxWindows(int[] array, int k) {
 		List<Integer> res = new ArrayList<>();
-		// store the index instead of the actual value in the deque, and make sure they are monotonously increasing
-		// from first to last, so the last one is the maximum value
 		Deque<Integer> deque = new LinkedList<>();
 		for (int i = 0; i < array.length; i++) {
-			// discard any index with smaller value than index i
-			while (!deque.isEmpty() && array[deque.peekFirst()] <= array[i]) {
-				deque.pollFirst();
+			while (!deque.isEmpty() && array[deque.peekFirst()] <= array[i]) { 
+				deque.pollFirst(); // discard any index with smaller value than index i
 			}
-			deque.offerFirst(i);
-			// it is possible the head element is out of the current sliding window so we might need to discard it as well
-			if (!deque.isEmpty() && deque.peekLast() <= i - k) {
-				deque.pollLast();
+			deque.offerFirst(i);	
+			if (!deque.isEmpty() && deque.peekLast() <= i - k) { 
+				deque.pollLast(); // if the head element is out of the current sliding window, discard it as well
 			}
-			// after i >= k - 1, we begin to add maximum values to res
 			if (i >= k - 1) {
-				res.add(array[deque.peekLast()]);
+				res.add(array[deque.peekLast()]); // only after i >= k - 1, we begin to add maximum values to res
 			}
 		}
 		return res;
