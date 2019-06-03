@@ -9,6 +9,9 @@ package hashMap_hashSet;
  * 
  * Examples:
  * A = {1, 2, 1, 2, 1}, return 1
+ * 
+ * Time: O(n)
+ * Space: O(1)
  */
 public class MajorityNumberI {
 	public int majority(int[] array) {

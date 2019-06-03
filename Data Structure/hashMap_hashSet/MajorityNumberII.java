@@ -14,6 +14,9 @@ import java.util.List;
  * A = {1, 2, 1, 2, 1}, return [1, 2]
  * A = {1, 2, 1, 2, 3, 3, 1}, return [1]
  * A = {1, 2, 2, 3, 1, 3}, return []
+ * 
+ * Time: O(n)
+ * Space: O(1)
  */
 public class MajorityNumberII {
 	public List<Integer> majority(int[] array) {

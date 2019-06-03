@@ -4,17 +4,20 @@ package check2d_largest_longestSub;
  * Find the length of longest common subsequence of two given strings.
  * 
  * Assumptions:
- * s and t are not null
+ * The two given strings are not null
+ * 
  * Examples:
- * s = ¡°abcde¡±, t = ¡°cbabdfe¡±, the longest common subsequence of s and t is {¡®a¡¯, ¡®b¡¯, ¡®d¡¯, ¡®e¡¯}, the length is 4.
+ * s = "abcde", t = "cbabdfe", the longest common subsequence of s and t is {'a', 'b', 'd', 'e'}, the length is 4.
+ * 
+ * Time: O(st)
+ * Space: O(st)
  */
 public class LongestCommonSubsequence {
 	public int longest(String s, String t) {
 		if (s.length() == 0 || t.length() == 0) {
 			return 0;
 		}
-		// indicates the length of longest common substring for s (0 to i) and t (0 to j)
-		int[][] lcs = new int[s.length()][t.length()];
+		int[][] lcs = new int[s.length()][t.length()]; // lcs[i][j] = the length of LCS of s (0 to i) and t (0 to j)
 		for (int i = 0; i < s.length(); i++) {
 			for (int j = 0; j < t.length(); j++) {
 				if (i == 0 || j == 0) {
@@ -29,8 +32,8 @@ public class LongestCommonSubsequence {
 	
 	public static void main(String[] args) {
 		LongestCommonSubsequence test = new LongestCommonSubsequence();
-		String s = "e";
-		String t = "e";
+		String s = "abcdez";
+		String t = "cbabdfex";
 		System.out.println(test.longest(s, t));
 	}
 	

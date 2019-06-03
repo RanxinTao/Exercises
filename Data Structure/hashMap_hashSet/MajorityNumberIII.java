@@ -16,6 +16,9 @@ import java.util.Map;
  * A = {1, 2, 1, 2, 1}, K = 3, return [1, 2]
  * A = {1, 2, 1, 2, 3, 3, 1}, K = 4, return [1, 2, 3]
  * A = {2, 1}, K = 2, return []
+ * 
+ * Time: O(n)
+ * Space: O(n)
  */
 public class MajorityNumberIII {
 	public List<Integer> majority(int[] array, int k) {
