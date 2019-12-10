@@ -16,7 +16,7 @@ package binarySearch;
  * Time: O(logn)
  * Space: O(1)
  */
-public class LastOccurrence {
+public class LastOccurrence { // compare to SmallestElementLargerThanTarget
 	public int lastOccur(int[] array, int target) {
 		if (array == null || array.length == 0) {
 			return -1;
