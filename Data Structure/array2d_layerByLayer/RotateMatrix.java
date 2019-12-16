@@ -1,8 +1,5 @@
 package array2d_layerByLayer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import impl.Utils;
 
 /**

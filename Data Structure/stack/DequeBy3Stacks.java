@@ -17,12 +17,12 @@ import java.util.LinkedList;
 public class DequeBy3Stacks {
 	private Deque<Integer> left;
 	private Deque<Integer> right;
-	private Deque<Integer> temp;
+	private Deque<Integer> buffer;
 
 	public DequeBy3Stacks() {
 	    left = new LinkedList<>();
 	    right = new LinkedList<>();
-	    temp = new LinkedList<>(); 
+	    buffer = new LinkedList<>(); 
 	}
 
     public void offerFirst(int element) {
@@ -34,19 +34,31 @@ public class DequeBy3Stacks {
     }
     
     public Integer pollFirst() {
-    	return left.size() == 0 ? findBottomOfStack(right, true) : left.pollFirst();
+    	if (left.isEmpty()) {
+    		balance(left, right, buffer);
+    	}
+    	return left.pollFirst();
     }
     
     public Integer pollLast() {
-    	return right.size() == 0 ? findBottomOfStack(left, true) : right.pollFirst();
+    	if (right.isEmpty()) {
+    		balance(right, left, buffer);
+    	}
+    	return right.pollFirst();
     }
     
     public Integer peekFirst() {
-    	return left.size() == 0 ? findBottomOfStack(right, false) : left.peekFirst();
+    	if (left.isEmpty()) {
+    		balance(left, right, buffer);
+    	}
+    	return left.peekFirst();
     }
     
     public Integer peekLast() {
-    	return right.size() == 0 ? findBottomOfStack(left, false) : right.peekFirst();
+    	if (right.isEmpty()) {
+    		balance(right, left, buffer);
+    	}
+    	return right.peekFirst();
     }
     
     public int size() {
@@ -57,18 +69,16 @@ public class DequeBy3Stacks {
     	return size() == 0;
     }
     
-    private Integer findBottomOfStack(Deque<Integer> stack, boolean poll) {
-    	if (!stack.isEmpty()) {
-    		int size = stack.size();
-    		for (int i = 1; i <= size - 1; i++) {
-    			temp.offerFirst(stack.pollFirst());
-    		}
-    		int bottom = poll ? stack.pollFirst() : stack.peekFirst();
-    		for (int i = 1; i <= size - 1; i++) {
-    			stack.offerFirst(temp.pollFirst());
-    		}
-    		return bottom;
+    private void balance(Deque<Integer> to, Deque<Integer> from, Deque<Integer> buffer) {
+    	int size = from.size();
+    	for (int i = 0; i < size / 2; i++) { // move n/2 elements from the non-empty stack to the buffer stack.
+    		buffer.offerFirst(from.pollFirst());
     	}
-    	return null;
+    	while (!from.isEmpty()) {
+    		to.offerFirst(from.pollFirst()); // move the rest n/2 elements from the non-empty stack to the empty stack.
+    	}
+    	while (!buffer.isEmpty()) {
+    		from.offerFirst(buffer.pollFirst()); // move the first n/2 elements back from the buffer stack.
+    	}
     }
 }
