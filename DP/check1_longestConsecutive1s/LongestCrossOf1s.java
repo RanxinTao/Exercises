@@ -1,4 +1,4 @@
-package check1_largest_longestSub;
+package check1_longestConsecutive1s;
 
 /**
  * Given a matrix that contains only 1s and 0s, find the largest cross which contains only 1s, 

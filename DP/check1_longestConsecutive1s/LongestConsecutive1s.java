@@ -1,4 +1,4 @@
-package check1_largest_longestSub;
+package check1_longestConsecutive1s;
 
 /**
  * Given an array containing only 0s and 1s, find the length of the longest subarray of consecutive 1s.
