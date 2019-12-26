@@ -19,7 +19,7 @@ import impl.TreeNode;
  * 2. closest number to 10 is 11
  * 3. closest number to 6 is 6
  * 
- * Time: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: worst O(n), O(logn) if the binary tree is balanced.
  * Space: O(1)
  */
 public class ClosestNumberInBinarySearchTree {
