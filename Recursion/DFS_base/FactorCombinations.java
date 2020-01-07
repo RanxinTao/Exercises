@@ -1,6 +1,6 @@
-package DFS;
+package DFS_base;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,36 +17,31 @@ import java.util.List;
  * your solution should return
  * {{2, 2, 2, 3}, {2, 2, 6}, {2, 3, 4}, {2, 12}, {3, 8}, {4, 6}}
  * note: duplicate combination is not allowed.
- * 
- * Time: O(m^n) where m is the target (usually the minimum denomination is 1 cent) and n is the length of coins array.
  */
 public class FactorCombinations {
 	public List<List<Integer>> combinations(int target) {
-		return combinations(target, 2);
+		List<List<Integer>> res = new ArrayList<>();
+		combinations(target, 2, new ArrayList<>(), res);
+		return res;
 	}
 	
-	private List<List<Integer>> combinations(int target, int start) {
-		List<List<Integer>> res = new LinkedList<List<Integer>>();
-	    for (int i = start; i <= Math.sqrt(target); i++) {
-	    	if (target % i == 0) {
-	    		List<List<Integer>> subRes = combinations(target / i, i);
-	    		for (List<Integer> item : subRes) {
-	    			item.add(0, i);
-	    			res.add(item);
-	    		}
-	    	}
-	    }
-	    List<Integer> item = new LinkedList<>();
-    	item.add(target);
-    	res.add(item);
-	    return res;
+	private void combinations(int target, int start, List<Integer> cur, List<List<Integer>> res) {
+		if (target == 1 && cur.size() > 1) {
+			res.add(new ArrayList<>(cur));
+			return;
+		}
+		for (int i = start; i <= target; i++) {
+			if (target % i == 0) {
+				cur.add(i);
+				combinations(target / i, i, cur, res);
+				cur.remove(cur.size() - 1);
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
 		FactorCombinations test = new FactorCombinations();
 		int target = 24;
 		System.out.println(test.combinations(target));
-	}
-	
-	
+	}	
 }
