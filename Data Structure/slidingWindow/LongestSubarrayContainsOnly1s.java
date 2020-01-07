@@ -1,8 +1,5 @@
 package slidingWindow;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Given an array of integers that contains only 0s and 1s and a positive integer k, you can flip at most k 0s to 1s,
  * return the longest subarray that contains only integer 1 after flipping.

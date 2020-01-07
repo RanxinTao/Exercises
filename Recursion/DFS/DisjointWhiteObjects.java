@@ -9,6 +9,7 @@ package DFS;
  * Assumptions:
  * 1. The given image is represented by a integer matrix and all the values in the matrix are 0 or 1
  * 2. The given matrix is not null
+ * 
  * Examples:
  * the given image is
  * 0  0  0  1
