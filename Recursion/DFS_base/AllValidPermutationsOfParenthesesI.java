@@ -23,18 +23,18 @@ public class AllValidPermutationsOfParenthesesI {
 		return res;
 	}
 
-	private void validParentheses(int l, int r, char[] cur, int index, List<String> res) {
-		if (l == 0 && r == 0) {
+	private void validParentheses(int leftRemain, int rightRemain, char[] cur, int index, List<String> res) {
+		if (leftRemain == 0 && rightRemain == 0) {
 			res.add(new String(cur));
 			return;
 		}
-		if (l > 0) {
+		if (leftRemain > 0) {
 			cur[index] = '(';
-			validParentheses(l - 1, r, cur, index + 1, res);
+			validParentheses(leftRemain - 1, rightRemain, cur, index + 1, res);
 		}
-		if (r > l) {
+		if (rightRemain > leftRemain) {
 			cur[index] = ')';
-			validParentheses(l, r - 1, cur, index + 1, res);
+			validParentheses(leftRemain, rightRemain - 1, cur, index + 1, res);
 		}
 	}
 }

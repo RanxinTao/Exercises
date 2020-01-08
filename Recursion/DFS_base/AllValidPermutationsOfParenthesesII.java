@@ -7,7 +7,9 @@ import java.util.List;
 /**
  * Given all valid permutations of l pairs of (), m pairs of <> and n pairs of {}
  * 
- * Assumptions: l, m, n >= 0
+ * Assumptions: 
+ * 1. l, m, n >= 0
+ * 
  * Examples:
  * 1. l = 1, m = 1, n = 0, all the valid permutations are ["()<>", "(<>)", "<()>", "<>()"]
  * 
@@ -15,15 +17,15 @@ import java.util.List;
  * Space: O(l + m + n)
  */
 public class AllValidPermutationsOfParenthesesII {
+	private static final char[] PS = {'(', ')', '<', '>', '{', '}'};
+	
 	public List<String> validParentheses(int l, int m, int n) {
-		char[] parens = {'(', ')', '<', '>', '{', '}'};
 		List<String> res = new ArrayList<>();
-		addParenAtIdx(new int[] {l, l, m, m, n, n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res, parens);
+		addParenAtIdx(new int[] {l, l, m, m, n, n}, new LinkedList<>(), new char[2 * (l + m + n)], 0, res);
 		return res;
 	}
 
-	private void addParenAtIdx(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res, 
-			char[] parens) {
+	private void addParenAtIdx(int[] remain, Deque<Character> stack, char[] cur, int index, List<String> res) {
 		if (index == cur.length) {
 			res.add(new String(cur));
 			return;
@@ -31,20 +33,20 @@ public class AllValidPermutationsOfParenthesesII {
 		for (int i = 0; i < remain.length; i++) { // iterate all parentheses
 			if (i % 2 == 0) { // if it is a left parenthesis
 				if (remain[i] > 0) {
-					cur[index] = parens[i];
-					stack.offerFirst(parens[i]);
+					cur[index] = PS[i];
+					stack.offerFirst(PS[i]);
 					remain[i]--;
-					addParenAtIdx(remain, stack, cur, index + 1, res, parens);
+					addParenAtIdx(remain, stack, cur, index + 1, res);
 					stack.pollFirst();
 					remain[i]++;
 				}
 			} else { // if it is a right parenthesis
-				if (!stack.isEmpty() && stack.peekFirst() == parens[i - 1]) {
-					cur[index] = parens[i];
+				if (!stack.isEmpty() && stack.peekFirst() == PS[i - 1]) {
+					cur[index] = PS[i];
 					stack.pollFirst();
 					remain[i]--;
-					addParenAtIdx(remain, stack, cur, index + 1, res, parens);
-					stack.offerFirst(parens[i - 1]);
+					addParenAtIdx(remain, stack, cur, index + 1, res);
+					stack.offerFirst(PS[i - 1]);
 					remain[i]++;
 				}
 			}
