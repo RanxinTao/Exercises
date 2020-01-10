@@ -1,4 +1,4 @@
-package arrays_nPointers;
+package commonNumbersOfArrays;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * 2. There could be duplicate elements in each of the arrays.
  * 
  * Examples:
- * A = {1, 2, 2, 3}, B = {2, 2, 3, 5}, C = {2, 2, 4}, the common elements are [2, 2]
+ * A = {1, 2, 2, 3}, B = {2, 2, 3, 5}, C = {2, 2, 4}, the common elements are {2, 2}.
  * 
  * Time: O(a + b + c) where a, b, c is the length of array a, array b, array c respectively
  * Space: O(1)

@@ -21,8 +21,7 @@ public class MergeKSortedArray {
 			}
 		});
 		int totalLen = 0;
-		for (int i = 0; i < arrayOfArrays.length; i++) { // initiate minHeap
-			int[] curArr = arrayOfArrays[i];
+		for (int[] curArr : arrayOfArrays) { // initiate minHeap
 			totalLen += curArr.length;
 			if (curArr.length > 0) {
 				minHeap.offer(new Entry(curArr, 0));

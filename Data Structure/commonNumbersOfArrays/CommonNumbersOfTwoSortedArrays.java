@@ -1,4 +1,4 @@
-package arrays_nPointers;
+package commonNumbersOfArrays;
 
 import java.util.ArrayList;
 import java.util.List;

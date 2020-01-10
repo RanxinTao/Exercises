@@ -1,7 +1,6 @@
-package hashMap_hashSet;
+package commonNumbersOfArrays;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -16,14 +15,17 @@ import java.util.Map;
  * 
  * Examples:
  * A = {1, 2, 3, 2}, B = {3, 4, 2, 2, 2}, return [2, 2, 3] (there are both two 2s in A and B)
+ * 
+ * Time: O(a + b + aloga), if a is shorter than b
+ * Space: O(a), if a is shorter than b
  */
 public class CommonNumbersOfTwoArraysII {
-	public List<Integer> common(List<Integer> A, List<Integer> B) {
+	public List<Integer> common(int[] A, int[] B) {
 		List<Integer> res = new ArrayList<>();
 		Map<Integer, Integer> countA = buildMap(A);
 		for (int num : B) {
-			Integer count = countA.get(num);
-			if (count != null && count > 0) {
+			int count = countA.getOrDefault(num, 0);
+			if (count > 0) {
 				res.add(num);
 				countA.put(num, count - 1);
 			}
@@ -32,23 +34,18 @@ public class CommonNumbersOfTwoArraysII {
 		return res;
 	}
 
-	private Map<Integer, Integer> buildMap(List<Integer> list) {
+	private Map<Integer, Integer> buildMap(int[] nums) {
 		Map<Integer, Integer> res = new HashMap<>();
-		for (int num : list) {
-			Integer count = res.get(num);
-			if (count == null) {
-				res.put(num, 1);
-			} else {
-				res.put(num, count + 1);
-			}
+		for (int num : nums) {
+			res.put(num, res.getOrDefault(num, 0) + 1);
 		}
 		return res;
 	}
 	
 	public static void main(String[] args) {
 		CommonNumbersOfTwoArraysII test = new CommonNumbersOfTwoArraysII();
-		List<Integer> A = Arrays.asList(1,2,3,4,5,6,7,8);
-		List<Integer> B = Arrays.asList(3,4,2,2,2);
+		int[] A = {1, 2, 2, 3, 4, 5, 6, 7, 8};
+		int[] B = {3, 4, 2, 2, 2};
 		System.out.println(test.common(A, B));
 	}
 }

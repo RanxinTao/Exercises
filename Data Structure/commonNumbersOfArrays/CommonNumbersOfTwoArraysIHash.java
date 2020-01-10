@@ -1,4 +1,4 @@
-package hashMap_hashSet;
+package commonNumbersOfArrays;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,17 +16,22 @@ import java.util.Set;
  * Examples:
  * A = {1, 2, 3}, B = {3, 1, 4}, return [1, 3]
  * A = {}, B = {3, 1, 4}, return []
+ * 
+ * Time: O(ab + aloga), if a is shorter than b
+ * Space: O(a), if a is shorter than b
  */
-public class CommonNumbersOfTwoArraysI {
-	public List<Integer> common(List<Integer> a, List<Integer> b) {
-		List<Integer> res = new ArrayList<>();
-		// assume a is shorter than b, if not, swap a and b
-		if (a.size() > b.size()) {
-			List<Integer> tmp = a;
+public class CommonNumbersOfTwoArraysIHash {
+	public List<Integer> common(int[] a, int[] b) {
+		List<Integer> res = new ArrayList<>();	
+		if (a.length > b.length) { // assume a is shorter than b, if not, swap a and b
+			int[] tmp = a;
 			a = b;
 			b = tmp;
 		}
-		Set<Integer> set = new HashSet<>(a);
+		Set<Integer> set = new HashSet<>();
+		for (int num : a) {
+			set.add(num);
+		}
 		for (int num : b) {
 			if (set.contains(num)) {
 				res.add(num);

@@ -1,4 +1,4 @@
-package binarySearch;
+package commonNumbersOfArrays;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,12 +14,14 @@ import java.util.List;
  * Examples:
  * 1. A = {1, 2, 3}, B = {3, 1, 4}, return [1, 3]
  * 2. A = {}, B = {3, 1, 4}, return []
+ * 
+ * Time: O(blogb + alogb + aloga) < O(2blogb + alogb) = O((a + 2b)logb), if a is shorter than b
+ * Space: O(logb), if a is shorter than b
  */
-public class CommonNumbersOfTwoArraysI {
+public class CommonNumbersOfTwoArraysIBinarySearch {
 	public List<Integer> common(List<Integer> a, List<Integer> b) {
 		List<Integer> res = new ArrayList<>();
-		// assume a is shorter than b, if not, swap a and b
-		if (a.size() > b.size()) {
+		if (a.size() > b.size()) { // assume a is shorter than b, if not, swap a and b
 			List<Integer> tmp = a;
 			a = b;
 			b = tmp;
