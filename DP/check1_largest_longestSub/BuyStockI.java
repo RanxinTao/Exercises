@@ -1,14 +1,18 @@
 package check1_largest_longestSub;
 
 /**
- * Given an array of positive integers representing a stock's price on each day. On each day you can only make one operation: 
- * either buy or sell one unit of stock and you can make at most 1 transaction. Determine the maximum profit you can make.
+ * Given an array of positive integers representing a stock's price on each day. On each day you can only make one 
+ * operation: either buy or sell one unit of stock and you can make at most 1 transaction. Determine the maximum profit 
+ * you can make.
  * 
  * Assumptions: 
  * array is not null and has length >= 2
  * 
  * Examples:
  * {2, 3, 2, 1, 4, 5}, the maximum profit you can make is 5 - 1 = 4
+ * 
+ * Time: O(n)
+ * Space: O(1)
  */
 public class BuyStockI { // make differences between each element in the original array, then this problem becomes largest subarray sum.
 	public int maxProfit(int[] array) {
