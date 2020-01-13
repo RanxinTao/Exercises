@@ -2,9 +2,7 @@ package commonNumbersOfArrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * Find all common elements in k sorted arrays.
@@ -16,59 +14,53 @@ import java.util.PriorityQueue;
  * Examples:
  * Input = {{1, 2, 2, 3}, {2, 2, 3, 5}, {2, 2, 4}}, the common elements are {2, 2}.
  * 
- * Time: O()
- * Space: O()
+ * Time: O(kn), where n is the length of shortest list
+ * Space: O(k)
  */
+//min heap is not useful in this problem because we not only need to know the minimal value every time, but also need to iterate through 
+//all lists to see if their current values are equal, which has to cost O(k) every time
 public class CommonElementsInKSortedLists {
-	public List<Integer> commonElementsInKSortedArrays(List<List<Integer>> input) {
-		PriorityQueue<ListWrapper> minHeap = new PriorityQueue<>(new Comparator<ListWrapper>() {
-			public int compare(ListWrapper e1, ListWrapper e2) {
-				return ((Integer) e1.getValue()).compareTo(e2.getValue());
-			}
-		});
-		List<ListWrapper> wrappers = new ArrayList<>();
+	public List<Integer> commonElementsInKSortedArrays(List<List<Integer>> input) { 
 		List<Integer> res = new ArrayList<>();
+		List<ListWrapper> wrappers = new ArrayList<>();
 		for (List<Integer> list : input) {
-			if (list.size() == 0) {
-				return res;
-			}
-			ListWrapper wrapper = new ListWrapper(list, 0);
-			wrappers.add(wrapper);
-			minHeap.offer(wrapper);
+			wrappers.add(new ListWrapper(list, 0));
 		}
-		while (allHasNext(wrappers)) {
-			if (foundCommon(wrappers)) { // if all pointers point to a common element
-				res.add(wrappers.get(0).getValue());
-				for (ListWrapper wrapper : wrappers) {
-					wrapper.index++;
-				}
-			} else { // if the current elements are not common.
-				ListWrapper smallest = minHeap.poll();
-				smallest.index++;
-			}
+		Integer min = findMin(wrappers);
+		while (min != null) { // means that all the lists still have elements.
+			update(wrappers, res, min);
+			min = findMin(wrappers);
 		}
 		return res;
 	}
 	
-	private boolean allHasNext(List<ListWrapper> wrappers) {
+	private Integer findMin(List<ListWrapper> wrappers) { // return null if one of the lists has ended, otherwise return the minimal value.
+		int min = Integer.MAX_VALUE;
 		for (ListWrapper wrapper : wrappers) {
-			if (!wrapper.hasNext()) {
-				return false;
+			Integer value = wrapper.getValue();
+			if (value == null) {
+				return null;
 			}
+			min = Math.min(min, value);
 		}
-		return true;
+		return min;
 	}
 	
-	private boolean foundCommon(List<ListWrapper> wrappers) {
+	private void update(List<ListWrapper> wrappers, List<Integer> res, int min) { // update wrappers and result.
+		boolean allEqual = true;
 		for (ListWrapper wrapper : wrappers) {
-			if (wrapper.getValue() != wrappers.get(0).getValue()) {
-				return false;
+			if (wrapper.getValue() == min) {
+				wrapper.index++; // move the pointers pointing to the smallest values.
+			} else {
+				allEqual = false;
 			}
 		}
-		return true;
+		if (allEqual) { // only update result when all elements are equal.
+			res.add(min);
+		}
 	}
 	
-	static class ListWrapper {
+	static class ListWrapper { // a class wraps a list and a pointer
 		List<Integer> list;
 		int index;
 
@@ -77,12 +69,8 @@ public class CommonElementsInKSortedLists {
 			this.index = index;
 		}
 		
-		public int getValue() {
-			return list.get(index);
-		}
-		
-		public boolean hasNext() {
-			return index < list.size();
+		public Integer getValue() {
+			return index < list.size() ? list.get(index) : null;
 		}
 	}
 	
