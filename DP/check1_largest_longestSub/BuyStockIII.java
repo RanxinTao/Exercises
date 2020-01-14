@@ -16,6 +16,25 @@ package check1_largest_longestSub;
  */
 public class BuyStockIII {
 	public int maxProfit(int[] array) {
-		return 0;
+		int[] globalMaxArr = new int[array.length - 1]; // globalMax[i] represents max profit for sub array 0 to i.
+		int[] globalMaxReverse = new int[array.length - 1]; // globalMaxReverse[i] represents max profit for sub array i to array.length - 1.
+		int localMax = 0;
+		int globalMax = 0;
+		for (int i = 0; i < array.length - 1; i++) {
+			int diff = array[i + 1] - array[i];
+			localMax = Math.max(localMax + diff, 0);
+			globalMax = Math.max(localMax, globalMax);
+			globalMaxArr[i] = globalMax;	
+		}
+		
+		
+		int localMax = 0;
+		int globalMax = 0;
+		for (int i = 0; i < array.length - 1; i++) {
+			int diff = array[i + 1] - array[i];
+			localMax = Math.max(localMax + diff, 0); // buy and hold until current profit becomes negative, start over if negative.
+			globalMax = Math.max(localMax, globalMax);
+		}
+		return globalMax;
 	}
 }
