@@ -16,25 +16,36 @@ package check1_largest_longestSub;
  */
 public class BuyStockIII {
 	public int maxProfit(int[] array) {
-		int[] globalMaxArr = new int[array.length - 1]; // globalMax[i] represents max profit for sub array 0 to i.
-		int[] globalMaxReverse = new int[array.length - 1]; // globalMaxReverse[i] represents max profit for sub array i to array.length - 1.
-		int localMax = 0;
-		int globalMax = 0;
-		for (int i = 0; i < array.length - 1; i++) {
-			int diff = array[i + 1] - array[i];
-			localMax = Math.max(localMax + diff, 0);
-			globalMax = Math.max(localMax, globalMax);
-			globalMaxArr[i] = globalMax;	
+		int[] globalMaxArr = new int[array.length]; // globalMax[i] represents max profit for sub array 0 to i.
+		int[] globalMaxReverse = new int[array.length]; // globalMaxReverse[i] represents max profit for sub array i to array.length - 1.
+		int[] diff = new int[array.length - 1]; // diff[i] represents array[i + 1] - array[i].
+		for (int i = 0; i < diff.length; i++) {
+			diff[i] = array[i + 1] - array[i];
 		}
-		
-		
 		int localMax = 0;
 		int globalMax = 0;
-		for (int i = 0; i < array.length - 1; i++) {
-			int diff = array[i + 1] - array[i];
-			localMax = Math.max(localMax + diff, 0); // buy and hold until current profit becomes negative, start over if negative.
+		for (int i = 0; i < diff.length; i++) {
+			localMax = Math.max(localMax + diff[i], 0);
 			globalMax = Math.max(localMax, globalMax);
+			globalMaxArr[i + 1] = globalMax; // globalMaxArr[0] = 0, can't make any profit on a single day.
+		}
+		localMax = 0;
+		globalMax = 0;
+		for (int i = diff.length - 1; i >= 0; i--) {
+			localMax = Math.max(localMax + diff[i], 0);
+			globalMax = Math.max(localMax, globalMax);
+			globalMaxReverse[i] = globalMax; // for the same reason, globalMaxReverse[array.length - 1] = 0
+		}
+		globalMax = 0;
+		for (int i = 0; i < array.length; i++) {
+			globalMax = Math.max(globalMax, globalMaxArr[i] + globalMaxReverse[i]);
 		}
 		return globalMax;
+	}
+	
+	public static void main(String[] args) {
+		BuyStockIII test = new BuyStockIII();
+		int[] array = {2, 3, 2, 1, 4, 5, 2, 11};
+		System.out.println(test.maxProfit(array));
 	}
 }

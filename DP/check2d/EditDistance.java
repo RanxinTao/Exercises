@@ -4,7 +4,9 @@ package check2d;
  * Given two strings of alphanumeric characters, determine the minimum number of Replace, Delete, and Insert 
  * operations needed to transform one string into the other.
  * 
- * Assumptions: both strings are not null
+ * Assumptions: 
+ * both strings are not null
+ * 
  * Examples:
  * 1. string one: "sigh", string two: "asith", the edit distance between one and two is 2 (one insert "a" at front then 
  * replace "g" with "t").

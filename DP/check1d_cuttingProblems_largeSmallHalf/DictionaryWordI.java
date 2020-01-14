@@ -9,6 +9,7 @@ import java.util.Set;
  * Assumptions:
  * 1. input is not null and is not empty
  * 2. dict is not null and is not empty and all the words in the dict are not null or empty
+ * 
  * Examples: 
  * Dictionary: {"bob", "cat", "rob"}
  * 1. Word: "robob" return false

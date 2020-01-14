@@ -12,6 +12,7 @@ import impl.Point;
  * Assumptions: 
  * 1. array is not null and not empty
  * 2. Note: if there does not even exist 2 points can form a line with positive slope, should return 0.
+ * 
  * Examples:
  * <0, 0>, <1, 1>, <2, 3>, <3, 3>, the maximum set of points are {<0, 0>, <1, 1>, <2, 3>}, the size is 3.
  */
