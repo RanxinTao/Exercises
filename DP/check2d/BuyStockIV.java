@@ -12,10 +12,11 @@ package check2d;
  * {2, 3, 2, 1, 4, 5, 2, 11}, K = 3, the maximum profit you can make is (3 - 2) + (5 - 1) + (11 - 2) = 14
  * 
  * Depends on whether or not we will sell on the last day, we have two conditions:
- * 1. if we are going to sell on the last day, we have k - 1 transactions before the last day, total profit =
- * the profit earned during k - 1 transactions + the profit made by the last day sell.
- * 2. if we are not going to sell on the last day, our max profit = max profit we can make by k transactions on
- * all days expect the last day. Therefore, we can derive the following induction rule:
+ * 1. if we are going to sell on the last day, then the total max profit = the max profit earned from at most k - 1 
+ * transactions before the last day + the profit made by the last day sell.
+ * 2. if we are not going to sell on the last day, the max profit = max profit made by at most k transactions before 
+ * the last day. 
+ * Therefore, we can derive the following induction rule:
  * Induction rule:
  * dp[k][i] = 0 (k = 0 or i = 0)
  * 		    = max(dp[k][i - 1], max(array[i] - array[j] + dp[k - 1][j])) (for all j in range [0, i - 1])
