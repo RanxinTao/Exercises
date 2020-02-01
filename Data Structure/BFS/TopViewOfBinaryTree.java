@@ -1,8 +1,11 @@
 package BFS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 import impl.TreeNode;
@@ -41,34 +44,48 @@ public class TopViewOfBinaryTree {
 		if (root == null) {
 			return new ArrayList<>();
 		}
-		Integer[] res = new Integer[getRange(root)]; 
+		Map<Integer, Integer> widthToVal = new HashMap<>();
+		Map<TreeNode, Integer> nodeToWidth = new HashMap<>();
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.offer(root);
-		int pos = 0;
+		nodeToWidth.put(root, 0);
 		while (!queue.isEmpty()) {
 			TreeNode curNode = queue.poll();
-			res.add(curNode.key);
+			int curWidth = nodeToWidth.get(curNode);
+			if (widthToVal.get(curWidth) == null) {
+				widthToVal.put(curWidth, curNode.key);
+			}
 			if (curNode.left != null) {
 				queue.offer(curNode.left);
+				nodeToWidth.put(curNode.left, curWidth - 1);
 			}
 			if (curNode.right != null) {
 				queue.offer(curNode.right);
+				nodeToWidth.put(curNode.right, curWidth + 1);
 			}
+		}
+		return Arrays.asList(mapToArray(widthToVal));
+	}
+	
+	private Integer[] mapToArray(Map<Integer, Integer> widthToVal) {
+		int minWidth = Integer.MAX_VALUE;
+		for (int width : widthToVal.keySet()) {
+			minWidth = Math.min(minWidth, width);
+		}
+		Integer[] res = new Integer[widthToVal.size()];
+		for (int width : widthToVal.keySet()) {
+			res[width - minWidth] = widthToVal.get(width);
 		}
 		return res;
 	}
 	
-	private int getRange(TreeNode root) {
-		int left = 0;
-		while (root.left != null) {
-			left++;
-			root = root.left;
-		}
-		int right = 0;
-		while (root.right != null) {
-			right++;
-			root = root.right;
-		}
-		return left + right + 1;
+	public static void main(String[] args) {
+		TopViewOfBinaryTree test = new TopViewOfBinaryTree();
+		TreeNode first = new TreeNode(1); TreeNode second = new TreeNode(2); TreeNode third = new TreeNode(3);
+		TreeNode fourth = new TreeNode(4); TreeNode fifth = new TreeNode(5); TreeNode sixth = new TreeNode(6);
+		TreeNode seventh = new TreeNode(7);
+		first.left = second; first.right = third; second.left = fourth; second.right = fifth; third.left = sixth;
+		third.right = seventh;
+		System.out.println(test.topView(first));
 	}
 }
