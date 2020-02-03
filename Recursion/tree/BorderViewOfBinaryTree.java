@@ -34,13 +34,24 @@ import impl.TreeNode;
 public class BorderViewOfBinaryTree {
 	public List<Integer> borderView(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
-		res.addAll(getLeftBorderNodes(root));
+		if (root == null) {
+			return res;
+		}
+		res.add(root.key);
+		if (root.left == null && root.right == null) {
+			return res;
+		}
+		List<Integer> leftBorder = getLeftBorderNodes(root.left);
+		List<Integer> rightBorder = getRightBorderNodes(root.right);
 		List<Integer> leafNodes = new ArrayList<>();
 		getLeafNodes(root, leafNodes);
-		for (int i = 1; i < leafNodes.size() - 1; i++) {
-			res.add(leafNodes.get(i));
+		for (int i = 0; i < leftBorder.size() - 1; i++) {
+			res.add(leftBorder.get(i));
 		}
-		res.addAll(getRightBorderNodes(root.right));
+		res.addAll(leafNodes);
+		for (int i = 1; i < rightBorder.size(); i++) {
+			res.add(rightBorder.get(i));
+		}
 		return res;
 	}
 	
@@ -78,11 +89,9 @@ public class BorderViewOfBinaryTree {
 	public static void main(String[] args) {
 		BorderViewOfBinaryTree test = new BorderViewOfBinaryTree();
 		TreeNode root = new TreeNode(1);
-		root.left = new TreeNode(2); root.right = new TreeNode(3);
-		root.left.left = new TreeNode(4); root.left.right = new TreeNode(5); 
-		root.right.left = new TreeNode(6); root.right.right = new TreeNode(7);
-		root.left.left.right = new TreeNode(9); root.right.left.right = new TreeNode(8);
-		root.left.left.right.right = new TreeNode(11);
+		root.right = new TreeNode(2);
+		root.right.left = new TreeNode(3); root.right.right = new TreeNode(4);
+		root.right.left.left = new TreeNode(5); root.right.left.right = new TreeNode(6);
 		System.out.println(test.borderView(root));
 	}
 }
