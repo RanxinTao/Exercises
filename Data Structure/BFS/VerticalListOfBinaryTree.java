@@ -1,7 +1,6 @@
 package BFS;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,40 +10,36 @@ import java.util.Queue;
 import impl.TreeNode;
 
 /**
- * Given a binary tree, get the top view of it. Top view of a binary tree is the set of nodes visible when the tree is
- * viewed from the top. A node x belongs to the output if x is the topmost node at its column. The nodes in the output
- * list should be from left to right. 
+ * Given a binary tree, get the vertically representation of it as a list of lists.
+ * The columns should be from left to right, and for each column the nodes should be placed from top to bottom, from
+ * left to right.
  * 
  * Examples:
- * 1.
+ * Input:
  *      1              
  *     / \     
  *    2   3 
  *   / \ / \
- *  4 (5,6) 7
- * the top view is [4, 2, 1, 3, 7]
- * 
- * 2.
- *      1
- *     / \
- *    2   3
- *     \
- *      4
- *       \
- *        5 
- *         \
- *          6
- * the top view is [2, 1, 3, 6]
- * 
+ *  4  5,6  7
+ *       \   \
+ *        8   9 
+ * Output:
+ * [[4], // left most column
+ *  [2], // 2nd left-most column
+ *  [1, 5, 6], // 3rd left-most column, top -> bottom, left -> right
+ *  [3, 8],
+ *  [7],
+ *  [9]]
+ *  
  * Time: O(n)
  * Space: O(n)
  */
-public class TopViewOfBinaryTree {
-	public List<Integer> topView(TreeNode root) {
+public class VerticalListOfBinaryTree {
+	public List<List<Integer>> verticalPrint(TreeNode root) {
 		if (root == null) {
 			return new ArrayList<>();
 		}
-		Map<Integer, Integer> distToVal = new HashMap<>();
+		Map<Integer, List<Integer>> distToVals = new HashMap<>();
 		Map<TreeNode, Integer> nodeToDist = new HashMap<>();
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.offer(root);
@@ -52,7 +47,8 @@ public class TopViewOfBinaryTree {
 		while (!queue.isEmpty()) {
 			TreeNode curNode = queue.poll();
 			int curDist = nodeToDist.get(curNode);
-			distToVal.putIfAbsent(curDist, curNode.key);
+			distToVals.putIfAbsent(curDist, new ArrayList<>());
+			distToVals.get(curDist).add(curNode.key);
 			if (curNode.left != null) {
 				queue.offer(curNode.left);
 				nodeToDist.put(curNode.left, curDist - 1);
@@ -62,28 +58,28 @@ public class TopViewOfBinaryTree {
 				nodeToDist.put(curNode.right, curDist + 1);
 			}
 		}
-		return Arrays.asList(mapToArray(distToVal));
+		return mapToArray(distToVals);
 	}
 	
-	private Integer[] mapToArray(Map<Integer, Integer> distToVal) {
+	private List<List<Integer>> mapToArray(Map<Integer, List<Integer>> distToVals) {
 		int minDist = Integer.MAX_VALUE;
-		for (int dist : distToVal.keySet()) {
+		for (int dist : distToVals.keySet()) {
 			minDist = Math.min(minDist, dist);
 		}
-		Integer[] res = new Integer[distToVal.size()];
-		for (int dist : distToVal.keySet()) {
-			res[dist - minDist] = distToVal.get(dist);
+		List<List<Integer>> res = new ArrayList<>();
+		for (int i = 0; i < distToVals.size(); i++, minDist++) {
+			res.add(distToVals.get(minDist));
 		}
 		return res;
 	}
 	
 	public static void main(String[] args) {
-		TopViewOfBinaryTree test = new TopViewOfBinaryTree();
+		VerticalListOfBinaryTree test = new VerticalListOfBinaryTree();
 		TreeNode first = new TreeNode(1); TreeNode second = new TreeNode(2); TreeNode third = new TreeNode(3);
 		TreeNode fourth = new TreeNode(4); TreeNode fifth = new TreeNode(5); TreeNode sixth = new TreeNode(6);
-		TreeNode seventh = new TreeNode(7);
+		TreeNode seventh = new TreeNode(7); TreeNode eighth = new TreeNode(8); TreeNode ninth = new TreeNode(9);
 		first.left = second; first.right = third; second.left = fourth; second.right = fifth; third.left = sixth;
-		third.right = seventh;
-		System.out.println(test.topView(first));
+		third.right = seventh; sixth.right = eighth; seventh.right = ninth;
+		System.out.println(test.verticalPrint(first));
 	}
 }

@@ -1,4 +1,4 @@
-package tree;
+package binarySearchTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,8 @@ import impl.TreeNode;
  *  1  4   11      
  * get the keys in [2, 5] in ascending order, result is [3, 4, 5]
  * 
- * Time: O(n), Space: worst O(n), O(logn) is the binary tree is balanced.
+ * Time: O(n)
+ * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
 public class GetKeysInBinarySearchTreeInGivenRange {
 	public List<Integer> getRange(TreeNode root, int min, int max) {
