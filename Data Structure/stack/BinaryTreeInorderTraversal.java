@@ -25,6 +25,25 @@ import impl.TreeNode;
 public class BinaryTreeInorderTraversal {
 	public List<Integer> inOrder(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
+		Deque<TreeNode> stack = new LinkedList<>();
+		pushLeftBranch(root, stack); // push the whole left branch, so next time pop this node, we only handle itself and its right branch
+		while (!stack.isEmpty()) {
+			TreeNode cur = stack.pollFirst();
+			res.add(cur.key);
+			pushLeftBranch(cur.right, stack);
+		}
+		return res;
+	}
+	
+	private void pushLeftBranch(TreeNode root, Deque<TreeNode> stack) {
+		while (root != null) {
+			stack.offerFirst(root);
+			root = root.left;
+		}
+	}
+	
+	/*public List<Integer> inOrder(TreeNode root) {
+		List<Integer> res = new ArrayList<>();
 		// corner case
 		if (root == null) {
 			return res;
@@ -57,16 +76,13 @@ public class BinaryTreeInorderTraversal {
 			prev = cur;
 		}
 		return res;
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		BinaryTreeInorderTraversal test = new BinaryTreeInorderTraversal();
-		TreeNode root = new TreeNode(5);
-		root.left = new TreeNode(3);
-		root.right = new TreeNode(10);
-		root.left.right = new TreeNode(4);
-		root.right.left = new TreeNode(8);
-		root.right.left.right = new TreeNode(9);
-		System.out.println(test.inOrder(root));
+		TreeNode _5 = new TreeNode(5); TreeNode _3 = new TreeNode(3); TreeNode _8 = new TreeNode(8);
+		TreeNode _4 = new TreeNode(4); TreeNode _1 = new TreeNode(1); TreeNode _11 = new TreeNode(11);
+		_5.left = _3; _5.right = _8; _3.left = _1; _3.right = _4; _8.right = _11;
+		System.out.println(test.inOrder(_5));
 	}
 }
