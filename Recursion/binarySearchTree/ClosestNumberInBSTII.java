@@ -16,11 +16,12 @@ import impl.TreeNode;
  * Time: O(n)
  * Space: worst O(n), O(logn) if the binary tree is balanced.
  */
-public class ClosestNumberInBinarySearchTreeII { // not the best solution, best time complexity can be reduced to O(logn) when the tree is balanced.
+//not the best solution, by using iterative inorder, best time complexity can be reduced to O(logn) when the tree is balanced.
+public class ClosestNumberInBSTII { 
 	public int[] closestKValues(TreeNode root, double target, int k) {
 		List<Integer> res = new LinkedList<>();
 		inOrder(root, target, k, res);
-		return convertToIntArray(res);
+		return listToArray(res);
 	}
 	
 	private void inOrder(TreeNode root, double target, int k, List<Integer> res) {
@@ -38,7 +39,7 @@ public class ClosestNumberInBinarySearchTreeII { // not the best solution, best 
 		}
 	}
 	
-	private int[] convertToIntArray(List<Integer> list) {
+	private int[] listToArray(List<Integer> list) {
 		int[] res = new int[list.size()];
 		for (int i = 0; i < res.length; i++) {
 			res[i] = list.get(i);

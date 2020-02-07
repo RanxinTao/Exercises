@@ -20,7 +20,7 @@ import impl.TreeNode;
  * Time: O(n)
  * Space: worst O(n), O(logn) is the binary tree is balanced.
  */
-public class GetKeysInBinarySearchTreeInGivenRange {
+public class GetKeysInBSTInGivenRange {
 	public List<Integer> getRange(TreeNode root, int min, int max) {
 		if (root == null) {
 			return new ArrayList<Integer>();

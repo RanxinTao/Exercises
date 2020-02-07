@@ -13,7 +13,7 @@ import impl.TreeNode;
  *   / \ / \          / \ / \
  *  1  5 3  7        1  3 5  7
  */
-public class RecoverBinarySearchTree {
+public class RecoverBST {
 	public TreeNode recover(TreeNode root) {
 		if (root == null) {
 			return null;

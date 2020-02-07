@@ -11,7 +11,7 @@ import impl.TreeNode;
  * 
  * Time: O(n), Space: O(n), O(logn) if the tree is balanced.
  */
-public class IsBinarySearchTreeOrNot {
+public class IsBSTOrNot {
 	public boolean isBST(TreeNode root) {
 		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
