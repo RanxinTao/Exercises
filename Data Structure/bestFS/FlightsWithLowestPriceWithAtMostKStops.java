@@ -19,8 +19,8 @@ import java.util.PriorityQueue;
  * 2. Input: n = 3, flights = [[0, 1, 100], [0, 2, 1000], [1, 2, 200]], src = 0, dst = 2, k = 0
  * Output: 1000
  * 
- * Time: O(n)
- * Space: worst O(n), O(logn) if the binary tree is balanced
+ * Time: O(n + mlogm), where m is the total number of flights
+ * Space: O(n + m)
  */
 public class FlightsWithLowestPriceWithAtMostKStops {
 	public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
