@@ -22,6 +22,7 @@ public class FactorCombinations {
 	public List<List<Integer>> combinations(int target) {
 		List<List<Integer>> res = new ArrayList<>();
 		combinations(target, 2, new ArrayList<>(), res);
+		// res.add(Arrays.asList(target)); // depends on if target itself counts towards a factor
 		return res;
 	}
 	
@@ -33,7 +34,7 @@ public class FactorCombinations {
 		for (int i = start; i <= target; i++) {
 			if (target % i == 0) {
 				cur.add(i);
-				combinations(target / i, i, cur, res);
+				combinations(target / i, i, cur, res); // pass i as the new start value to avoid duplicate
 				cur.remove(cur.size() - 1);
 			}
 		}
