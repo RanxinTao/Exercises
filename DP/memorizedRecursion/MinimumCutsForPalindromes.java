@@ -1,4 +1,4 @@
-package hash;
+package memorizedRecursion;
 
 /**
  * Given a string, a partitioning of the string is a palindrome partitioning if every substring of the partition 
