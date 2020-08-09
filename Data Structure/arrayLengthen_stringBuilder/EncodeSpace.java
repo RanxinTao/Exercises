@@ -5,7 +5,7 @@ package arrayLengthen_stringBuilder;
  * performs this encoding for a given string.
  * 
  * Examples:
- * "google/q?flo wer market" ¡ú "google/q?flo20%wer20%market"
+ * 1. "google/q?flo wer market" -> "google/q?flo20%wer20%market"
  */
 public class EncodeSpace {
 	public String encode(String input) {
