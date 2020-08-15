@@ -9,6 +9,7 @@ import java.util.List;
  * 
  * Assumptions: 
  * There could be duplicate characters in the original set
+ * 
  * Examples:
  * 1. Set = "abc", all the subsets are ["", "a", "ab", "abc", "ac", "b", "bc", "c"]
  * 2. Set = "abb", all the subsets are ["", "a", "ab", "abb", "b", "bb"]

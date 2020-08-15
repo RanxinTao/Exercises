@@ -1,34 +1,35 @@
 package sort_derivative;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import impl.Utils;
 
 /**
- * Find the K smallest numbers in an unsorted integer array A. The returned numbers should be in ascending order.
+ * Given an unsorted array nums, reorder it such that nums[0] < nums[i] > nums[2] < nums[3]....
+ * Follow up: Can you do it in O(1) time and/or in place with O(1) extra space?
  * 
  * Assumptions:
- * 1. A is not null
- * 2. K >= 0 and <= A.length
+ * 1. You may assume all input has valid answer.
  * 
  * Examples:
- * A = {3, 4, 1, 2, 5}, K = 3, the 3 smallest numbers are {1, 2, 3}
+ * 1. Given nums = [1, 5, 1, 1, 6, 4], one possible anwser is [1, 4, 1, 5, 1, 6].
+ * 2. Given nums = [1, 3, 2, 2, 3, 1], one possible answer is [2, 3, 1, 3, 1, 2].
  * 
- * Time (quick select): average O(n), worst O(n^2)
- * Space: average O(logn), worst O(n)
+ * Time: average O(n), worst O(n^2), because of quick select algorithm
+ * Space: average O(logn), worst O(n), because of quick select algorithm
+ * 
+ * Reference: https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/O(n)%2BO(1)-after-median-Virtual-Indexing
  */
-public class KSmallestInUnsortedArray {
-	public int[] kSmallest(int[] array, int k) {
-		if (array.length == 0 || k == 0) {
-			return new int[0];
+public class WiggleSortII {
+	public int[] wiggleSort(int[] nums) { // this method is not in place, but good enough
+		int n = nums.length;
+		int[] res = new int[n];
+		quickSelect(nums, 0, n - 1, n / 2);
+		int l = 0;
+		int r = n - 1;
+		for (int i = 0; i < n; i++) {
+			res[i] = i % 2 == 0 ? nums[l++] : nums[r--];
 		}
-		quickSelect(array, 0, array.length - 1, k - 1);
-		int[] res = new int[k];
-		for (int i = 0; i < k; i++) {
-			res[i] = array[i];
-		}
-		Arrays.sort(res);
 		return res;
 	}
 	
@@ -64,10 +65,20 @@ public class KSmallestInUnsortedArray {
 		array[j] = tmp;
 	}
 	
+	/*public int[] wiggleSort(int[] nums) { // this method sorts the whole array first so the time complexity is no less than nlogn
+		int[] res = new int[nums.length];
+		Arrays.sort(nums);
+		int l = 0;
+		int r = nums.length - 1;
+		for (int i = 0; i < nums.length; i++) {
+			res[i] = i % 2 == 0 ? nums[l++] : nums[r--];
+		}
+		return res;
+	}*/
+	
 	public static void main(String[] args) {
-		KSmallestInUnsortedArray test = new KSmallestInUnsortedArray();
-		int[] array = {3,4,1,2,5};
-		int k = 3;
-		Utils.printArray(test.kSmallest(array, k));
+		WiggleSortII test = new WiggleSortII();
+		int[] nums = {1, 5, 1, 1, 6, 4};
+		Utils.printArray(test.wiggleSort(nums));
 	}
 }
