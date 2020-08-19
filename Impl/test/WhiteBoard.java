@@ -3,7 +3,7 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-import DFS.AllPermutationsI;
+import dfs.AllPermutationsI;
 import impl.ListNode;
 import impl.TreeNode;
 
