@@ -1,8 +1,6 @@
-package BFS;
+package bfs;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 import impl.Utils;
@@ -28,7 +26,8 @@ import impl.Utils;
  * 1 -1 2 -1
  * 0 -1 3  4
  * 
- * Thoughts: BFS from all the gates simultaneously.
+ * Thoughts: Instead of BFS from each gate one by one like in the Problem "Place To Put The Chair", just BFS from all 
+ * the gates simultaneously, because we only need to find the distance to the nearest gate, not distance to all gates.
  * 
  * Time: O(mn)
  * Space: O(mn)
@@ -38,59 +37,36 @@ public class WallsAndGates {
 		if (rooms.length == 0 || rooms[0].length == 0) {
 			return rooms;
 		}
+		int[][] dirs = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 		int m = rooms.length;
 		int n = rooms[0].length;
-		Queue<Cell> q = new LinkedList<>();
+		Queue<Integer> q = new LinkedList<>();
 		for (int i = 0; i < m; i++) {
 			for (int j = 0; j < n; j++) {
 				if (rooms[i][j] == 0) { // enqueue the gate
-					q.add(new Cell(i, j));
+					q.offer(i * n + j);
 				}
 			}
-		} // queue is ready now
+		}
 		int dist = 1; // the distance from the room to its nearest gate
 		while (!q.isEmpty()) {
 			int size = q.size();
 			for (int k = 0; k < size; k++) {
-				Cell cur = q.poll();
-				List<Cell> neis = getNeis(cur, rooms);
-				for (Cell nei : neis) {
-					if (rooms[nei.i][nei.j] == Integer.MAX_VALUE) { // no need to maintain a visited array, INF means not visited.
-						rooms[nei.i][nei.j] = dist;
-						q.add(nei);
+				int cord = q.poll();
+				int i = cord / n;
+				int j = cord % n;
+				for (int[] dir : dirs) {
+					int neiI = i + dir[0];
+					int neiJ = j + dir[1];
+					if (neiI >= 0 && neiI < m && neiJ >= 0 && neiJ < n && rooms[neiI][neiJ] == Integer.MAX_VALUE) { // no need to maintain a visited array, INF means not visited.
+						q.offer(neiI * n + neiJ);
+						rooms[neiI][neiJ] = dist; // must update value here because we are using rooms[neiI][neiJ] == Integer.MAX_VALUE to check if visited, not updating here will add more to the queue for the next round.
 					}
 				}
 			}
 			dist++;
 		}
 		return rooms;
-	}
-	
-	private List<Cell> getNeis(Cell cur, int[][] rms) { // only get room neighbors
-		List<Cell> neis = new ArrayList<>();
-		if (cur.i - 1 >= 0 && rms[cur.i - 1][cur.j] == Integer.MAX_VALUE) {
-			neis.add(new Cell(cur.i - 1, cur.j));
-		}
-		if (cur.i + 1 < rms.length && rms[cur.i + 1][cur.j] == Integer.MAX_VALUE) {
-			neis.add(new Cell(cur.i + 1, cur.j));
-		}
-		if (cur.j - 1 >= 0 && rms[cur.i][cur.j - 1] == Integer.MAX_VALUE) {
-			neis.add(new Cell(cur.i, cur.j - 1));
-		}
-		if (cur.j + 1 < rms[0].length && rms[cur.i][cur.j + 1] == Integer.MAX_VALUE) {
-			neis.add(new Cell(cur.i, cur.j + 1));
-		}
-		return neis;
-	}
-	
-	static class Cell {
-		int i;
-		int j;
-		
-		public Cell(int i, int j) {
-			this.i = i;
-			this.j = j;
-		}
 	}
 	
 	public static void main(String[] args) {
