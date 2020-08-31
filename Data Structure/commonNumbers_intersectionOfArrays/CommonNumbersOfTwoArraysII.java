@@ -1,4 +1,4 @@
-package commonNumbersOfArrays;
+package commonNumbers_intersectionOfArrays;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,8 +16,8 @@ import java.util.Map;
  * Examples:
  * A = {1, 2, 3, 2}, B = {3, 4, 2, 2, 2}, return [2, 2, 3] (there are both two 2s in A and B)
  * 
- * Time: O(a + b + aloga), if a is shorter than b
- * Space: O(a), if a is shorter than b
+ * Time: O(a + b), if the result does not have to be sorted
+ * Space: O(min(a, b))
  */
 public class CommonNumbersOfTwoArraysII {
 	public List<Integer> common(int[] A, int[] B) {
@@ -31,6 +31,10 @@ public class CommonNumbersOfTwoArraysII {
 			}
 		}
 		Collections.sort(res);
+		/*int[] resArr = new int[res.size()];
+		for (int i = 0; i < res.size(); i++) { // use this to return an array, there is no built-in method to convert a primitive array list to array
+			resArr[i] = res.get(i);
+		}*/
 		return res;
 	}
 

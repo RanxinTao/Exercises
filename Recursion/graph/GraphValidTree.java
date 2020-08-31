@@ -8,20 +8,21 @@ import java.util.List;
  * write a function to check whether these edges make up a valid tree.
  * 
  * Assumptions: 
- * 1. You can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1]
- * is the same as [1, 0] and thus will not appear together in edges.
+ * 1. You can assume that no duplicate edges will appear in edges. Since all edges are undirected, 
+ * [0, 1] is the same as [1, 0] and thus will not appear together in edges.
  * 
  * Examples:
  * 1. Given n = 5, and edges = [[0, 1], [0, 2], [0, 3], [1, 4]], return true.
  * 2. Given n = 5, and edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]], return false.
  * 
- * Thoughts: This problem is equivalent to check if there is a cycle in the undirected graph. We know if it
- * is a tree, then starting from any node of the tree, we can traverse the whole tree, meaning that we can reach 
- * every tree node once and only once. In this problem, the tree does not have to be a binary tree, it can be
- * a knary tree.
+ * Thoughts: This problem is equivalent to check if there is a cycle in the undirected graph. We know 
+ * if it is a tree, then starting from any node of the tree, we can traverse the whole tree, meaning 
+ * that we can reach every tree node once and only once. In this problem, the tree does not have to 
+ * be a binary tree, it can be a knary tree.
  * 
  * Time: O(n + e), where n is the number of graph nodes, and e is the number of edges.
- * Space: worst O(n + e) because of a visited array and the adjacent list, O(logn) if it is a tree and the tree is balanced.
+ * Space: worst O(n + e) because of a visited array and the adjacent list, O(logn) if it is a tree and 
+ * the tree is balanced.
  */
 public class GraphValidTree {
 	public boolean validTree(int n, int[][] edges) {

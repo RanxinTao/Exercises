@@ -1,34 +1,36 @@
 package slidingWindow;
 
 /**
- * Given a string, find the length of the longest substring T that contains at most 2 distinct characters.
+ * Given a string, find the length of the longest substring T that contains at most 2 distinct 
+ * characters.
  * 
  * Examples:
  * 1. Given s = "eceba", T is "ece", return 3
  * 
- * Thoughts: we don't have to store the 2 distinct characters, instead of themselves, we store their indices in the input string.
+ * Thoughts: we don't have to store the 2 distinct characters, instead of themselves, we store their
+ * indices in the input string.
  * 
  * Time: O(n)
  * Space: O(1)
  */
 public class LongestSubstringWithAtMostTwoDistinctCharacters {
 	public int lengthOfLongestSubstringTwoDistinct(String input) {
-		int maxLen = 0;
-		int left = 0;
+		int maxLen = 0;	
 		int lastIdx1 = -1; // last index of character 1
 		int lastIdx2 = -1; // last index of character 2
-		for (int right = 0; right < input.length(); right++) {
-			char cur = input.charAt(right);
+		int l = 0; // left index
+		for (int r = 0; r < input.length(); r++) {
+			char cur = input.charAt(r);
 			if (lastIdx1 == -1 || input.charAt(lastIdx1) == cur) {
-				lastIdx1 = right;
+				lastIdx1 = r;
 			} else if (lastIdx2 == -1 || input.charAt(lastIdx2) == cur) {
-				lastIdx2 = right;
+				lastIdx2 = r;
 			} else { // ch1 != 0 && ch2 != 0 && curCh != ch1 && curCh != ch2
-				left = lastIdx1 + 1;
-				lastIdx1 = lastIdx2; // we maintain ch1 to be on the left side of ch2, so we always know ch1 is to be replaced by the new character
-				lastIdx2 = right;
+				l = lastIdx1 + 1;
+				lastIdx1 = lastIdx2; // we maintain ch1 in the left side of ch2, so we can always replace ch1 with the new character
+				lastIdx2 = r;
 			}
-			maxLen = Math.max(maxLen, right - left + 1);
+			maxLen = Math.max(maxLen, r - l + 1);
 		}
 		return maxLen;
 	}

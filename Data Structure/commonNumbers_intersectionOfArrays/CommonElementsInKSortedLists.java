@@ -1,4 +1,4 @@
-package commonNumbersOfArrays;
+package commonNumbers_intersectionOfArrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
