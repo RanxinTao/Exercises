@@ -1,6 +1,6 @@
 package test;
 
-import array2Pointers_oppositeDirection.TwoSumAllPairII;
+import array2Pointers_moveTowards.TwoSumAllPairII;
 
 public class TestTwoSumAllPairII {
 	public static void main(String[] args) {

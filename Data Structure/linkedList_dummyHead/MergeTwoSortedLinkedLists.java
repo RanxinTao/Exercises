@@ -27,8 +27,7 @@ public class MergeTwoSortedLinkedLists {
 			}
 			cur = cur.next;
 		}
-		// link the remaining possible nodes
-		cur.next = one == null ? two : one;
+		cur.next = one == null ? two : one; // link the remaining possible nodes
 		return dummy.next;
 	}
 }

@@ -6,21 +6,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given an integer array A and a sliding window of size K, find the maximum value of each window as it slides from left to right.
+ * Given an integer array A and a sliding window of size K, find the maximum value of each window as 
+ * it slides from left to right.
  * 
  * Assumptions:
  * 1. The given array is not null and is not empty
  * 2. K >= 1, K <= A.length
  * 
  * Examples:
- * A = {1, 2, 3, 2, 4, 2, 1}, K = 3, the windows are {{1, 2, 3}, {2, 3, 2}, {3, 2, 4}, {2, 4, 2}, {4, 2, 1}},
- * and the maximum values of each K-sized sliding window are [3, 3, 4, 4, 4]
+ * A = {1, 2, 3, 2, 4, 2, 1}, K = 3, the windows are 
+ * {{1, 2, 3}, {2, 3, 2}, {3, 2, 4}, {2, 4, 2}, {4, 2, 1}}, and the maximum values of each K-sized 
+ * sliding window are [3, 3, 4, 4, 4]
+ * 
+ * Thoughts: store the index (instead of the actual value) in a deque, and maintain actual values 
+ * are monotonously increasing from the first to the last, so the last one is the maximum value.
  * 
  * Time: O(n)
  * Space: O(k)
  */
-// store the index (instead of the actual value) in a deque, and make sure their actual values are monotonously 
-// increasing from the first to the last, so the last one is the maximum value
 public class MaximumValuesOfSizeKSlidingWindows {
 	public List<Integer> maxWindows(int[] array, int k) {
 		List<Integer> res = new ArrayList<>();
