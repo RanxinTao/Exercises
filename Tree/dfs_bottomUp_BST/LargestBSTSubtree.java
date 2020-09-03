@@ -1,4 +1,4 @@
-package binarySearchTree;
+package dfs_bottomUp_BST;
 
 import impl.TreeNode;
 
